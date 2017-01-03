@@ -121,6 +121,10 @@
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	<section id="content">
      
+     
+     
+     
+     
       <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
@@ -178,42 +182,53 @@
          </div>
       </div>
       
+      
+      
+      
+      
       <div class="row" id="registr">
-        <p>Заполните поля для регистрации</p>
+        <p class="fill_inp average_text">Заполните поля для регистрации</p>
         
         
         
-        <div class="row lines col m8 l5 offset-m2 offset-l2">
-            <div class="input-field col s12">
-              <input id="name" type="text" class="validate">
-              <label for="last_name">Логин</label>
+        <div class="row lines col s11 offset-s1 offset-m1 offset-l1">
+            <div class="input-field col s7 m7 l7">
+              <input id="name" type="text" placeholder="Логин" class="validate average_text">
             </div>
+            <p class="col s5 m5 l5 error average_text">Недопустимый логин!</p>
         </div>
-        <div class="row lines col m8 l5 offset-m2 offset-l2">
-            <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Пароль</label>
+        <div class="row lines col s11 offset-s1 offset-m1 offset-l1">
+            <div class="input-field col s7 m7 l7">
+                <input id="password" type="password" placeholder="Пароль" class="validate average_text">
             </div>
+            <p class="col s5 m5 l5 error average_text">Недопустимый пароль!</p>
         </div>
-        <div class="row lines col m8 l5 offset-m2">
-            <div class="input-field col s12">
-                <input id="cnf_password" type="password" class="validate">
-                <label for="password">Подтвердите пароль</label>
+        <div class="row lines col s11 offset-s1 offset-m1 offset-l1">
+            <div class="input-field col s7 m7 l7">
+                <input id="cnf_password" type="password" placeholder="Подтвердите пароль" class="validate average_text">
             </div>
+            <p class="col s5 m5 l5 error average_text">Пароли не идентичны!</p>
         </div>
-        <div class="row lines col m8 l5 offset-m2 offset-l2">
-            <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
+        <div class="row lines col s11 offset-s1 offset-m1 offset-l1">
+          <div class="input-field col s7 m7 l7">
+            <input id="email" type="email" placeholder="Email" class="validate average_text">
           </div>
+          <p class="col s5 m5 l5 error average_text">Недопустимый Email!</p>
         </div>  
-        <div class="row lines col m8 l7 offset-m2 offset-l2">
-            <button class="btn waves-effect waves-light col s6" type="submit" name="action">Отправить</button>  
+         <p class="check lines col offset-s1">
+          <input type="checkbox" id="test5"/>
+          <label for="test5" class="average_text">Согласен с <a href="#" class="average_text">правилами</a></label>
+         </p>
+        <div class="row lines col s10 m7 l7 offset-s1 offset-m1 offset-l1">
+            <button class="average_text btn waves-effect waves-light col s6" type="submit" name="action">Отправить</button>  
         </div>
         
         
         
       </div>
+      
+      
+      
       
       
 </section>

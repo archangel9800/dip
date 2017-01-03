@@ -1,6 +1,7 @@
     #content{
         padding: 15px 15px 15px 15px;
-        height: 85vh;
+        height: auto;
+        min-height: 85vh;
         width: 90vw;
         margin: 0 auto;
         margin-top: 1vh;
@@ -72,10 +73,10 @@
             box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
                         @media (max-width: 992px){
                                 transition: none;
-                                height: 30vh;
+                                width: 70%;
                                 }
                         @media (max-width: 600px){
-                                min-height: 100px;
+                                width: 80%;
                                 }
                 &:hover{
                     background-color: rgba(48,90,196,1);
@@ -83,28 +84,56 @@
                     -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
                     box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
                 }
+            .fill_inp{
+                color: #fff59d;
+                text-align: center;
+                padding-top: 0.5vw;
+            }
+            .check{
+                margin-top: 1vh;
+                 margin-bottom: 0.5vh;
+                a{
+                    color: red;
+                    &:hover{
+                        border-bottom: 1px solid red;
+                    }
+                }
+                label{
+                    padding-left: 3vh;
+                    &:before{
+                        height: 0;
+                        width: 0;
+                        padding: 3.5%;
+                        width: auto;
+                    }
+                    
+                }
+            }
             .row {
 	            padding: 0;
             }
             .lines{
-                height: 2.3vw;               
+                height: 2.3vw;     
+                p{
+                  padding-top: 1vw;  
+                }
                 .input-field{
                     height: 100%;
                     margin-top: 0.5vw;
                     input{
                         margin: 0;
                         height: 100%;
-                        color: white;
-                    }
-                    label{
-                         
                     }
                 }
                 button{
                     height: 100%;
                     line-height: 0;
                     margin-left: 1.5vh;
-                    margin-top: 0.5vw;
+                    margin-top: 0.2vw;
+                    padding: auto;
+                    @media (max-width: 992px){
+                            padding: 1.8vw 1vh 1.8vw 1vh;
+                                }
                 }
                 
             }

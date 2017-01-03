@@ -43,12 +43,7 @@
 }
 
 
-//@mixin hardware($backface: true, $perspective: 1000) {
-//  @if $backface {
-//   backface-visibility: hidden;
-//  }
-//  perspective: $perspective;
-//}
+
 
 
 
@@ -81,7 +76,7 @@ html {
 
     body{
         min-width: 320px;
-  min-height: 480px;
+        min-height: 480px;
         a, p, div, section, h1, h2, h3, h4, h5{
             margin: 0;
             padding: 0;
@@ -94,7 +89,12 @@ html {
         height: 0px;
         visibility: hidden;
     }
-
+        .ok{
+            color: white;
+        }
+        .error {
+	    color: red;
+        }
 
 
     .big_text{  
