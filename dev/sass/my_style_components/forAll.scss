@@ -1,0 +1,142 @@
+@font-face {
+    font-family: Gothic; /* Имя шрифта */
+        src: url(../fonts/Gothic/AllegrettoScriptOne.ttf); /* Путь к файлу со шрифтом */
+   }
+
+@mixin text-mix($w400, $w400-500, $w500-600, $w600-768, $w768-800, $w800-900, $w900-992, $w992-1200, $w1200) {
+            /*<400*/
+            @media (max-width: 400px) {
+                font-size: $w400 !important;
+            }
+            /*400-500*/
+            @media only screen and (min-width: 400px) and (max-width: 500px) {
+                font-size: $w400-500 !important;
+            }
+            /*500-600*/
+            @media only screen and (min-width: 500px) and (max-width: 600px) {
+                font-size: $w500-600 !important;
+            }
+            /*600-768*/
+            @media only screen and (min-width: 600px) and (max-width: 768px) {
+                font-size: $w600-768 !important;
+            }
+            /*768-800*/
+            @media only screen and (min-width: 768px) and (max-width: 800px) {
+                font-size: $w768-800 !important;
+            }
+            /*800-900*/
+            @media only screen and (min-width: 800px) and (max-width: 900px) {
+                font-size: $w800-900 !important;
+            }
+            /*900-992*/
+            @media only screen and (min-width: 900px) and (max-width: 992px) {
+                font-size: $w900-992 !important;
+            }
+            /*992-1200*/
+            @media only screen and (min-width: 992px) and (max-width: 1200px) {
+                font-size: $w992-1200 !important;
+            }
+            /*>1200*/
+            @media (min-width: 1200px) {
+                font-size: $w1200 !important;
+            }
+}
+
+
+//@mixin hardware($backface: true, $perspective: 1000) {
+//  @if $backface {
+//   backface-visibility: hidden;
+//  }
+//  perspective: $perspective;
+//}
+
+
+
+
+
+
+html {
+    background-color: #E6E6E6;
+//height: auto;
+//background:
+//	linear-gradient(
+//		cyan,
+//		transparent
+//	),
+//	linear-gradient(
+//		-45deg,
+//		magenta,
+//		transparent
+//	),
+//	linear-gradient(
+//		45deg,
+//		yellow,
+//		transparent
+//	);
+//background-blend-mode: multiply;
+//@media (max-width: 320px){
+//                background: none;
+//            }
+
+
+    body{
+        min-width: 320px;
+  min-height: 480px;
+        a, p, div, section, h1, h2, h3, h4, h5{
+            margin: 0;
+            padding: 0;
+        }
+    //    Отчистка флоатов
+        .clear-fix:after {
+        content: '';
+        display: block;
+        clear: both;
+        height: 0px;
+        visibility: hidden;
+    }
+
+
+
+    .big_text{  
+        @include text-mix(
+        /*<400*/    5vw,
+        /*400-500*/ 4vw,
+        /*500-600*/ 4vw,
+        /*600-768*/ 4vw,
+        /*768-800*/ 4vw,
+        /*800-900*/ 4vw,
+        /*900-992*/ 4vw,
+       /*992-1200*/ 2vw,
+        /*>1200*/   1.8vw
+         );     
+    }
+    .average_text{    
+        @include text-mix(
+            /*<400*/    2.2vw,
+            /*400-500*/ 2.1vw,
+            /*500-600*/ 1.8vw,
+            /*600-768*/ 1.5vw,
+            /*768-800*/ 1.4vw,
+            /*800-900*/ 1.3vw,
+            /*900-992*/ 1.3vw,
+           /*992-1200*/ 1.2vw,
+            /*>1200*/   1vw
+             );      
+    }
+
+
+
+
+        
+        
+        
+ 
+
+
+
+
+
+
+
+    }
+}
