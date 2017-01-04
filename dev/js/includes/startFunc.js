@@ -1,11 +1,10 @@
 $(document).ready(function () {
 //    запуск скриптов требующих ресайз
  
-    //    запуск скрипта для картинок  в слайдере
+   
     
 
-    centerImg();
-    $(window).resize(centerImg);
+ 
     
     
 //        setTimeout(centerImg, 200);
@@ -13,11 +12,21 @@ $(document).ready(function () {
 //         setTimeout(centerImg, 200)
 //    });
     
+    headerFunc();
+    $(window).resize(headerFunc);
+    
     menuFunc();
     $(window).resize(menuFunc);
-    
-    
-    
+
     contentFunc();
     $(window).resize(contentFunc);
+    
+    
+    //центрируем блок
+    centerBlock();
+    $(window).resize(centerBlock);
+
+//    запуск скрипта для картинок  в слайдере
+    centerImg();
+    $(window).resize(centerImg);
 });

@@ -12,14 +12,8 @@ function contentFunc(){
 //       position: "absolute",
 //    }); 
     
-    
-    
-    
-    
-    
-    
-    
-    
+ 
+   
 };
 
 
@@ -145,16 +139,38 @@ function activBtn(way){
         });
 };
 
+  //центрируем блок
+function centerBlock() {
+    $(".inner").css({
+       marginTop: $(".outer").height()/2 - $(".inner").height()/2 + 'px',
+    });
+};
+
+// высота для мобильного
+function SetMobileheight(claSs,heightBefore,heightAfter){
+    if ($(window).width() <= $(window).height()){
+      $(claSs).css({
+          height: heightAfter,
+          transition: 'none',
+      });  
+    }else{
+       $(claSs).css({
+          height: heightBefore,
+      });  
+    }; 
+};
+
+
+
 
 
    //делает выбраный жанр активным
 activBtn("#genre_w .genre");
 
 function headerFunc(){
-    
-  
-    
-    
+     SetMobileheight("#s_slider","25vh","20vw");  
+     SetMobileheight(".login_block","25vh","auto"); 
+     SetMobileheight(".user_block","25vh","20vw");  
 };
 
 //Слайдер
@@ -203,11 +219,10 @@ activBtn("#menu");
 $(document).ready(function () {
 //    запуск скриптов требующих ресайз
  
-    //    запуск скрипта для картинок  в слайдере
+   
     
 
-    centerImg();
-    $(window).resize(centerImg);
+ 
     
     
 //        setTimeout(centerImg, 200);
@@ -215,11 +230,21 @@ $(document).ready(function () {
 //         setTimeout(centerImg, 200)
 //    });
     
+    headerFunc();
+    $(window).resize(headerFunc);
+    
     menuFunc();
     $(window).resize(menuFunc);
-    
-    
-    
+
     contentFunc();
     $(window).resize(contentFunc);
+    
+    
+    //центрируем блок
+    centerBlock();
+    $(window).resize(centerBlock);
+
+//    запуск скрипта для картинок  в слайдере
+    centerImg();
+    $(window).resize(centerImg);
 });

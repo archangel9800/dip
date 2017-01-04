@@ -119,4 +119,27 @@ function activBtn(way){
         });
 };
 
+  //центрируем блок
+function centerBlock() {
+    $(".inner").css({
+       marginTop: $(".outer").height()/2 - $(".inner").height()/2 + 'px',
+    });
+};
+
+// высота для мобильного
+function SetMobileheight(claSs,heightBefore,heightAfter){
+    if ($(window).width() <= $(window).height()){
+      $(claSs).css({
+          height: heightAfter,
+          transition: 'none',
+      });  
+    }else{
+       $(claSs).css({
+          height: heightBefore,
+      });  
+    }; 
+};
+
+
+
 

@@ -7,15 +7,17 @@
     border-radius: 5px;
     margin-top: 1vh;
     transition: all 0.4s;
-            @media (max-width: 992px){
+            @media (max-width: 600px){
                 transition: none;
             }
+            
     &:hover{
         background-color: rgba(28,160,199,0.9);
         -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
         -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
         box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
         }
+    
     .logo_block{
         margin: 3vh 0 3vh 0; 
         height: auto;
@@ -72,8 +74,8 @@
         box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
             @media (max-width: 992px){
                 display: none;
-                
             }
+            
             &:hover{
                 -webkit-box-shadow: 0px 0px 9px 4px rgba(255,139,153,1);
                 -moz-box-shadow: 0px 0px 9px 4px rgba(255,139,153,1);
@@ -88,9 +90,9 @@
         
     }
     .login_block {
-        display: block;
-        min-height: 150px;
-	    height: 25vh;
+        display: none;
+	    height: auto;
+        height: 25vh;
         background-color: rgba(48,90,196,0.6);
         margin: 3vh 0 3vh 0; 
         padding: 0;
@@ -101,10 +103,6 @@
         box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
                     @media (max-width: 992px){
                             transition: none;
-                            height: 30vh;
-                            }
-                    @media (max-width: 600px){
-                            min-height: 100px;
                             }
             &:hover{
                 background-color: rgba(48,90,196,1);
@@ -112,11 +110,10 @@
                 -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
                 box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
             }
+   
         p{
             color: white;
             text-align: center;
-            margin-top: 2%;
-            margin-bottom: 1%;
             a{
                 color: red;
                 &:hover{
@@ -126,54 +123,81 @@
             }
         }
         
-        .row{
+        .login_f{
+            height: 3vw;
             margin: 0;
+                 @media (max-width: 992px){
+                        height: 4vw;
+                 }
+                @media (max-width: 768px){
+                        height: 5vw;
+                 }
+                @media (max-width: 500px){
+                        height: 6vw;
+                 }
             .input-field {
-	            margin: 0;
-                height: 2.3vh;
                 position: relative;
+                margin: 0;
+                height: 100%;
                 input{
-                     position: absolute;
-                    bottom: 0;
-                    height: auto;
-                    margin: 0;
                     color: white;
+                    position: absolute;
+                    bottom: 0;
+                    margin: 0;    
+                    height: 100%;
                 }
             }
         }
         .serch_field{
-            height: 2.3vh;
-            margin-top: 2%;
+            height: 3vw;
+            margin: 0;
+                 @media (max-width: 992px){
+                        height: 4vw;
+                 }
+                @media (max-width: 768px){
+                        height: 5vw;
+                 }
+                @media (max-width: 500px){
+                        height: 6vw;
+                 }
+            
             .input-field {
                 position: relative;
+                margin: 0;
+                height: 100%;
                 input{
-                    width: 95%;
-                    position: absolute;
-                    bottom: 0;
-                    height: auto;
-                    margin: 0;
                     color: white;
+                    position: absolute;
+                    bottom: 0;    
+                    margin: 0;
+                    height: 100%;
                 }
             }
             .button-field{
-                padding: 0;
-                height: 2.3vh;
-                line-height: 0px;
+                padding-top: 0.3vh;
+                margin-bottom: 1%;
+                height: 3vw;
+                    @media (max-width: 992px){
+                            height: 4vw;
+                     }
+                    @media (max-width: 768px){
+                            height: 5vw;
+                     }
+                    @media (max-width: 500px){
+                            height: 6vw;
+                     }
                 button{
-                    width: 100%;
-                    text-align: center;
-                    height: 100%;
                     line-height: 0;
+                    height: 80%;
                     padding: 0;
-//                    padding: 1vw 1.4vw 1vw 1.4vw;
-                    
+                    width: 100%;
                 }
             }
         }
-       
+        
     }
     .user_block {
-        display: none;
+        display: block;
         min-height: 150px;
 	    height: 25vh;
         margin: 3vh 0 3vh 0; 
@@ -202,11 +226,11 @@
             height: 20%;
             p{
                 color: white;
-                margin: 1vh 0 1vh 0;
+                margin: 0.5vh 0 0.5vh 0;
             }
             a{
                 color: red;
-                margin: 1vh 0 1vh 0;
+                margin: 0.5vh 0 0.5vh 0;
                 text-align: right;
             }
         }
@@ -215,6 +239,7 @@
             height: 75%;
             .avatar{
                 border: 1px solid rgba(47,48,56,0.2);
+                border-radius: 5px;
                 display: block;
                 height: 100%;
                 padding: 0;
