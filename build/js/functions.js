@@ -168,9 +168,7 @@ function SetMobileheight(claSs,heightBefore,heightAfter){
 activBtn("#genre_w .genre");
 
 function headerFunc(){
-     SetMobileheight("#s_slider","25vh","20vw");  
-     SetMobileheight(".login_block","25vh","auto"); 
-     SetMobileheight(".user_block","25vh","20vw");  
+
 };
 
 //Слайдер
