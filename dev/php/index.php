@@ -1,17 +1,23 @@
-<?php echo 'hello!!!!!gfhf' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Document</title>
+	 <link rel="shortcut icon" href="img/icons/favicon.png" type="image/png">
+	<title>Colorful Gallery</title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
 
-	<!--#insert file="includes/-block1.php"-->
+	<!--#insert file="includes/-header.php"-->
+	<!--#insert file="includes/-menu.php"-->
+	<!--#insert file="includes/-genre.php"-->
+	<!--#insert file="includes/-content.php"-->
+	<!--#insert file="includes/-footer.php"-->
+	
+	
 	
 	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="js/materialize.js"></script>

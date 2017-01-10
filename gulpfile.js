@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
     spritesmith = require('gulp.spritesmith');
-var using = 'html';
+var using = 'php';
 
 
 
@@ -103,7 +103,7 @@ if (using == 'html'){
     
   gulp.task('browserSync', function() {
   browserSync({
-    proxy:'http://forstart/build/', 
+    proxy:'http://dip/fon/gallery/diplom/dip/build/', 
     notify: false,  
   });
 });

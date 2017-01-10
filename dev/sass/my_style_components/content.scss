@@ -19,6 +19,14 @@
                 }
         
        
+        #block404{
+            display: none;
+            color: red;
+            text-align: center;
+        }
+        
+        
+        
         
         
         #imgContent{
@@ -63,13 +71,21 @@
         
         
         #oneImg{
+//            display: none;
            height: 82vh;
             width: 100%;
             padding: 0;
             margin: 0;
+            @media (max-width: 992px){
+                                height: 60vh;
+                                }
             .img_show{
                 overflow: hidden;
                 height: 100%;
+                float: left;
+                    @media (max-width: 992px){
+                                float: none;
+                                }
                 .in_img{
                     width: auto;
                     height: 100%;
@@ -85,12 +101,20 @@
                 
             }
             .proportions {
+                float: right;
+                    @media (max-width: 992px){
+                                float: none;
+                                }
                 p{
                     color: #fff59d;
                 }
                 a{
                     display: block;
                     color:fuchsia;
+                    @media (max-width: 992px){
+                                height: auto;
+                                display: inline-block;
+                                }
                 }
                 
                 
@@ -102,12 +126,6 @@
             
             
         }
-        
-        
-        
-        
-        
-        
         
         
         
