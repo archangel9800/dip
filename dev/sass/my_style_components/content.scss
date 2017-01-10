@@ -30,7 +30,7 @@
         
         
         #imgContent{
-            display: none;
+            display: block;
             height: 100%;
             width: 100%;
             .image_gallery{
@@ -71,7 +71,7 @@
         
         
         #oneImg{
-//            display: none;
+            display: none;
            height: 82vh;
             width: 100%;
             padding: 0;
@@ -98,7 +98,6 @@
                     }
                      
                 }
-                
             }
             .proportions {
                 float: right;
@@ -115,16 +114,8 @@
                                 height: auto;
                                 display: inline-block;
                                 }
-                }
-                
-                
-                
-                
-                
+                }  
             }
-            
-            
-            
         }
         
         
