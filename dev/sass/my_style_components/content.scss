@@ -62,7 +62,60 @@
         
         
         
+        #oneImg{
+           height: 82vh;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            .img_show{
+                overflow: hidden;
+                height: 100%;
+                .in_img{
+                    width: auto;
+                    height: 100%;
+                    .valign {
+                        margin: 0 auto;
+                            img{
+                                height: auto;
+                                width: 100%;
+                            }  
+                    }
+                     
+                }
+                
+            }
+            .proportions {
+                p{
+                    color: #fff59d;
+                }
+                a{
+                    display: block;
+                    color:fuchsia;
+                }
+                
+                
+                
+                
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         #registr{
+            display: none;
             width: 40%;
             height: auto;
             margin-top: 9%;
@@ -147,49 +200,7 @@
             }
             
             
-            
-//            .check{
-//                @media all and (orientation:landscape) {
-//                            margin-bottom: 2vh;
-//                            margin-top: 3.5vh;
-//                        }
-//                        @media all and (orientation:portrait) {
-//                            margin-bottom: 2vw;
-//                            margin-top: 1.7vw;
-//                        }
-//                position: relative;
-//                
-//                label{
-//                    position: absolute;
-//                    bottom: 50%;
-//                    padding-left: 3vh;
-//                    height: auto;
-//                    line-height: normal;
-//                    @media all and (orientation:landscape) {
-//                        padding-left: 3vh;
-//                    }
-//                    @media all and (orientation:portrait) {
-//                        padding-left: 3vw;
-//                    }
-//                    &:before{
-//                        @media all and (orientation:landscape) {
-//                            padding: 0.7vh;
-//                        }
-//                        @media all and (orientation:portrait) {
-//                            padding: 0.7vw;
-//                        }
-//                        height: 0;
-//                        width: 0;
-//                        width: auto;
-//                    }
-//                            a{
-//                            color: red;
-//                            &:hover{
-//                                border-bottom: 1px solid red;
-//                            }
-//                        }
-//                }
-//            }
+
             .row {
 	            padding: 0;
             }
