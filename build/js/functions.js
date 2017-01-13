@@ -165,7 +165,7 @@ function SetMobileheight(claSs,heightBefore,heightAfter){
 
 
    //делает выбраный жанр активным
-activBtn("#genre_w .genre");
+//activBtn("#genre_w .genre");
 
 function headerFunc(){
 

@@ -1,12 +1,14 @@
 <section id="content" class="adaptive_container">
      
      
+<!--
      <div id="block404" class="row">
          <p class="big_text col s4 offset-s4">404</p>
          <p class="big_text col s4 offset-s4">Page not found!</p>
      </div>
-     
-     
+-->
+     <?php echo getAll($mas); ?>
+<!--
       <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
@@ -16,58 +18,12 @@
                     </div>
                 </div>
             </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
+          </div>
       </div>
+-->
+
       
-      
-      
-      
-      
+<!--
       <div class="row" id="oneImg">
          <div class="col s12 m12 l2 proportions">
               <p class="average_text">Размеры:</p>
@@ -85,6 +41,7 @@
           
           
       </div>
+-->
       
       
       

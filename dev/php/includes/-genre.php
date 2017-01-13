@@ -1,6 +1,8 @@
 <!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="genre_w" class="row adaptive_container">
   <div class="genre col s12 row">
+     <?php echo getGenres($mas); ?>
+<!--
       <div class="col s3 m2 l2 genres"><a class='active' href="#">Красивые</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">3D - обои</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Новый год</a></div>
@@ -11,6 +13,7 @@
       <div class="col s3 m2 l2 genres"><a href="#">ЖД</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Природа</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Цветы</a></div>
+-->
   </div>
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->

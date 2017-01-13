@@ -51,6 +51,21 @@ gulp.task('phpinc', function(){
     console.log('PHP changed');
 });
 
+gulp.task('phpAdminInc', function(){
+    gulp.src('dev/admin/includes/*.php')
+        .pipe(includer())
+		.pipe(gulp.dest('build/admin/'))
+        .pipe(reload({stream:true}));
+    console.log('PHP admin changed');
+});
+
+gulp.task('htaccess', function(){
+	gulp.src('dev/php/.htaccess')
+		.pipe(includer())
+		.pipe(gulp.dest('build/'))
+        .pipe(reload({stream:true}));
+    console.log('htaccess changed');
+});
 gulp.task('sass', function(){
 	gulp.src('dev/sass/*.scss')
 	.pipe(sourcemap.init())
@@ -65,7 +80,7 @@ gulp.task('move', function(){
 	gulp.src('dev/fonts/**/*.*').pipe(gulp.dest('build/fonts/')).pipe(reload({stream:true}));
 	gulp.src('dev/js/*.js').pipe(gulp.dest('build/js/')).pipe(reload({stream:true}));
 	gulp.src('dev/img/icons/*.*').pipe(gulp.dest('build/img/icons/')).pipe(reload({stream:true}));
-    gulp.src('dev/img/img/*.*').pipe(gulp.dest('build/img/img/')).pipe(reload({stream:true}));
+    gulp.src('dev/img/img/**/*.*').pipe(gulp.dest('build/img/img/')).pipe(reload({stream:true}));
 	console.log('Moved'); 
 });
 
@@ -79,6 +94,8 @@ gulp.task('watcher', function(){
     gulp.watch('dev/sass/**/*.scss', ['sass']);
     gulp.watch('dev/html/**/*.html', ['html']);
     gulp.watch('dev/php/**/*.php', ['phpinc']);
+    gulp.watch('dev/admin/**/*.php', ['phpAdminInc']);
+    gulp.watch('dev/php/.htaccess', ['htaccess']);
     gulp.watch('dev/js/includes/*.js', ['scriptsConcat']);
     gulp.watch('dev/img/spriteIcons/*.png', ['sprite']); 
 });
@@ -97,7 +114,7 @@ if (using == 'html'){
   });
 });
     
-    gulp.task('default', ['watcher', 'browserSync', 'scriptsConcat', 'html', 'sass', 'move', 'sprite', ]);  
+    gulp.task('default', ['watcher', 'browserSync', 'scriptsConcat', 'html', 'sass', 'move', 'sprite', 'phpinc', 'phpAdminInc', ]);  
     
 } else if (using == 'php'){
     

@@ -1,2 +1,2 @@
    //делает выбраный жанр активным
-activBtn("#genre_w .genre");
+//activBtn("#genre_w .genre");

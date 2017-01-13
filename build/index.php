@@ -1,25 +1,36 @@
+<?php
+require_once '/functions.php';
+$route = $_GET['route'];
+
+$mas = getArticle($route);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	 <link rel="shortcut icon" href="img/icons/favicon.png" type="image/png">
-	<title>Colorful Gallery</title>
+	<title><?php echo $mas['cat_name']?></title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
 
+
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container">
     <div class="col s5 m7 l3 logo_block">
-        <h1 class=""><a href="#"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
+        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
     <div id="s_slider" class="col s0 m0 l5">
         <div class="swiper-container">
             <div class="swiper-wrapper">
+            
+            <?php echo getSliderImg(); ?>
+<!--
                 <div class="swiper-slide img_wrap">
                     <img src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (2).png" class="img_block">
                 </div>
@@ -29,6 +40,7 @@
                 <div class="swiper-slide img_wrap">
                     <img src="img/img/Material-Design-17.jpg" class="img_block">
                 </div>
+-->
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
@@ -108,6 +120,8 @@
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="genre_w" class="row adaptive_container">
   <div class="genre col s12 row">
+     <?php echo getGenres($mas); ?>
+<!--
       <div class="col s3 m2 l2 genres"><a class='active' href="#">Красивые</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">3D - обои</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Новый год</a></div>
@@ -118,18 +132,21 @@
       <div class="col s3 m2 l2 genres"><a href="#">ЖД</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Природа</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Цветы</a></div>
+-->
   </div>
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	<section id="content" class="adaptive_container">
      
      
+<!--
      <div id="block404" class="row">
          <p class="big_text col s4 offset-s4">404</p>
          <p class="big_text col s4 offset-s4">Page not found!</p>
      </div>
-     
-     
+-->
+     <?php echo getAll($mas); ?>
+<!--
       <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
@@ -139,58 +156,12 @@
                     </div>
                 </div>
             </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
-          <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-         </div>
+          </div>
       </div>
+-->
+
       
-      
-      
-      
-      
+<!--
       <div class="row" id="oneImg">
          <div class="col s12 m12 l2 proportions">
               <p class="average_text">Размеры:</p>
@@ -208,6 +179,7 @@
           
           
       </div>
+-->
       
       
       

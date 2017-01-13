@@ -1,12 +1,15 @@
 <!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container">
     <div class="col s5 m7 l3 logo_block">
-        <h1 class=""><a href="#"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
+        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
     <div id="s_slider" class="col s0 m0 l5">
         <div class="swiper-container">
             <div class="swiper-wrapper">
+            
+            <?php echo getSliderImg(); ?>
+<!--
                 <div class="swiper-slide img_wrap">
                     <img src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (2).png" class="img_block">
                 </div>
@@ -16,6 +19,7 @@
                 <div class="swiper-slide img_wrap">
                     <img src="img/img/Material-Design-17.jpg" class="img_block">
                 </div>
+-->
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
