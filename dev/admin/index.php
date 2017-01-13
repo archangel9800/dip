@@ -18,7 +18,7 @@ $mas = getArticle($route);
 </head>
 <body>
 
-		<!--#insert file="../php/includes/-adminka.php"-->
+		<!--#insert file="includes/-adminka.php"-->
 	 
 	
 	

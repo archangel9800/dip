@@ -52,7 +52,7 @@ gulp.task('phpinc', function(){
 });
 
 gulp.task('phpAdminInc', function(){
-    gulp.src('dev/admin/includes/*.php')
+    gulp.src('dev/admin/**/*.php')
         .pipe(includer())
 		.pipe(gulp.dest('build/admin/'))
         .pipe(reload({stream:true}));

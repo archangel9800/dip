@@ -1,0 +1,194 @@
+#adminka{
+        padding: 15px 15px 15px 15px;
+        height: auto;
+        min-height: 85vh;
+        width: 90vw;
+        margin: 0 auto;
+        margin-top: 1vh;
+        background-color: rgba(0, 0, 0, 0.6);
+         border-radius: 5px;
+         transition: all 0.4s;
+            @media (max-width: 600px){
+                transition: none;
+            }
+            &:hover{
+                background-color: rgba(0,0,0,0.7);
+                -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
+                -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
+                box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
+                }
+            .admin_login {
+                    display: none;
+                    .lines {
+                          @media all and (orientation:landscape) {
+                                    margin-bottom: 2vh;
+                                    margin-top: 2vh;
+                                    height: 2.3vw;
+                          }
+                          @media all and (orientation:portrait) {
+                                   margin-bottom: 2vw;
+                                  margin-top: 2vw;
+                                  height: 2.3vh; 
+                          } 
+                        .input-field{
+                        height: 100%;
+                        margin-top: 0.5vw;
+                        position: relative;
+                            input{
+                                position: absolute;
+                                bottom: 0;
+                                margin: 0;
+                                height: 100%;
+                                color: white;
+                            }
+                    }
+                    }
+                    p{
+                        color: #fff59d;
+                        text-align: center;
+                        @media all and (orientation:landscape) {
+                                    margin-top: 2vh;  
+                          }
+                          @media all and (orientation:portrait) {
+                                  margin-top: 2vw;
+                          } 
+                    }
+                    
+                    .btn{
+                        padding: 0;
+                       height: 2.3vw; 
+                        line-height: 0;
+                         @media all and (orientation:landscape) {
+                                     height: 2.3vw; 
+                                    margin-bottom: 2vh;
+                                    margin-top: 2vh;  
+                          }
+                          @media all and (orientation:portrait) {
+                              height: 2.3vh; 
+                                   margin-bottom: 2vw;
+                                  margin-top: 2vw;
+                          } 
+                    }
+                }
+    
+    
+                
+    
+    #add_remove{
+        .add_remove_catalog_img{
+                p{
+                        display: block;
+                        color: #fff59d;
+                        text-align: center;
+                        border-top: 1px solid rgb(41, 180, 166);
+                        @media all and (orientation:landscape) {
+                                    margin-top: 2vh;
+                                    padding-top: 1vh;
+                          }
+                          @media all and (orientation:portrait) {
+                                  margin-top: 2vw;
+                                  padding-top: 1vw;
+                          } 
+                }
+                .lines {
+                                  @media all and (orientation:landscape) {
+                                            margin-bottom: 2vh;
+                                            margin-top: 2vh;
+                                            height: 2.3vw;
+                                  }
+                                  @media all and (orientation:portrait) {
+                                           margin-bottom: 2vw;
+                                          margin-top: 2vw;
+                                          height: 2.3vh; 
+                                  } 
+                                .input-field{
+                                height: 100%;
+                                position: relative;
+                                    input{
+                                        position: absolute;
+                                        bottom: 0;
+                                        margin: 0;
+                                        height: 100%;
+                                        color: white;
+                                    }
+                                        .list{
+                                        height: 100%;
+                                            .caret{
+                                                color: rgb(41, 180, 166);
+                                            }
+                                            span, option, input{
+                                                @include text-mix(
+                                                    /*<400*/    2.2vw,
+                                                    /*400-500*/ 2.1vw,
+                                                    /*500-600*/ 1.8vw,
+                                                    /*600-768*/ 1.5vw,
+                                                    /*768-800*/ 1.4vw,
+                                                    /*800-900*/ 1.3vw,
+                                                    /*900-992*/ 1.3vw,
+                                                   /*992-1200*/ 1.2vw,
+                                                    /*>1200*/   1vw
+                                                     );     
+                                            }    
+                                    }
+                            }
+                    
+                        
+                        .file-field{
+                            height: 100%;
+                            .btn{
+                                  margin: 0;
+                                width: 15%;
+                                p{
+                                    display: block;
+                                    line-height: 0;
+                                    vertical-align: middle;
+                                    padding: 0;
+                                    border: 0;
+                                }
+                            }
+                            .file-path-wrapper{
+                                height: 100%;
+                                overflow: hidden;
+                                    input{
+                                    width: 85%;
+                                }
+                            }
+                            
+                        }
+                    
+                                
+                            }
+                .btn{
+                                padding: 0;
+                               height: 2.3vw; 
+                                line-height: 0;
+                                 @media all and (orientation:landscape) {
+                                             height: 2.3vw; 
+                                            margin-bottom: 2vh;
+                                            margin-top: 2vh;  
+                                  }
+                                  @media all and (orientation:portrait) {
+                                      height: 2.3vh; 
+                                           margin-bottom: 2vw;
+                                          margin-top: 2vw;
+                                  } 
+                            }
+            }
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

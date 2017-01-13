@@ -1,10 +1,11 @@
 $(document).ready(function () {
 //    запуск скриптов требующих ресайз
- 
-   
     
+//initialize the select element as shown below
+    $('select').material_select();
 
- 
+   
+
     
     
 //        setTimeout(centerImg, 200);
