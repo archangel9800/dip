@@ -1,7 +1,7 @@
 #adminka{
         padding: 15px 15px 15px 15px;
         height: auto;
-        min-height: 85vh;
+        min-height: 95vh;
         width: 90vw;
         margin: 0 auto;
         margin-top: 1vh;
@@ -90,7 +90,18 @@
                                   padding-top: 1vw;
                           } 
                 }
-                .lines {
+            .no_b{
+                border-top: none;
+                @media all and (orientation:landscape) {
+                                    margin-top: 0vh;
+                                    padding-top: 0vh;
+                          }
+                          @media all and (orientation:portrait) {
+                                  margin-top: 0vw;
+                                  padding-top: 0vw;
+                          } 
+            }
+                .lines{
                                   @media all and (orientation:landscape) {
                                             margin-bottom: 2vh;
                                             margin-top: 2vh;
@@ -104,6 +115,12 @@
                                 .input-field{
                                 height: 100%;
                                 position: relative;
+                                    @media all and (orientation:landscape) {
+                                            margin-top: 2vh;
+                                  }
+                                  @media all and (orientation:portrait) {
+                                          margin-top: 2vw;
+                                  } 
                                     input{
                                         position: absolute;
                                         bottom: 0;
@@ -132,49 +149,155 @@
                                     }
                             }
                     
-                        
+                        }
+            .down_block{
+                padding: 0;
                         .file-field{
-                            height: 100%;
+                            @media all and (orientation:landscape) {
+                                            margin-bottom: 2vh;
+                                            margin-top: 2vh;
+                                            height: 2.3vw;
+                                  }
+                                  @media all and (orientation:portrait) {
+                                           margin-bottom: 2vw;
+                                          margin-top: 2vw;
+                                          height: 2.3vh; 
+                                  } 
                             .btn{
-                                  margin: 0;
+                                height: 100%;
+                                margin: 0;
                                 width: 15%;
-                                p{
-                                    display: block;
+                                position: relative;
+                                div{
+                                    height: 100%;
+                                    position: absolute;
+                                    bottom: 0;  
+                                    width: 100%;
+                                   span{
                                     line-height: 0;
-                                    vertical-align: middle;
                                     padding: 0;
                                     border: 0;
+                                } 
                                 }
+                                
                             }
                             .file-path-wrapper{
                                 height: 100%;
                                 overflow: hidden;
+                                position: relative;
+                                      @media all and (orientation:landscape) {
+                                               padding-left: 1vw; 
+                                      }
+                                      @media all and (orientation:portrait) {
+                                               padding-left: 1vh;
+                                      } 
                                     input{
-                                    width: 85%;
+                                    position: absolute;
+                                    bottom: 0;    
+                                    height: 100%;    
+                                    width: 100%;
+                                    margin: 0;
                                 }
                             }
-                            
                         }
-                    
-                                
-                            }
+            }
+                            
                 .btn{
-                                padding: 0;
-                               height: 2.3vw; 
-                                line-height: 0;
+                            padding: 0;
+                            height: 2.3vw; 
+                            line-height: 0;
                                  @media all and (orientation:landscape) {
-                                             height: 2.3vw; 
+                                            height: 2.3vw; 
                                             margin-bottom: 2vh;
                                             margin-top: 2vh;  
                                   }
                                   @media all and (orientation:portrait) {
-                                      height: 2.3vh; 
-                                           margin-bottom: 2vw;
+                                          height: 2.3vh; 
+                                          margin-bottom: 2vw;
                                           margin-top: 2vw;
                                   } 
                             }
             }
     }
+    .remove_image{
+        #imgContent{
+            display: block;
+            height: 100%;
+            width: 100%;
+            .image_gallery{
+                padding: 15px 15px 15px 15px;
+                transition: all 0.4s;
+                cursor: pointer;
+                border-radius: 5px;
+                            @media (max-width: 992px){
+                                     transition: none;
+                            }
+                        &:hover{
+                                background-color: rgba(48,90,196,0.3);
+                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
+                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
+                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
+                            }
+                    .for_hight {
+                        position: relative;
+                        padding-top: 60%;
+                        height: 0;
+                            .remove_btn{
+                            position: absolute;
+                            font-weight: bold;
+                            color: red;
+                            z-index: 1;
+                            top: 0;
+                            &:hover{
+                                    color: blue;
+                                }      
+                                 @media all and (orientation:landscape) {
+                                           right: 0.3vw;  
+                                  }
+                                  @media all and (orientation:portrait) {
+                                          right: 0.3vh;
+                                  } 
+                                    @include text-mix(
+                                    /*<400*/    2.5vw,
+                                    /*400-500*/ 2.4vw,
+                                    /*500-600*/ 2.2vw,
+                                    /*600-768*/ 1.9vw,
+                                    /*768-800*/ 1.7vw,
+                                    /*800-900*/ 1.5vw,
+                                    /*900-992*/ 1.4vw,
+                                   /*992-1200*/ 1.3vw,
+                                    /*>1200*/   1.2vw
+                                     );
+                            }
+                            .for_hight2 {
+                                        position: absolute;
+                                        top: 0;
+                                        right: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                    .img_wrap {
+                                        position: relative;
+                                        height: 100%;
+                                        width: 100%;
+                                            a{
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                bottom: 0;
+                                                left: 0;
+                                                z-index: 1;
+                                            }
+
+                                    }
+                            }
+                 }   
+                
+            }
+            
+        }
+    }
+    
+    
     
 }
 

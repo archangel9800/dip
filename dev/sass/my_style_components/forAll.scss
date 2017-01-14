@@ -1,8 +1,10 @@
+//Стиль текста для хедера
 @font-face {
     font-family: Gothic; /* Имя шрифта */
         src: url(../fonts/Gothic/AllegrettoScriptOne.ttf); /* Путь к файлу со шрифтом */
    }
 
+//миксин для создания адаптивного текста
 @mixin text-mix($w400, $w400-500, $w500-600, $w600-768, $w768-800, $w800-900, $w900-992, $w992-1200, $w1200) {
             /*<400*/
             @media (max-width: 400px) {
@@ -76,7 +78,7 @@ html {
 //                background: none;
 //            }
 
-
+//Минимальные значения для боди и сброс стилей
     body{
         min-width: 320px;
         min-height: 480px;
@@ -84,6 +86,7 @@ html {
             margin: 0;
             padding: 0;
         }
+        
     //    Отчистка флоатов
         .clear-fix:after {
         content: '';
@@ -92,12 +95,14 @@ html {
         height: 0px;
         visibility: hidden;
     }
+//        Стиль текста для ошибок
         .ok{
             color: white;
         }
         .error {
-	    color: red;
+	        color: red;
         }
+//        Адаптивная ширина для контейнеров
         .adaptive_container{
             @media (max-width: 1200px){
                 width: 1200px;
@@ -112,7 +117,7 @@ html {
                 width: 500px;
             }
         }
-
+//Адаптивніе размері текстов
     .big_text{  
         @include text-mix(
         /*<400*/    5vw,
@@ -142,8 +147,22 @@ html {
 
 
 
-
-        
+//Центрирование внутреннего блока
+.out_bl {
+  text-align: center;
+}
+.in_bl {
+  display: inline-block;
+  vertical-align: middle;
+    margin: 0;
+}
+.out_bl:before { /* для IE8+ */
+  content: "";
+  display: inline-block;
+  min-height: inherit;
+  height: 100%;
+  vertical-align: middle;
+}
         
         
  
