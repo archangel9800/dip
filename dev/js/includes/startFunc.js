@@ -1,11 +1,9 @@
 $(document).ready(function () {
 //    запуск скриптов требующих ресайз
     
-//initialize the select element as shown below
-    $('select').material_select();
 
-   
-
+//скрипты админки   
+adminka();
     
     
 //        setTimeout(centerImg, 200);
