@@ -74,6 +74,8 @@
                 
     
     #add_remove{
+        height: auto;
+        min-height: 85vh;
         .add_remove_catalog_img{
                 p{
                         display: block;
@@ -219,7 +221,9 @@
             }
     }
     .remove_image{
-        height: 100%;
+        min-height: inherit;
+        height: inherit;
+        
         #imgContent{
             display: block;
             height: 100%;
@@ -269,27 +273,58 @@
                                     /*>1200*/   1.2vw
                                      );
                             }
-                            .for_hight2 {
-                                        position: absolute;
-                                        top: 0;
-                                        right: 0;
-                                        bottom: 0;
-                                        left: 0;
-                                    .img_wrap {
-                                        position: relative;
-                                        height: 100%;
-                                        width: 100%;
-                                            a{
-                                                position: absolute;
-                                                top: 0;
-                                                right: 0;
-                                                bottom: 0;
-                                                left: 0;
-                                                z-index: 1;
-                                            }
-
-                                    }
+//                            .for_hight2 {
+//                                        position: absolute;
+//                                        top: 0;
+//                                        right: 0;
+//                                        bottom: 0;
+//                                        left: 0;
+//                                    .img_wrap {
+//                                        position: relative;
+//                                        height: 100%;
+//                                        width: 100%;
+//                                            a{
+//                                                position: absolute;
+//                                                top: 0;
+//                                                right: 0;
+//                                                bottom: 0;
+//                                                left: 0;
+//                                                z-index: 1;
+//                                            }
+//
+//                                    }
+//                            }
+                        .for_hight2 {
+                                    position: absolute;
+                                    top: 0;
+                                    right: 0;
+                                    bottom: 0;
+                                    left: 0;
+                            img{
+                                height: 100%;
+                                width: 100%;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                                -moz-background-size: cover; /* Firefox 3.6+ */
+                                -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+                                -o-background-size: cover; /* Opera 9.6+ */
                             }
+//                                .img_wrap {
+//                                    position: relative;
+//                                    height: 100%;
+//                                    width: 100%;
+                                        a{
+                                            position: absolute;
+                                            top: 0;
+                                            right: 0;
+                                            bottom: 0;
+                                            left: 0;
+                                            z-index: 1;
+                                        }
+   
+//                                }
+                        }
+                        
                  }   
                 
             }

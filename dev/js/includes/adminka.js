@@ -16,12 +16,12 @@ function adminka(){
                     if(data){
                         $("#adminka #add_remove").html(data);
                         $('#adminka select').material_select(); 
-                        centerImg();
-                        setTimeout(centerImg, 50);
-                        setTimeout(centerImg, 100);
-                        setTimeout(centerImg, 150);
-                        setTimeout(centerImg, 200);
-                        $(window).resize(centerImg);
+//                        centerImg();
+//                        setTimeout(centerImg, 50);
+//                        setTimeout(centerImg, 100);
+//                        setTimeout(centerImg, 150);
+//                        setTimeout(centerImg, 200);
+//                        $(window).resize(centerImg);
                     }
                         
                 };
@@ -41,12 +41,12 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             $("#adminka #add_remove").html(data);
                     //инициализация выпадающих списков
                     $('#adminka select').material_select(); 
-                    centerImg();
-                    setTimeout(centerImg, 50);
-                    setTimeout(centerImg, 100);
-                    setTimeout(centerImg, 150);
-                    setTimeout(centerImg, 200);
-                    $(window).resize(centerImg);
+//                    centerImg();
+//                    setTimeout(centerImg, 50);
+//                    setTimeout(centerImg, 100);
+//                    setTimeout(centerImg, 150);
+//                    setTimeout(centerImg, 200);
+//                    $(window).resize(centerImg);
                     
                     
                 };
@@ -103,12 +103,12 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             );
         function ifSuccess(data){
                     $("#adminka .remove_image").html(data);
-                    centerImg();
-                    setTimeout(centerImg, 50);
-                    setTimeout(centerImg, 100);
-                    setTimeout(centerImg, 150);
-                    setTimeout(centerImg, 200);
-                    $(window).resize(centerImg);
+//                    centerImg();
+//                    setTimeout(centerImg, 50);
+//                    setTimeout(centerImg, 100);
+//                    setTimeout(centerImg, 150);
+//                    setTimeout(centerImg, 200);
+//                    $(window).resize(centerImg);
             
                 }
         

@@ -89,16 +89,33 @@ function getAll($mas){
         while($row = mysqli_fetch_assoc($result)) {
 
             $out .= '<div class="col s12 m4 l3 image_gallery">
-                <div class="for_hight">
-                    <div class="for_hight2">
-                        <div class="img_wrap">
-                            <a href="'.$row['url'].'/'.$row['id'].
-                            '"></a>
-                            <img class="img_block" numberimg="'.$row['id'].'" src="'.$row['img1920x1080'].'">
-                        </div>
-                    </div>
+            <div class="for_hight">
+                <div class="for_hight2">
+                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <img numberimg="'.$row['id'].'" style="background-image: url('."'"
+                .$row['img1920x1080']."'".
+                ');">
                 </div>
-              </div>';
+            </div>
+          </div>';
+            
+            
+            
+            
+            
+            
+            
+//            $out .= '<div class="col s12 m4 l3 image_gallery">
+//                <div class="for_hight">
+//                    <div class="for_hight2">
+//                        <div class="img_wrap">
+//                            <a href="'.$row['url'].'/'.$row['id'].
+//                            '"></a>
+//                            <img class="img_block" numberimg="'.$row['id'].'" src="'.$row['img1920x1080'].'">
+//                        </div>
+//                    </div>
+//                </div>
+//              </div>';
         };
        $out .= '</div>'; 
     }    
@@ -304,49 +321,93 @@ function showPhoto(){
         $out .= '<div class="row" id="imgContent">';
         while($row = mysqli_fetch_assoc($result)) {
             if($row['img1920x1080']){
-               $out .= 
-                '<div class="col s12 m4 l3 image_gallery">
-                <div class="for_hight">
-                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
-                    <div class="for_hight2">
-                        <div class="img_wrap">
-                            <a href="'.$row['url'].'/'.$row['id'].
-                            '"></a>
-                            <img class="img_block" src="../'.$row['img1920x1080'].'">
-                        </div>
-                    </div>
+                
+                $out .= '<div class="col s12 m4 l3 image_gallery">
+            <div class="for_hight">
+            <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+                <div class="for_hight2">
+                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                .$row['img1920x1080']."'".
+                ');">
                 </div>
-              </div>';  
+            </div>
+          </div>'; 
+                 
+                
+//                
+//               $out .= 
+//                '<div class="col s12 m4 l3 image_gallery">
+//                <div class="for_hight">
+//                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+//                    <div class="for_hight2">
+//                        <div class="img_wrap">
+//                            <a href="'.$row['url'].'/'.$row['id'].
+//                            '"></a>
+//                            <img class="img_block" src="../'.$row['img1920x1080'].'">
+//                        </div>
+//                    </div>
+//                </div>
+//              </div>';  
+                
+                
             };
             if($row['img1024x768']){
-               $out .= 
-                '<div class="col s12 m4 l3 image_gallery">
-                <div class="for_hight">
-                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-                    <div class="for_hight2">
-                        <div class="img_wrap">
-                            <a href="'.$row['url'].'/'.$row['id'].
-                            '"></a>
-                            <img class="img_block" src="../'.$row['img1024x768'].'">
-                        </div>
-                    </div>
+                
+                $out .= '<div class="col s12 m4 l3 image_gallery">
+            <div class="for_hight">
+            <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+                <div class="for_hight2">
+                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                .$row['img1024x768']."'".
+                ');">
                 </div>
-              </div>';  
+            </div>
+          </div>'; 
+                
+                
+//               $out .= 
+//                '<div class="col s12 m4 l3 image_gallery">
+//                <div class="for_hight">
+//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+//                    <div class="for_hight2">
+//                        <div class="img_wrap">
+//                            <a href="'.$row['url'].'/'.$row['id'].
+//                            '"></a>
+//                            <img class="img_block" src="../'.$row['img1024x768'].'">
+//                        </div>
+//                    </div>
+//                </div>
+//              </div>';  
             };
              if($row['img960x800']){
-               $out .= 
-                '<div class="col s12 m4 l3 image_gallery">
-                <div class="for_hight">
-                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-                    <div class="for_hight2">
-                        <div class="img_wrap">
-                            <a href="'.$row['url'].'/'.$row['id'].
-                            '"></a>
-                            <img class="img_block" src="../'.$row['img1024x768'].'">
-                        </div>
-                    </div>
+                 
+                   $out .= '<div class="col s12 m4 l3 image_gallery">
+            <div class="for_hight">
+            <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
+                <div class="for_hight2">
+                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                .$row['img960x800']."'".
+                ');">
                 </div>
-              </div>';  
+            </div>
+          </div>'; 
+                 
+//               $out .= 
+//                '<div class="col s12 m4 l3 image_gallery">
+//                <div class="for_hight">
+//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+//                    <div class="for_hight2">
+//                        <div class="img_wrap">
+//                            <a href="'.$row['url'].'/'.$row['id'].
+//                            '"></a>
+//                            <img class="img_block" src="../'.$row['img1024x768'].'">
+//                        </div>
+//                    </div>
+//                </div>
+//              </div>';  
             };       
         };
        $out .= '</div>'; 
