@@ -37,8 +37,6 @@ function getArticle($route){
 }
 
     
-//    var_dump($mas['categories']);
-//    var_dump($ress);
 
 
 //Добавляет кнопки с категориями и делает одну активную
@@ -89,8 +87,7 @@ function getAll($mas){
         $out ='';
         $out .= '<div class="row" id="imgContent">';
         while($row = mysqli_fetch_assoc($result)) {
-            
-//        var_dump($row['url']);
+
             $out .= '<div class="col s12 m4 l3 image_gallery">
                 <div class="for_hight">
                     <div class="for_hight2">
@@ -143,11 +140,11 @@ switch ( $_POST['action'] )
     case 'add':
         addCat();
         break;
-    case 'save':
-        action_save();
+    case 'remove':
+        removeCat();
         break;
-    case 'delete':
-        action_delete();
+    case 'show':
+        showPhoto();
         break;
 }
 
@@ -186,28 +183,6 @@ function login(){
 
 
 
-    
-//session_start();
-//
-//    if ($_SESSION['userin']==1){
-//        echo 'Hello '.$_SESSION['name'];
-//        echo 'Вы в админ-панели';
-//    }
-//    else {
-//        $user = $_GET['name'];
-//        $pass = $_GET['pass'];
-//
-//        if ($user =='ivan' and $pass=='3344') {
-//
-//            $_SESSION['name']= 'ivan';
-//            $_SESSION['userin']=1;
-//            header("Location: 2.php");
-//        }
-//        else {
-//            echo 'Войдите с верным логином и паролем <a href="1.php">Войти</a>';
-//        }
-//
-//    }
 
 
 
@@ -221,7 +196,7 @@ function login(){
 
 
 
-
+//Добавление каталога
 function addCat(){
 //Удаление лишних символов
     $inp_add_cat_val = preg_replace ('/[^\p{L}0-9 ]/iu','',$_POST['inp_add_cat_val']);
@@ -271,9 +246,6 @@ function addCat(){
       return $str=iconv("UTF-8","UTF-8//IGNORE",strtr($string,$replace));
 };
     $for_addres_str = GetInTranslit($inp_add_cat_val);  
-    
-    
-
 //     соединяюсь с базой
      $myconnect = connectToDb();
     $sql = "SELECT COUNT(*) FROM `categories_db` WHERE cat_name = '$inp_add_cat_val' " ;
@@ -296,56 +268,128 @@ function addCat(){
 
 
 
+//вывод списка каталогов
+function showCatalog(){
+  //соединяюсь с базой
+    $myconnect = connectToDb();
+    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
+    $result = mysqli_query($myconnect, $sql);
+    $out ='';
+    while($row = mysqli_fetch_assoc($result)) {
+        $out .='<option class="average_text" value="'.
+             $row['id_cat'].
+                '">' 
+            .$row['cat_name'].
+            '</option>';
+    }
+     closeConnectionToDb($myconnect);
+    return $out;   
+}
 
 
 
+//Показываем фото из выбраного альбома
+function showPhoto(){
+    $showPhoto = $_POST['showPhoto'];  
+    if($showPhoto){ 
+        //соединяюсь с базой
+    $myconnect = connectToDb();    
+    $sql = "SELECT * FROM categories_db WHERE cat_name = '$showPhoto'" ;
+    $result = mysqli_query($myconnect, $sql);
+    while($row = mysqli_fetch_assoc($result)) {
+      $name_of = $row['categories']; 
+        $sql = "SELECT * FROM images_db WHERE url = '$name_of'" ;
+        $result = mysqli_query($myconnect, $sql);
+        $out ='';
+        $out .= '<div class="row" id="imgContent">';
+        while($row = mysqli_fetch_assoc($result)) {
+            if($row['img1920x1080']){
+               $out .= 
+                '<div class="col s12 m4 l3 image_gallery">
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+                    <div class="for_hight2">
+                        <div class="img_wrap">
+                            <a href="'.$row['url'].'/'.$row['id'].
+                            '"></a>
+                            <img class="img_block" src="../'.$row['img1920x1080'].'">
+                        </div>
+                    </div>
+                </div>
+              </div>';  
+            };
+            if($row['img1024x768']){
+               $out .= 
+                '<div class="col s12 m4 l3 image_gallery">
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+                    <div class="for_hight2">
+                        <div class="img_wrap">
+                            <a href="'.$row['url'].'/'.$row['id'].
+                            '"></a>
+                            <img class="img_block" src="../'.$row['img1024x768'].'">
+                        </div>
+                    </div>
+                </div>
+              </div>';  
+            };
+             if($row['img960x800']){
+               $out .= 
+                '<div class="col s12 m4 l3 image_gallery">
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+                    <div class="for_hight2">
+                        <div class="img_wrap">
+                            <a href="'.$row['url'].'/'.$row['id'].
+                            '"></a>
+                            <img class="img_block" src="../'.$row['img1024x768'].'">
+                        </div>
+                    </div>
+                </div>
+              </div>';  
+            };       
+        };
+       $out .= '</div>'; 
+    };    
+     closeConnectionToDb($myconnect);
+    echo $out;
+    };
+    
+};
 
 
-                
-                
-//                     $dir = opendir ("img/img/categories");
-//                      while ( $file = readdir ($dir))
-//                      {
-//                        if (( $file != ".") && ($file != ".."))
-//                        {
-//                          echo "$file<br>";
-//                        }
-//                      }
-//                      closedir ($dir);   
 
-
-
-
-//function getOneImg($mas){
-//    //соединяюсь с базой
-//    $myconnect = connectToDb();
-//    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
-//    $result = mysqli_query($myconnect, $sql);
-//    $out ='';
-//    while($row = mysqli_fetch_assoc($result)) {
-//        $out .=
-//        '<div class="row" id="oneImg">
-//         <div class="col s12 m12 l2 proportions">
-//              <p class="average_text">Размеры:</p>
-//              <a href="#" class="average_text">1920x1080 | </a> 
-//              <a href="#" class="average_text">1024x768 | </a> 
-//              <a href="#" class="average_text">600x800 | </a> 
-//          </div>
-//          <div class="col s12 m12 l10 img_show">
-//             <div class="in_img valign-wrapper">
-//                 <div class="valign">
-//                      <img class="materialboxed" alt="#" src="'.$row['img1920x1080'].'">
-//                 </div>
-//             </div>
-//          </div>
-//      </div>';
-//    }
-//     closeConnectionToDb($myconnect);
-//    return $out;
-//}
-
-
-
+    
+    
+    
+//удаление каталога
+function removeCat(){
+  $showCatalogVal = $_POST['showCatalogVal'];   
+    if($showCatalogVal){
+        $myconnect = connectToDb();
+        $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
+        $result = mysqli_query($myconnect, $sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            if($row['cat_name'] == $showCatalogVal){
+            $sql2 = "SELECT * FROM categories_db WHERE `cat_name` = '$showCatalogVal'" ;
+             $result2 = mysqli_query($myconnect, $sql2);    
+              while($row2 = mysqli_fetch_assoc($result2)) {
+                  $catt = $row2['categories'];
+                      $dir="img/img/categories/$catt";
+                        if (file_exists($dir)){
+                        foreach (glob($dir.'/*') as $file)
+                        unlink($file);  
+                        };
+                   rmdir($dir);
+              };
+                $sql3 = "DELETE FROM `categories_db` WHERE `cat_name` = '$showCatalogVal'";
+                mysqli_query($myconnect, $sql3);
+            }  
+    }
+     closeConnectionToDb($myconnect);
+        
+    }
+}
 
 
 

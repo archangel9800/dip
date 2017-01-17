@@ -1,9 +1,7 @@
 <?php
 require_once '../functions.php';
 $route = $_GET['route'];
-
 $mas = getArticle($route);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,16 +18,10 @@ $mas = getArticle($route);
 
 		<section id="adminka" class="adaptive_container">
     <div id="add_remove" class="row">
-    <?php require_once 'includes/adminka/login.php'; ?>  
-
-
+     <?php require_once 'includes/adminka/login.php'; ?>  
+<!--     <?php require_once 'includes/adminka/panel.php'; ?>  -->
     </div>
 </section>
-
-
-
-
-
 	 
 	
 	

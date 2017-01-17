@@ -146,20 +146,39 @@ $mas = getArticle($route);
      </div>
 -->
      <?php echo getAll($mas); ?>
-<!--
       <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
                 <div class="for_hight2">
+                 <img style="background-image: url('img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png');">
+                
+<!--
                     <div class="img_wrap">
                         <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
                     </div>
+-->
                 </div>
             </div>
           </div>
       </div>
+       <div class="row" id="imgContent">       
+        <div class="col s12 m4 l3 image_gallery">
+            <div class="for_hight">
+                <div class="for_hight2">
+                 <img style="background-image: url('img/img/noavatar.png');">
+                
+<!--
+                    <div class="img_wrap">
+                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
+                    </div>
 -->
-
+                </div>
+            </div>
+          </div>
+      </div>
+        noavatar.png
+     
+     
       
 <!--
       <div class="row" id="oneImg">

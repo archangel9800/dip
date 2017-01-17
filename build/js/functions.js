@@ -1,6 +1,10 @@
 function adminka(){
+    if($("#adminka").length > 0){
+    //инициализация выпадающих списков
+        $('#adminka select').material_select();    
     
     
+//    вводим логин и закрываем форму входа
     function closeloginBlock(){
          $.post(
                 "../functions.php",{
@@ -11,16 +15,20 @@ function adminka(){
                 function ifSuccess(data){
                     if(data){
                         $("#adminka #add_remove").html(data);
+                        $('#adminka select').material_select(); 
+                        centerImg();
+                        setTimeout(centerImg, 50);
+                        setTimeout(centerImg, 100);
+                        setTimeout(centerImg, 150);
+                        setTimeout(centerImg, 200);
+                        $(window).resize(centerImg);
                     }
                         
                 };
         };
-   closeloginBlock();
-        
-        
+   closeloginBlock();      
 $("body").on('click','#adminka .login_btn',sendLogin); 
    function sendLogin(){
-       console.log('click');
         $.post(
             "../functions.php",{
             "login": $("#adminka .admin_login #login").val(),   
@@ -30,8 +38,17 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             ifSuccess
               );
                 function ifSuccess(data){
-//                $("#adminka .result").html(data);
             $("#adminka #add_remove").html(data);
+                    //инициализация выпадающих списков
+                    $('#adminka select').material_select(); 
+                    centerImg();
+                    setTimeout(centerImg, 50);
+                    setTimeout(centerImg, 100);
+                    setTimeout(centerImg, 150);
+                    setTimeout(centerImg, 200);
+                    $(window).resize(centerImg);
+                    
+                    
                 };
             
        
@@ -45,10 +62,8 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
     
     
-    
-    //initialize the select element as shown below
-        $('#adminka select').material_select();
-       $("#adminka #btn_add_cat").on( "click", add_catalog ); 
+//    Добавляем каталог
+    $("body").on('click',"#adminka #btn_add_cat", add_catalog); 
     function add_catalog(){
     $add_val =  $("#adminka #add_cat").val();
         if( $add_val == '' ){
@@ -66,13 +81,38 @@ $("body").on('click','#adminka .login_btn',sendLogin);
                     if(data == "exists_cat_name"){
                      $("#adminka .err_add").removeClass('okk').addClass('error').html("Такой каталог существует!");   
                     }else if(data == "not_exists"){
-                      $("#adminka .err_add").removeClass('error').addClass('okk').html("Каталог создан!");   
+                      $("#adminka .err_add").removeClass('error').addClass('okk').html("Каталог создан!");
+                        location.reload(true);
+                       
                     }
-//                    console.log(data);
 //                    $('select').on('change', changeSelect);
                 }
         }   
 }
+  
+// Показываем фото
+     $("body").on('change','#adminka .remove_cat_bl select', showPhoto); 
+    function showPhoto(){
+        $showPhoto = $("#adminka .remove_cat_bl ul .active").text();;
+             $.post(
+                "../functions.php",{
+                "showPhoto": $showPhoto,
+                "action": "show", 
+                },
+                ifSuccess
+            );
+        function ifSuccess(data){
+                    $("#adminka .remove_image").html(data);
+                    centerImg();
+                    setTimeout(centerImg, 50);
+                    setTimeout(centerImg, 100);
+                    setTimeout(centerImg, 150);
+                    setTimeout(centerImg, 200);
+                    $(window).resize(centerImg);
+            
+                }
+        
+    }
     
     
     
@@ -82,6 +122,41 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
     
     
+    
+//Удаляем каталог   
+    $("body").on('click','#adminka .remove_cat_bl #rem_cat', showCatalog); 
+    function showCatalog(){
+        $showCatalogVal = $("#adminka .remove_cat_bl ul .active").text();
+        if($showCatalogVal){
+            
+            $.post(
+                "../functions.php",{
+                "showCatalogVal": $showCatalogVal,
+                "action": "remove", 
+                },
+                ifSuccess
+            );
+             function ifSuccess(data){
+                    if(data == "deleted_cat"){
+                     $("#adminka .err_del_cat").html("Каталог удален!");   
+                        location.reload();
+                    }
+                }
+            
+        } 
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+   } 
 };
 function contentFunc(){
     

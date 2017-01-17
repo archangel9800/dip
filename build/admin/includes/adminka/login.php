@@ -12,5 +12,3 @@
           </div>
           <button class="login_btn col s2 m2 l2 offset-s5 offset-m5 offset-l5 btn waves-effect waves-light average_text" type="submit" name="action">Войти</button>
      </div>
-
-<p class="result">dfxfhfgxg</p>
