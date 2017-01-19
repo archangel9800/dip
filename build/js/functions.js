@@ -1,7 +1,11 @@
 function adminka(){
     if($("#adminka").length > 0){
     //инициализация выпадающих списков
-        $('#adminka select').material_select();    
+        $('#adminka select').material_select();  
+        
+      $('#adminka .admin_login input').css({
+        backgroundColor:  'transparent !important',
+      }); 
     
     
 //    вводим логин и закрываем форму входа
@@ -298,7 +302,6 @@ function activBtn(way){
             
         });
 };
-
   //центрируем блок
 function centerBlock() {
     $(".inner").css({
@@ -306,20 +309,21 @@ function centerBlock() {
     });
 };
 
-// высота для мобильного
-function SetMobileheight(claSs,heightBefore,heightAfter){
-    if ($(window).width() <= $(window).height()){
-      $(claSs).css({
-          height: heightAfter,
-          transition: 'none',
-      });  
-    }else{
-       $(claSs).css({
-          height: heightBefore,
-      });  
-    }; 
-};
 
+
+function transition(){
+    if($(window).width() >= 992){
+      $('.transition').css({
+        transition: 'all 0.4s',
+    });  
+    }else{
+       $('.transition').css({
+        transition: 'none',
+    });   
+    };
+    
+    
+};
 
 
 
@@ -406,4 +410,9 @@ adminka();
 //    запуск скрипта для картинок  в слайдере
     centerImg();
     $(window).resize(centerImg);
+    
+    
+    
+    transition();
+    $(window).resize(transition);
 });

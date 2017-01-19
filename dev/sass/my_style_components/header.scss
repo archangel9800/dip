@@ -6,10 +6,10 @@
     margin: 0 auto;
     border-radius: 5px;
     margin-top: 1vh;
-    transition: all 0.4s;
-            @media (max-width: 600px){
-                transition: none;
-            }
+//    transition: all 0.4s;
+//            @media (max-width: 600px){
+//                transition: none;
+//            }
             
     &:hover{
         background-color: rgba(28,160,199,0.9);
@@ -35,10 +35,10 @@
                     img{
                         width: 100%;
                         height: auto;
-                        transition: all 0.4s;
-                            @media (max-width: 992px){
-                            transition: none;
-                            }
+//                        transition: all 0.4s;
+//                            @media (max-width: 992px){
+//                            transition: none;
+//                            }
                         &:hover{
                             background-color: rgba(31,60,100,0.1);
                             border-radius: 15px;
@@ -58,7 +58,6 @@
                 font-weight: 500;
                 font-style: italic;
                 color: #fff59d;
-                transition: none;
             }
     }
     #s_slider{
@@ -73,7 +72,7 @@
         margin: 3vh 0 3vh 0; 
         padding: 0;
         margin-left: 2%;
-        transition: all 0.4s;
+//        transition: all 0.4s;
         -webkit-box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
         -moz-box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
         box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
@@ -107,13 +106,13 @@
         margin: 3vh 0 3vh 0; 
         padding: 0;
         margin-left: 3%;
-        transition: all 0.4s;
+//        transition: all 0.4s;
         -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
         -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
         box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
-                    @media (max-width: 992px){
-                            transition: none;
-                            }
+//                    @media (max-width: 992px){
+//                            transition: none;
+//                            }
             &:hover{
                 background-color: rgba(48,90,196,1);
                 -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
@@ -219,13 +218,13 @@
         padding: 0;
         margin-left: 3%;
         background-color: rgba(48,90,196,0.6);
-        transition: all 0.4s;
+//        transition: all 0.4s;
         -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
         -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
         box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
-                    @media (max-width: 992px){
-                            transition: none;
-                            }
+//                    @media (max-width: 992px){
+//                            transition: none;
+//                            }
                     @media (max-width: 600px){
                             min-height: 100px;
                             }

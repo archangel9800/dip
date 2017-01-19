@@ -1,7 +1,11 @@
 function adminka(){
     if($("#adminka").length > 0){
     //инициализация выпадающих списков
-        $('#adminka select').material_select();    
+        $('#adminka select').material_select();  
+        
+      $('#adminka .admin_login input').css({
+        backgroundColor:  'transparent !important',
+      }); 
     
     
 //    вводим логин и закрываем форму входа

@@ -1,10 +1,10 @@
 <!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="header" class="row valign-wrapper adaptive_container">
+<section id="header" class="row valign-wrapper adaptive_container transition">
     <div class="col s5 m7 l3 logo_block">
-        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
+        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
-    <div id="s_slider" class="col s0 m0 l5">
+    <div id="s_slider" class="col s0 m0 l5 transition">
         <div class="swiper-container">
             <div class="swiper-wrapper">
             
@@ -26,7 +26,7 @@
         </div>
     </div>
     
-    <div class="col s6 m4 l3 login_block">
+    <div class="col s6 m4 l3 login_block transition">
         <p class="average_text">Войти или <a href="#" class="average_text">зарегистрироваться</a></p>
         <div class="row login_f">
             <div class="input-field col s11">
@@ -49,7 +49,8 @@
         </div>
     </div>
     
-    <div class="col s6 m4 l3 user_block">
+    <div class="col s6 m4 l3 user_block transition">
+       
         <div class="row cab">
             <p class="col s7 average_text">Личный кабинет</p>
             <a href="#" class="col s5 average_text">Выход</a>

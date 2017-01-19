@@ -20,12 +20,12 @@ $mas = getArticle($route);
 
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="header" class="row valign-wrapper adaptive_container">
+<section id="header" class="row valign-wrapper adaptive_container transition">
     <div class="col s5 m7 l3 logo_block">
-        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery"></a></h1>
+        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
-    <div id="s_slider" class="col s0 m0 l5">
+    <div id="s_slider" class="col s0 m0 l5 transition">
         <div class="swiper-container">
             <div class="swiper-wrapper">
             
@@ -47,7 +47,7 @@ $mas = getArticle($route);
         </div>
     </div>
     
-    <div class="col s6 m4 l3 login_block">
+    <div class="col s6 m4 l3 login_block transition">
         <p class="average_text">Войти или <a href="#" class="average_text">зарегистрироваться</a></p>
         <div class="row login_f">
             <div class="input-field col s11">
@@ -70,7 +70,8 @@ $mas = getArticle($route);
         </div>
     </div>
     
-    <div class="col s6 m4 l3 user_block">
+    <div class="col s6 m4 l3 user_block transition">
+       
         <div class="row cab">
             <p class="col s7 average_text">Личный кабинет</p>
             <a href="#" class="col s5 average_text">Выход</a>
@@ -93,13 +94,13 @@ $mas = getArticle($route);
 </section>
 <!--  !!!!!!!!!!END!!!!!!!!!!-->
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="menu">
+<section id="menu" class="transition">
   <ul class="btn_menu">
-    <li class="mobile_m menu_text">MENU</li>
+    <li class="mobile_m menu_text transition">MENU</li>
      <ul class='tabss'>
-       <li class="n_mibile"><a href="#" class="menu_text active">Общий альбом</a></li>
-       <li class="n_mibile"><a href="#" class="menu_text">Мой альбом</a></li>
-       <li class="n_mibile"><a href="#" class="menu_text">Кнопа 3</a></li>
+       <li class="n_mibile"><a href="#" class="menu_text active transition">Общий альбом</a></li>
+       <li class="n_mibile"><a href="#" class="menu_text transition">Мой альбом</a></li>
+       <li class="n_mibile"><a href="#" class="menu_text transition">Кнопа 3</a></li>
    </ul> 
   </ul>
    
@@ -118,8 +119,8 @@ $mas = getArticle($route);
 
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="genre_w" class="row adaptive_container">
-  <div class="genre col s12 row">
+<section id="genre_w" class="row adaptive_container transition">
+  <div class="genre col s12 row transition">
      <?php echo getGenres($mas); ?>
 <!--
       <div class="col s3 m2 l2 genres"><a class='active' href="#">Красивые</a></div>
@@ -136,7 +137,7 @@ $mas = getArticle($route);
   </div>
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
-	<section id="content" class="adaptive_container">
+	<section id="content" class="adaptive_container transition">
      
      
 <!--
@@ -146,8 +147,7 @@ $mas = getArticle($route);
      </div>
 -->
      <?php echo getAll($mas); ?>
-     
-     
+
 <!--
          <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
@@ -203,7 +203,7 @@ $mas = getArticle($route);
       
       
       
-      <div class="row" id="registr">
+      <div class="row transition" id="registr">
         <p class="fill_inp average_text">Заполните поля для регистрации</p>
         <div class="row lines col s11 offset-s1 offset-m1 offset-l1 valign-wrapper">
             <div class="input-field col s7 m7 l7">
@@ -247,7 +247,7 @@ $mas = getArticle($route);
       
 </section>
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="footer" class="adaptive_container">
+<section id="footer" class="adaptive_container tranzition">
    
     
 </section>

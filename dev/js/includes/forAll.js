@@ -118,7 +118,6 @@ function activBtn(way){
             
         });
 };
-
   //центрируем блок
 function centerBlock() {
     $(".inner").css({
@@ -126,20 +125,21 @@ function centerBlock() {
     });
 };
 
-// высота для мобильного
-function SetMobileheight(claSs,heightBefore,heightAfter){
-    if ($(window).width() <= $(window).height()){
-      $(claSs).css({
-          height: heightAfter,
-          transition: 'none',
-      });  
-    }else{
-       $(claSs).css({
-          height: heightBefore,
-      });  
-    }; 
-};
 
+
+function transition(){
+    if($(window).width() >= 992){
+      $('.transition').css({
+        transition: 'all 0.4s',
+    });  
+    }else{
+       $('.transition').css({
+        transition: 'none',
+    });   
+    };
+    
+    
+};
 
 
 

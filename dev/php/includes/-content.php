@@ -1,4 +1,4 @@
-<section id="content" class="adaptive_container">
+<section id="content" class="adaptive_container transition">
      
      
 <!--
@@ -8,8 +8,7 @@
      </div>
 -->
      <?php echo getAll($mas); ?>
-     
-     
+
 <!--
          <div class="row" id="imgContent">       
         <div class="col s12 m4 l3 image_gallery">
@@ -65,7 +64,7 @@
       
       
       
-      <div class="row" id="registr">
+      <div class="row transition" id="registr">
         <p class="fill_inp average_text">Заполните поля для регистрации</p>
         <div class="row lines col s11 offset-s1 offset-m1 offset-l1 valign-wrapper">
             <div class="input-field col s7 m7 l7">

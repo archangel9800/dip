@@ -1,6 +1,6 @@
 <!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="genre_w" class="row adaptive_container">
-  <div class="genre col s12 row">
+<section id="genre_w" class="row adaptive_container transition">
+  <div class="genre col s12 row transition">
      <?php echo getGenres($mas); ?>
 <!--
       <div class="col s3 m2 l2 genres"><a class='active' href="#">Красивые</a></div>

@@ -28,4 +28,9 @@ adminka();
 //    запуск скрипта для картинок  в слайдере
     centerImg();
     $(window).resize(centerImg);
+    
+    
+    
+    transition();
+    $(window).resize(transition);
 });
