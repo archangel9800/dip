@@ -151,11 +151,11 @@ $("body").on('click','#adminka .login_btn',sendLogin);
 //            });
 
     
-        
-        var fd = new FormData();
-        fd.append('id', '123');
-        fd.append('type', 'one');
-        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
+//        
+//        var fd = new FormData();
+//        fd.append('id', '123');
+//        fd.append('type', 'one');
+//        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
 
 
 
@@ -173,21 +173,21 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         
         
 
-            $.post(
-                "../functions.php",{
-                processData: false,
-                contentType: false,   
-                dataType: 'json',    
-                data:  fd,
-                "action": "add_img", 
-                    
-                },
-                ifSuccess
-            );
-                function ifSuccess(data){
-                    console.log(data);
-//                    $('select').on('change', changeSelect);
-                }
+//            $.post(
+//                "../functions.php",{
+//                processData: false,
+//                contentType: false,   
+//                dataType: 'json',    
+//                data:  fd,
+//                "action": "add_img", 
+//                    
+//                },
+//                ifSuccess
+//            );
+//                function ifSuccess(data){
+//                    console.log(data);
+////                    $('select').on('change', changeSelect);
+//                }
             
           };
 //            
@@ -200,18 +200,28 @@ $("body").on('click','#adminka .login_btn',sendLogin);
 };
 function contentFunc(){
     
-//function setImgHight(){    
-//$("#content .image_gallery").css({
-////       height: $("#content .image_gallery").width() / 1.3 + "px",
-//    position: "absolute",
-//    });
-//};
-//    setTimeout(setImgHight, 0);
-    
-//   $("#content .image_gallery .img_wrap").css({
-//       position: "absolute",
-//    }); 
-    
+$("body").on('click','#content #imgContent .for_hight2 img',oneImg); 
+   function oneImg(event){
+       var $input = $(this);
+        $.post(
+            "./functions.php",{
+            "oneImg": $input.attr('numberimg'),   
+            "action": "oneImg",     
+            },
+            ifSuccess
+              );
+                function ifSuccess(data){
+//                        console.log(data);  
+                            $("#content #imgContent").html(data);
+                    
+           
+                    
+                    
+                };
+            
+       
+       
+            }; 
  
    
 };

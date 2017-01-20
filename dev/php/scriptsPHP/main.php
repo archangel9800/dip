@@ -12,14 +12,14 @@ function getGenres($mas){
     while($row = mysqli_fetch_assoc($result)) {
         if ($row['categories'] == $mas['categories']){
              $out .=
-            '<div class="col s3 m3 l2 genres"><a class="active transition" href="'.
+            '<div class="col s3 m3 l2 genres"><a class="active transition" href="'.BASEURL.
             $row['categories'].
             '">'
             .$row['cat_name'].
             '</a></div>';
         }else{
         $out .=
-        '<div class="col s3 m3 l2 genres"><a class="transition"  href="'.
+        '<div class="col s3 m3 l2 genres"><a class="transition"  href="'.BASEURL.
             $row['categories'].
             '">'
             .$row['cat_name'].
@@ -42,7 +42,7 @@ function getAll($mas){
             '<div id="block404" class="row">
              <p class="big_text col s4 offset-s4">404</p>
              <p class="big_text col s4 offset-s4">Page not found!</p>
-             <img class="big_text col s4 offset-s4" src="img/img/err.png" alt="Page not found">
+             <img class="big_text col s4 offset-s4" src="'.BASEURL.'img/img/err.png" alt="Page not found">
            </div>';
     }else{
         $sql = "SELECT * FROM images_db WHERE url = '$ress' ORDER BY id DESC" ;
@@ -54,14 +54,14 @@ function getAll($mas){
             $out .= '<div class="col s12 m4 l3 image_gallery transition">
             <div class="for_hight">
                 <div class="for_hight2">
-                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'"
                 .$row['img1920x1080']."'".
                 ');">
                 </div>
             </div>
           </div>';
-            
+           // <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
             
 //            $out .= '<div class="col s12 m4 l3 image_gallery">
 //                <div class="for_hight">
@@ -83,6 +83,40 @@ function getAll($mas){
 };
 
 
+
+
+
+switch ( $_POST['action'] )
+{   case 'oneImg':
+        oneImg();
+        break;
+    
+}
+function oneImg(){
+   $oneImg = $_POST['oneImg'];
+//    echo $oneImg;   
+    $myconnect = connectToDb();
+    $sql = "SELECT * FROM images_db WHERE id = $oneImg" ;
+        $result = mysqli_query($myconnect, $sql);
+            $out ='';
+        while($row = mysqli_fetch_assoc($result)) {
+            $out = require_once './includes/oneImg.php';
+                
+                
+       
+            
+            
+            
+            
+            
+            
+        };
+     closeConnectionToDb($myconnect);
+    echo $out;
+    
+    
+       
+};
 
 
 

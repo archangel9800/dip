@@ -11,8 +11,8 @@ $mas = getArticle($route);
 	 <link rel="shortcut icon" href="../img/icons/favicon.png" type="image/png">
 	<title><?php echo $mas['cat_name']?></title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
-	<link type="text/css" rel="stylesheet" href="../css/basestyle.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
 
@@ -21,9 +21,9 @@ $mas = getArticle($route);
 	
 	
 	
-	<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="../js/materialize.js"></script>
-	<script type="text/javascript" src="../js/swiper.jquery.js"></script>
-	<script type="text/javascript" src="../js/functions.js"></script>	
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/functions.js"></script>	
 </body>
 </html>

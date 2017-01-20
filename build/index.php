@@ -10,11 +10,11 @@ $mas = getArticle($route);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	 <link rel="shortcut icon" href="img/icons/favicon.png" type="image/png">
+	 <link rel="shortcut icon" href="<?php echo BASEURL;?>img/icons/favicon.png" type="image/png">
 	<title><?php echo $mas['cat_name']?></title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
-	<link type="text/css" rel="stylesheet" href="css/basestyle.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/materialize.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
 
@@ -22,7 +22,7 @@ $mas = getArticle($route);
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container transition">
     <div class="col s11 m5 l5 logo_block">
-        <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
+        <h1 class=""><a href="main"><img src="<?php echo BASEURL;?>img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
     <div id="s_slider" class="col s0 m6 l6 transition">
@@ -192,25 +192,7 @@ $mas = getArticle($route);
 -->
 
       
-<!--
-      <div class="row" id="oneImg">
-         <div class="col s12 m12 l2 proportions">
-              <p class="average_text">Размеры:</p>
-              <a href="#" class="average_text">1920x1080 | </a> 
-              <a href="#" class="average_text">1024x768 | </a> 
-              <a href="#" class="average_text">600x800 | </a> 
-          </div>
-          <div class="col s12 m12 l10 img_show">
-             <div class="in_img valign-wrapper">
-                 <div class="valign">
-                      <img class="materialboxed" alt="#" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (2).png">
-                 </div>
-             </div>
-          </div>
-          
-          
-      </div>
--->
+
       
       
       
@@ -268,9 +250,9 @@ $mas = getArticle($route);
 	
 	
 	
-	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="js/materialize.js"></script>
-	<script type="text/javascript" src="js/swiper.jquery.js"></script>
-	<script type="text/javascript" src="js/functions.js"></script>	
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/functions.js"></script>	
 </body>
 </html>

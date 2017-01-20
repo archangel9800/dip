@@ -151,11 +151,11 @@ $("body").on('click','#adminka .login_btn',sendLogin);
 //            });
 
     
-        
-        var fd = new FormData();
-        fd.append('id', '123');
-        fd.append('type', 'one');
-        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
+//        
+//        var fd = new FormData();
+//        fd.append('id', '123');
+//        fd.append('type', 'one');
+//        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
 
 
 
@@ -173,21 +173,21 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         
         
 
-            $.post(
-                "../functions.php",{
-                processData: false,
-                contentType: false,   
-                dataType: 'json',    
-                data:  fd,
-                "action": "add_img", 
-                    
-                },
-                ifSuccess
-            );
-                function ifSuccess(data){
-                    console.log(data);
-//                    $('select').on('change', changeSelect);
-                }
+//            $.post(
+//                "../functions.php",{
+//                processData: false,
+//                contentType: false,   
+//                dataType: 'json',    
+//                data:  fd,
+//                "action": "add_img", 
+//                    
+//                },
+//                ifSuccess
+//            );
+//                function ifSuccess(data){
+//                    console.log(data);
+////                    $('select').on('change', changeSelect);
+//                }
             
           };
 //            

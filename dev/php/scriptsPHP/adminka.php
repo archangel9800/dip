@@ -177,7 +177,7 @@ function showPhoto(){
             <p class="remove_btn" sizing="1920x1080" numberimg="'.$row['id'].'">×</p>
             <p class="img_size average_text">1920x1080</p>
                 <div class="for_hight2">
-                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img1920x1080']."'".
                 ');">
@@ -210,7 +210,7 @@ function showPhoto(){
             <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
             <p class="img_size average_text">1024x768</p>
                 <div class="for_hight2">
-                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img1024x768']."'".
                 ');">
@@ -240,7 +240,7 @@ function showPhoto(){
             <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
             <p class="img_size average_text">960x800</p>
                 <div class="for_hight2">
-                 <a href="'.$row['url'].'/'.$row['id'].'"></a>
+                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img960x800']."'".
                 ');">
@@ -307,13 +307,13 @@ function removeCat(){
 
 //Добавление изображений
 function add_img(){
-  $file1920x1080 = $_FILES['file1920x1080 '];     
-  $file1024x768 = $_FILES['file1024x768'];     
-  $file960x800 = $_FILES['file960x800'];     
-  $add_about = $_FILES['add_about'];     
-    
-    echo ($file1920x1080);
-    var_dump($file1920x1080);
+//  $file1920x1080 = $_FILES['file1920x1080 '];     
+//  $file1024x768 = $_FILES['file1024x768'];     
+//  $file960x800 = $_FILES['file960x800'];     
+//  $add_about = $_FILES['add_about'];     
+//    
+//    echo ($file1920x1080);
+//    var_dump($file1920x1080);
 //POST
 }
 

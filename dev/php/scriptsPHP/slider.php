@@ -11,7 +11,7 @@ function getSliderImg(){
         while($row = mysqli_fetch_assoc($result)) {
             $out .=
             '<div class="swiper-slide img_wrap">
-                    <img src="'.$row['img1920x1080'].'" class="img_block">
+                    <img src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
                 </div>';
         };
      closeConnectionToDb($myconnect);

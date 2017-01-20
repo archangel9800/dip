@@ -1,17 +1,27 @@
 function contentFunc(){
     
-//function setImgHight(){    
-//$("#content .image_gallery").css({
-////       height: $("#content .image_gallery").width() / 1.3 + "px",
-//    position: "absolute",
-//    });
-//};
-//    setTimeout(setImgHight, 0);
-    
-//   $("#content .image_gallery .img_wrap").css({
-//       position: "absolute",
-//    }); 
-    
+$("body").on('click','#content #imgContent .for_hight2 img',oneImg); 
+   function oneImg(event){
+       var $input = $(this);
+        $.post(
+            "./functions.php",{
+            "oneImg": $input.attr('numberimg'),   
+            "action": "oneImg",     
+            },
+            ifSuccess
+              );
+                function ifSuccess(data){
+//                        console.log(data);  
+                            $("#content #imgContent").html(data);
+                    
+           
+                    
+                    
+                };
+            
+       
+       
+            }; 
  
    
 };
