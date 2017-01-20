@@ -21,11 +21,11 @@ $mas = getArticle($route);
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container transition">
-    <div class="col s5 m7 l3 logo_block">
+    <div class="col s11 m5 l5 logo_block">
         <h1 class=""><a href="main"><img src="img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
-    <div id="s_slider" class="col s0 m0 l5 transition">
+    <div id="s_slider" class="col s0 m6 l6 transition">
         <div class="swiper-container">
             <div class="swiper-wrapper">
             
@@ -47,6 +47,7 @@ $mas = getArticle($route);
         </div>
     </div>
     
+<!--
     <div class="col s6 m4 l3 login_block transition">
         <p class="average_text">Войти или <a href="#" class="average_text">зарегистрироваться</a></p>
         <div class="row login_f">
@@ -91,6 +92,7 @@ $mas = getArticle($route);
             </div>
         </div>
     </div>
+-->
 </section>
 <!--  !!!!!!!!!!END!!!!!!!!!!-->
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
@@ -119,8 +121,8 @@ $mas = getArticle($route);
 
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="genre_w" class="row adaptive_container transition">
-  <div class="genre col s12 row transition">
+<section id="genre_w" class="row adaptive_container transition valign-wrapper">
+  <div class="genre col s12 m8 l8 row transition valign">
      <?php echo getGenres($mas); ?>
 <!--
       <div class="col s3 m2 l2 genres"><a class='active' href="#">Красивые</a></div>
@@ -134,7 +136,18 @@ $mas = getArticle($route);
       <div class="col s3 m2 l2 genres"><a href="#">Природа</a></div>
       <div class="col s3 m2 l2 genres"><a href="#">Цветы</a></div>
 -->
+ 
+ 
   </div>
+  <div class="col s9 m7 l4 push-s3 row transition search valign-wrapper">
+        <div class="input-field col s8 m8 l8">
+          <input id="serch_field" type="text" placeholder="Например BMW" class="validate average_text">
+        </div>
+        <div class="btn-block col s4 valign">
+             <button class="btn waves-effect waves-light average_text" type="submit" name="action">Найти
+             </button>
+        </div>
+      </div>
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	<section id="content" class="adaptive_container transition">
@@ -247,7 +260,7 @@ $mas = getArticle($route);
       
 </section>
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="footer" class="adaptive_container tranzition">
+<section id="footer" class="adaptive_container transition">
    
     
 </section>

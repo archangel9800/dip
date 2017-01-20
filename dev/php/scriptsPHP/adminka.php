@@ -2,10 +2,6 @@
 
 
 
-
-
-
-
 switch ( $_POST['action'] )
 {   case 'cookie':
         cookie();
@@ -21,6 +17,9 @@ switch ( $_POST['action'] )
         break;
     case 'show':
         showPhoto();
+        break;
+    case 'add_img':
+        add_img();
         break;
 }
 
@@ -47,8 +46,10 @@ function login(){
     $sql = "SELECT * FROM users_db" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+50);        
+            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+60);        
             echo (require_once 'admin/includes/adminka/panel.php') ;
+            }else{
+                echo "error";
             };
         };
      closeConnectionToDb($myconnect);
@@ -56,16 +57,6 @@ function login(){
     
 
 };
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,9 +172,10 @@ function showPhoto(){
         while($row = mysqli_fetch_assoc($result)) {
             if($row['img1920x1080']){
                 
-                $out .= '<div class="col s12 m4 l3 image_gallery">
+                $out .= '<div class="col s12 m4 l3 image_gallery transition">
             <div class="for_hight">
-            <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+            <p class="remove_btn" sizing="1920x1080" numberimg="'.$row['id'].'">×</p>
+            <p class="img_size average_text">1920x1080</p>
                 <div class="for_hight2">
                  <a href="'.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -194,9 +186,9 @@ function showPhoto(){
           </div>'; 
                  
                 
-//                
+                
 //               $out .= 
-//                '<div class="col s12 m4 l3 image_gallery">
+//                '<div class="col s12 m4 l3 image_gallery transition">
 //                <div class="for_hight">
 //                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
 //                    <div class="for_hight2">
@@ -216,6 +208,7 @@ function showPhoto(){
                 $out .= '<div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
             <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+            <p class="img_size average_text">1024x768</p>
                 <div class="for_hight2">
                  <a href="'.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -245,6 +238,7 @@ function showPhoto(){
                    $out .= '<div class="col s12 m4 l3 image_gallery">
             <div class="for_hight">
             <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
+            <p class="img_size average_text">960x800</p>
                 <div class="for_hight2">
                  <a href="'.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -310,4 +304,40 @@ function removeCat(){
         
     }
 }
+
+//Добавление изображений
+function add_img(){
+  $file1920x1080 = $_FILES['file1920x1080 '];     
+  $file1024x768 = $_FILES['file1024x768'];     
+  $file960x800 = $_FILES['file960x800'];     
+  $add_about = $_FILES['add_about'];     
+    
+    echo ($file1920x1080);
+    var_dump($file1920x1080);
+//POST
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

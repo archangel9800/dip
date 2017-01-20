@@ -20,12 +20,6 @@ function adminka(){
                     if(data){
                         $("#adminka #add_remove").html(data);
                         $('#adminka select').material_select(); 
-//                        centerImg();
-//                        setTimeout(centerImg, 50);
-//                        setTimeout(centerImg, 100);
-//                        setTimeout(centerImg, 150);
-//                        setTimeout(centerImg, 200);
-//                        $(window).resize(centerImg);
                     }
                         
                 };
@@ -42,15 +36,14 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             ifSuccess
               );
                 function ifSuccess(data){
-            $("#adminka #add_remove").html(data);
+                    if(data == 'error'){
+                        
+                    }else{
+                            $("#adminka #add_remove").html(data); 
+                    };
+           
                     //инициализация выпадающих списков
                     $('#adminka select').material_select(); 
-//                    centerImg();
-//                    setTimeout(centerImg, 50);
-//                    setTimeout(centerImg, 100);
-//                    setTimeout(centerImg, 150);
-//                    setTimeout(centerImg, 200);
-//                    $(window).resize(centerImg);
                     
                     
                 };
@@ -107,12 +100,6 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             );
         function ifSuccess(data){
                     $("#adminka .remove_image").html(data);
-//                    centerImg();
-//                    setTimeout(centerImg, 50);
-//                    setTimeout(centerImg, 100);
-//                    setTimeout(centerImg, 150);
-//                    setTimeout(centerImg, 200);
-//                    $(window).resize(centerImg);
             
                 }
         
@@ -156,11 +143,60 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
     
     
+    //    Добавляем изображения
+    $("body").on('click',"#adminka #btn_add_img", add_img); 
+    function add_img(){
+//    $('#adminka form').submit(function() {
+//                return false;
+//            });
+
+    
+        
+        var fd = new FormData();
+        fd.append('id', '123');
+        fd.append('type', 'one');
+        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
+
+
+
+        
+//        $file1920x1080 = $("#adminka .add_remove_catalog_img #file1920x1080");
+//        $file1024x768 = $("#adminka .add_remove_catalog_img #file1024x768");
+//        $file960x800 = $("#adminka .add_remove_catalog_img #file960x800");
+//        $add_about = $("#adminka .add_remove_catalog_img #add_about").val();
+//                "file1920x1080":  $file1920x1080,
+//                "file1024x768":  $file1024x768,
+//                "file960x800":  $file960x800,
+//                "add_about":  $add_about,  
+
+
+        
+        
+
+            $.post(
+                "../functions.php",{
+                processData: false,
+                contentType: false,   
+                dataType: 'json',    
+                data:  fd,
+                "action": "add_img", 
+                    
+                },
+                ifSuccess
+            );
+                function ifSuccess(data){
+                    console.log(data);
+//                    $('select').on('change', changeSelect);
+                }
+            
+          };
+//            
+          
+
     
     
+    };
     
-    
-   } 
 };
 function contentFunc(){
     

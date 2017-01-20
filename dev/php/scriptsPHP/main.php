@@ -12,14 +12,14 @@ function getGenres($mas){
     while($row = mysqli_fetch_assoc($result)) {
         if ($row['categories'] == $mas['categories']){
              $out .=
-            '<div class="col s3 m2 l2 genres"><a class="active transition" href="'.
+            '<div class="col s3 m3 l2 genres"><a class="active transition" href="'.
             $row['categories'].
             '">'
             .$row['cat_name'].
             '</a></div>';
         }else{
         $out .=
-        '<div class="col s3 m2 l2 genres"><a class="transition"  href="'.
+        '<div class="col s3 m3 l2 genres"><a class="transition"  href="'.
             $row['categories'].
             '">'
             .$row['cat_name'].

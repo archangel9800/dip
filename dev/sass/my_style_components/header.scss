@@ -6,12 +6,14 @@
     margin: 0 auto;
     border-radius: 5px;
     margin-top: 1vh;
+    border: 2px solid rgba(0,0,0,0.4); 
 //    transition: all 0.4s;
 //            @media (max-width: 600px){
 //                transition: none;
 //            }
             
     &:hover{
+        border: 2px solid rgba(0,0,0,0.9); 
         background-color: rgba(28,160,199,0.9);
         -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
         -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
@@ -39,13 +41,13 @@
 //                            @media (max-width: 992px){
 //                            transition: none;
 //                            }
-                        &:hover{
-                            background-color: rgba(31,60,100,0.1);
-                            border-radius: 15px;
-                            -webkit-box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
-                            -moz-box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
-                            box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
-                            }
+//                        &:hover{
+//                            background-color: rgba(31,60,100,0.1);
+//                            border-radius: 15px;
+//                            -webkit-box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
+//                            -moz-box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
+//                            box-shadow: 0px 0px 45px -10px rgba(0,0,0,0.3);
+//                            }
                     }
                 }
         }
@@ -62,21 +64,21 @@
     }
     #s_slider{
         @media all and (orientation:landscape) {
-            height: 25vh;
+            height: 30vh;
         }
         @media all and (orientation:portrait) {
             height: 20vw;
         }
         display: block;
         min-height: 150px;
-        margin: 3vh 0 3vh 0; 
+        margin: 2vh 0 2vh 0; 
         padding: 0;
         margin-left: 2%;
 //        transition: all 0.4s;
         -webkit-box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
         -moz-box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
         box-shadow: 0px 0px 9px 4px rgba(255,139,153,0.7);
-            @media (max-width: 992px){
+            @media (max-width: 600px){
                 display: none;
             }
             
@@ -94,13 +96,13 @@
         
     }
     .login_block {
+         display: none;
         @media all and (orientation:landscape) {
             height: 25vh;
         }
         @media all and (orientation:portrait) {
             height: auto;
         }
-        display: none;
 	    height: auto;
         background-color: rgba(48,90,196,0.6);
         margin: 3vh 0 3vh 0; 
@@ -206,13 +208,13 @@
         
     }
     .user_block {
+        display: none;
         @media all and (orientation:landscape) {
             height: 25vh;
         }
         @media all and (orientation:portrait) {
             height: 20vw;
         }
-        display: block;
         min-height: 150px;
         margin: 3vh 0 3vh 0; 
         padding: 0;

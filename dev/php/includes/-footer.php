@@ -1,5 +1,5 @@
 <!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="footer" class="adaptive_container tranzition">
+<section id="footer" class="adaptive_container transition">
    
     
 </section>
