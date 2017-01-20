@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Янв 13 2017 г., 17:13
+-- Время создания: Янв 20 2017 г., 16:07
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -42,7 +42,8 @@ INSERT INTO `categories_db` (`id_cat`, `categories`, `cat_name`, `info`) VALUES
 (2, 'cars', 'Автомобили', ''),
 (3, 'nature', 'Природа', ''),
 (4, '404\r\n', '', 'Страница не существует'),
-(5, 'main', 'Colorfull gallery', 'Colorfull gallery');
+(5, 'main', 'Colorfull gallery', 'Colorfull gallery'),
+(6, 'adming', 'adming', '');
 
 -- --------------------------------------------------------
 
@@ -55,22 +56,31 @@ CREATE TABLE `images_db` (
   `url` varchar(100) NOT NULL,
   `img1920x1080` text NOT NULL,
   `img1024x768` text NOT NULL,
-  `img960x800` text NOT NULL
+  `img960x800` text NOT NULL,
+  `about` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `images_db`
 --
 
-INSERT INTO `images_db` (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`) VALUES
-(1, 'cars', 'img/img/categories/cars/201235_1920.jpg', 'img/img/categories/cars/201235_1024.jpg', 'img/img/categories/cars/201235_960.jpg'),
-(2, 'nature', 'img/img/categories/nature/201182_1920.jpg', '', ''),
-(5, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (2).png', '', ''),
-(6, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (3).png', '', ''),
-(7, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (26).png', '', ''),
-(8, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (1).png', '', ''),
-(9, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', ''),
-(10, 'material', 'img/img/categories/material/Material-Design-17.jpg', '', '');
+INSERT INTO `images_db` (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `about`) VALUES
+(1, 'cars', 'img/img/categories/cars/201235_1920.jpg', 'img/img/categories/cars/201235_1024.jpg', 'img/img/categories/cars/201235_960.jpg', ''),
+(2, 'nature', 'img/img/categories/nature/201182_1920.jpg', 'img/img/categories/nature/201182_1920.jpg', '', ''),
+(5, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (2).png', '', '', ''),
+(6, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (3).png', '', '', ''),
+(7, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (26).png', '', '', ''),
+(8, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (1).png', '', '', ''),
+(9, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
+(10, 'material', 'img/img/categories/material/Material-Design-17.jpg', '', '', ''),
+(11, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
+(12, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (2).png', '', '', ''),
+(13, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (3).png', '', '', ''),
+(14, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (26).png', '', '', ''),
+(15, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (1).png', '', '', ''),
+(16, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
+(17, 'material', 'img/img/categories/material/Material-Design-17.jpg', '', '', ''),
+(18, 'nature', 'img/img/categories/nature/201182_1920.jpg', 'img/img/categories/nature/201182_1920.jpg', '', '');
 
 -- --------------------------------------------------------
 
@@ -121,12 +131,12 @@ ALTER TABLE `users_db`
 -- AUTO_INCREMENT для таблицы `categories_db`
 --
 ALTER TABLE `categories_db`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT для таблицы `images_db`
 --
 ALTER TABLE `images_db`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT для таблицы `users_db`
 --
