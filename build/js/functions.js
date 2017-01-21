@@ -19,6 +19,7 @@ function adminka(){
                 function ifSuccess(data){
                     if(data){
                         $("#adminka #add_remove").html(data);
+//                        $('body').html(data);
                         $('#adminka select').material_select(); 
                     }
                         
@@ -39,7 +40,8 @@ $("body").on('click','#adminka .login_btn',sendLogin);
                     if(data == 'error'){
                         
                     }else{
-                            $("#adminka #add_remove").html(data); 
+                            $("#adminka #add_remove").html(data);
+//                                $('body').html(data);
                     };
            
                     //инициализация выпадающих списков
@@ -115,8 +117,8 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
     
 //Удаляем каталог   
-    $("body").on('click','#adminka .remove_cat_bl #rem_cat', showCatalog); 
-    function showCatalog(){
+    $("body").on('click','#adminka .remove_cat_bl #rem_cat', removeCat); 
+    function removeCat(){
         $showCatalogVal = $("#adminka .remove_cat_bl ul .active").text();
         if($showCatalogVal){
             
@@ -140,64 +142,92 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         
         
     }
-    
-    
-    
-    //    Добавляем изображения
-    $("body").on('click',"#adminka #btn_add_img", add_img); 
-    function add_img(){
-//    $('#adminka form').submit(function() {
-//                return false;
-//            });
-
-    
-//        
-//        var fd = new FormData();
-//        fd.append('id', '123');
-//        fd.append('type', 'one');
-//        fd.append('img', $("#adminka .add_remove_catalog_img #file1920x1080")[0].files[0]);
-
-
-
         
-//        $file1920x1080 = $("#adminka .add_remove_catalog_img #file1920x1080");
-//        $file1024x768 = $("#adminka .add_remove_catalog_img #file1024x768");
-//        $file960x800 = $("#adminka .add_remove_catalog_img #file960x800");
-//        $add_about = $("#adminka .add_remove_catalog_img #add_about").val();
-//                "file1920x1080":  $file1920x1080,
-//                "file1024x768":  $file1024x768,
-//                "file960x800":  $file960x800,
-//                "add_about":  $add_about,  
-
-
+        
         
         
 
-//            $.post(
-//                "../functions.php",{
-//                processData: false,
-//                contentType: false,   
-//                dataType: 'json',    
-//                data:  fd,
-//                "action": "add_img", 
-//                    
-//                },
-//                ifSuccess
-//            );
-//                function ifSuccess(data){
-//                    console.log(data);
-////                    $('select').on('change', changeSelect);
-//                }
-            
-          };
-//            
-          
+        
+    $("body").on('change','#adminka #file', addImg);     
+    function addImg(){
+    var data = new FormData();
+var error = '';
+    jQuery.each($('#adminka #file')[0].files, function(i, file) {
+ 
+            if(file.name.length < 1) {               
+               error = error + ' Файл имеет неправильный размер! '; 
+            } //Проверка на длину имени             
+            if(file.size > 1000000) {
+                error = error + ' File ' + file.name + ' is to big.';
+            } //Проверка размера файла
+            if(file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+                error = error + 'File  ' + file.name + '  doesnt match png, jpg or gif';
+            } //Проверка типа файлов
+        data.append('file-'+i, file);
+    });
+ 
+if (error != '') {$('#info').html(error);} else {
+    $("body").on('click','#adminka #btn_add_img', send);
+        function send(e){
+        e.preventDefault();
+        $.ajax({
+            url: '../scriptsPHP/upload.php',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function(data){
+                $('#info').html(data);
 
-    
-    
+            }
+        });
+        
+        
     };
     
-};
+         }
+    }
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+      } 
+        
+        
+        
+        
+    }    
+        
+        
+
+       
+    
 function contentFunc(){
     
 $("body").on('click','#content #imgContent .for_hight2 img',oneImg); 

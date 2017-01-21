@@ -1,7 +1,6 @@
 <?php
     require_once '/scriptsPHP/config.php';
     require_once '/scriptsPHP/connect.php';
-    require_once '/scriptsPHP/slider.php';
     require_once '/scriptsPHP/main.php';    
     require_once '/scriptsPHP/adminka.php';
     
@@ -9,6 +8,7 @@
 //для адресной строки
 function getArticle($route){
     //соединяюсь с базой
+    echo $route;
     $myconnect = connectToDb();
     if ($route=='') {
         $sql = "SELECT * FROM categories_db WHERE categories='main'" ;
@@ -28,6 +28,8 @@ function getArticle($route){
 }
 
     
+
+
 
 
 

@@ -18,9 +18,6 @@ switch ( $_POST['action'] )
     case 'show':
         showPhoto();
         break;
-    case 'add_img':
-        add_img();
-        break;
 }
 
 function cookie(){
@@ -29,7 +26,9 @@ function cookie(){
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
             if (isset($_COOKIE[$row['user']])) {
-                   echo (require_once 'admin/includes/adminka/panel.php') ; 
+                $inc = include 'admin/includes/adminka/panel.php';
+              return $inc;
+                
         }
         };
      closeConnectionToDb($myconnect);
@@ -46,8 +45,10 @@ function login(){
     $sql = "SELECT * FROM users_db" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+60);        
-            echo (require_once 'admin/includes/adminka/panel.php') ;
+            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+60);
+              $inc = include 'admin/includes/adminka/panel.php';
+              return $inc; 
+                                                                          
             }else{
                 echo "error";
             };
@@ -298,6 +299,7 @@ function removeCat(){
               };
                 $sql3 = "DELETE FROM `categories_db` WHERE `cat_name` = '$showCatalogVal'";
                 mysqli_query($myconnect, $sql3);
+                echo 'deleted_cat';
             }  
     }
      closeConnectionToDb($myconnect);
@@ -305,17 +307,6 @@ function removeCat(){
     }
 }
 
-//Добавление изображений
-function add_img(){
-//  $file1920x1080 = $_FILES['file1920x1080 '];     
-//  $file1024x768 = $_FILES['file1024x768'];     
-//  $file960x800 = $_FILES['file960x800'];     
-//  $add_about = $_FILES['add_about'];     
-//    
-//    echo ($file1920x1080);
-//    var_dump($file1920x1080);
-//POST
-}
 
 
 

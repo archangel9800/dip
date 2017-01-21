@@ -1,5 +1,23 @@
 <?php
 
+//загружает 10 случайных картинок для с лайдера
+function getSliderImg(){
+      //соединяюсь с базой
+     $myconnect = connectToDb();
+    $sql = "SELECT * FROM images_db ORDER BY RAND() LIMIT 10" ;
+        $result = mysqli_query($myconnect, $sql);
+        $out ='';
+        while($row = mysqli_fetch_assoc($result)) {
+            $out .=
+            '<div class="swiper-slide img_wrap">
+                    <img src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
+                </div>';
+        };
+     closeConnectionToDb($myconnect);
+    return $out;
+}
+
+
 
 
 //Добавляет кнопки с категориями и делает одну активную
@@ -36,6 +54,7 @@ function getAll($mas){
     //соединяюсь с базой
     $myconnect = connectToDb();
     $ress = $mas['categories'];
+    var_dump($mas);
     if ($ress == ''){
             $out ='';
            $out .=  
@@ -52,9 +71,10 @@ function getAll($mas){
         while($row = mysqli_fetch_assoc($result)) {
 
             $out .= '<div class="col s12 m4 l3 image_gallery transition">
+            
             <div class="for_hight">
                 <div class="for_hight2">
-                 
+                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'"
                 .$row['img1920x1080']."'".
                 ');">
@@ -92,27 +112,25 @@ switch ( $_POST['action'] )
         break;
     
 }
+
+
+
 function oneImg(){
    $oneImg = $_POST['oneImg'];
 //    echo $oneImg;   
     $myconnect = connectToDb();
     $sql = "SELECT * FROM images_db WHERE id = $oneImg" ;
         $result = mysqli_query($myconnect, $sql);
-            $out ='';
         while($row = mysqli_fetch_assoc($result)) {
-            $out = require_once './includes/oneImg.php';
-                
-                
-       
-            
-            
-            
-            
-            
-            
+            $page = '';
+            $fh = fopen('./includes/oneImg.php','r') or die($php_errormsg);
+            while (! feof($fh)) {
+            $page .= fread($fh,1048576);
+            }
+            fclose($fh);
         };
      closeConnectionToDb($myconnect);
-    echo $out;
+    echo $page;
     
     
        
