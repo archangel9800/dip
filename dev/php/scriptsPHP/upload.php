@@ -1,59 +1,23 @@
 <?php
 require_once 'config.php';
 require_once 'connect.php';
+//                  chmod('../img/img/categories', 777);
+//                  chmod('../img/img', 777);
+//                  chmod('../img', 777);
+//                  chmod('../tmp', 777);
 
-//switch ( $_POST['action'] )
-//{     case 'add_img':
-//        add_img();
-//        break;
-//}
-//
-////Добавление изображений
-//function add_img(){
-//$data = array();
-// echo 'sdsds';
-//if( isset( $_GET['uploadfiles'] ) ){
-//    $error = false;
-//    $files = array();
-// 
-//    $uploaddir = './uploads/'; // . - текущая папка где находится submit.php
-// 
-//    // Создадим папку если её нет
-// 
-//    if( ! is_dir( $uploaddir ) ) mkdir( $uploaddir, 0777 );
-// 
-//    // переместим файлы из временной директории в указанную
-//    foreach( $_FILES as $file ){
-//        if( move_uploaded_file( $file['tmp_name'], $uploaddir . basename($file['name']) ) ){
-//            $files[] = realpath( $uploaddir . $file['name'] );
-//        }
-//        else{
-//            $error = true;
-//        }
-//    }
-// 
-//    $data = $error ? array('error' => 'Ошибка загрузки файлов.') : array('files' => $files );
-// 
-//    echo json_encode( $data );
-//}
-//}
+function cleanDir($dir) {
+    $files = glob($dir."/*");
+    $c = count($files);
+    if (count($files) > 0) {
+        foreach ($files as $file) {      
+            if (file_exists($file)) {
+            unlink($file);
+            }   
+        }
+    }
+};
 
-//print_r($_FILES);
-
- // функция показа картинок из tmp папки
-
-//$dir = '../tmp/';
-//  if( ! is_dir( $dir ) ) mkdir( $dir, 0777 );  
-//    $list = scandir($dir);
-//    unset($list[0],$list[1]);
-//    foreach ($list as $file)
-//    {
-//      echo "<img class='col s3' style='height: 150px;' alt='' src='".$dir.$file."' />" ;
-//    }
-//    foreach ($_FILES as $key => $value) { //перемещение файлов в tmp
-////    echo ($dir2);
-//    move_uploaded_file($value['tmp_name'], $dir.$value['name']);
-//}
 
 
 function image_resize($src, $dst, $width, $height, $crop=0){
@@ -109,8 +73,6 @@ function image_resize($src, $dst, $width, $height, $crop=0){
 
 
 
-
-
 //print_r($_FILES);
 $catName = $_POST['catName'];
 $aboutImg = $_POST['aboutImg'];
@@ -123,7 +85,7 @@ if($_FILES){
     $myconnect = connectToDb();
     foreach ($_FILES as $key => $value) {
         if ($value['size'] < 8000000 or $value['type'] == 'image/png' or $value['type'] == 'image/jpg' or !$value['type'] == 'image/gif' or $value['type'] == 'image/jpeg' ){
-            
+        $valType = strrchr($value['name'], '.');    
         //перемещение файлов в tmp
         move_uploaded_file($value['tmp_name'], $dir.'pic'.$i.strrchr($value['name'], '.'));
         
@@ -138,21 +100,29 @@ if($_FILES){
         $sql = "SELECT * FROM categories_db WHERE `cat_name` = '$catName'";
              $result = mysqli_query($myconnect, $sql);    
               while($row = mysqli_fetch_assoc($result)) {
-                  echo $row['categories'];
-                  $dest = '../img/img/categories/'.$row['categories'];
-                  chmod($dest, 777);
-                  $dh = opendir($dest); 
-                  image_resize($pic, $dest, 1024, 768, $crop=0);
-                   closedir($dh); 
+//                  echo $row['categories'];
+                  $filename = uniqid();
+                  $url = $row['categories'];
+                  $dest = 'img/img/categories/'.$row['categories'];
+                  
+                 $img960x800 = $dest.'/img960x800'.$filename.$valType;       
+                 $img1024x768 = $dest.'/img1024x768'.$filename.$valType;         $img600x800 = $dest.'/img600x800'.$filename.$valType;
+                 $img1920x1080 = $dest.'/img1920x1080'.$filename.$valType;
+                  
+                  
+                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
+                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
+                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=0);
+                  
+                  $sql2 =  "INSERT INTO `colorfull`.`images_db` 
+                  (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`, `name`) VALUES 
+                  (NULL, '$url', '$img1920x1080', '$img1024x768', '$img960x800', '$img600x800', '$aboutImg', '$filename')";
+                   mysqli_query($myconnect, $sql2); 
+                  
               };
-            
-//             echo $im_src_w;      
-//            
-//            image_resize($pic, $dst, $width, $height, $crop=0);
-            
-            echo 'good_size';
-            
-            
+            cleanDir($dir);
+       
             
          
         } else{
@@ -165,8 +135,6 @@ if($_FILES){
     closeConnectionToDb($myconnect);   
     
 }
-    foreach ($list as $file){
-//      echo "<img class='col s3' style='height: 150px;' alt='' src='".$dir.$file."' />" ;
-    }
+
     
 

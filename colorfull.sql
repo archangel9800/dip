@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.4.15.5
+-- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Янв 20 2017 г., 16:07
+-- Хост: 127.0.0.1:3306
+-- Время создания: Янв 23 2017 г., 00:03
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -26,24 +26,22 @@ SET time_zone = "+00:00";
 -- Структура таблицы `categories_db`
 --
 
-CREATE TABLE `categories_db` (
+CREATE TABLE IF NOT EXISTS `categories_db` (
   `id_cat` int(11) NOT NULL,
   `categories` varchar(100) NOT NULL,
   `cat_name` text NOT NULL,
   `info` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `categories_db`
 --
 
 INSERT INTO `categories_db` (`id_cat`, `categories`, `cat_name`, `info`) VALUES
-(1, 'material', 'Material', ''),
-(2, 'cars', 'Автомобили', ''),
-(3, 'nature', 'Природа', ''),
 (4, '404\r\n', '', 'Страница не существует'),
 (5, 'main', 'Colorfull gallery', 'Colorfull gallery'),
-(6, 'adming', 'adming', '');
+(8, 'sport', 'Спорт', ''),
+(15, 'oruzhie', 'Оружие', '');
 
 -- --------------------------------------------------------
 
@@ -51,36 +49,28 @@ INSERT INTO `categories_db` (`id_cat`, `categories`, `cat_name`, `info`) VALUES
 -- Структура таблицы `images_db`
 --
 
-CREATE TABLE `images_db` (
+CREATE TABLE IF NOT EXISTS `images_db` (
   `id` int(11) NOT NULL,
   `url` varchar(100) NOT NULL,
   `img1920x1080` text NOT NULL,
   `img1024x768` text NOT NULL,
   `img960x800` text NOT NULL,
-  `about` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `img600x800` varchar(200) NOT NULL,
+  `about` varchar(20) NOT NULL,
+  `name` varchar(200) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `images_db`
 --
 
-INSERT INTO `images_db` (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `about`) VALUES
-(1, 'cars', 'img/img/categories/cars/201235_1920.jpg', 'img/img/categories/cars/201235_1024.jpg', 'img/img/categories/cars/201235_960.jpg', ''),
-(2, 'nature', 'img/img/categories/nature/201182_1920.jpg', 'img/img/categories/nature/201182_1920.jpg', '', ''),
-(5, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (2).png', '', '', ''),
-(6, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (3).png', '', '', ''),
-(7, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (26).png', '', '', ''),
-(8, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (1).png', '', '', ''),
-(9, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
-(10, 'material', 'img/img/categories/material/Material-Design-17.jpg', '', '', ''),
-(11, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
-(12, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (2).png', '', '', ''),
-(13, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (3).png', '', '', ''),
-(14, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (26).png', '', '', ''),
-(15, 'material', 'img/img/categories/material/Material_Design_Wallpaper_WALLPAPERDNA (1).png', '', '', ''),
-(16, 'material', 'img/img/categories/material/material_design-wallpaper-3554x1999.jpg', '', '', ''),
-(17, 'material', 'img/img/categories/material/Material-Design-17.jpg', '', '', ''),
-(18, 'nature', 'img/img/categories/nature/201182_1920.jpg', 'img/img/categories/nature/201182_1920.jpg', '', '');
+INSERT INTO `images_db` (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`, `name`) VALUES
+(19, 'sport', 'img/img/categories/sport/img1920x108058850eedb4603.jpg', 'img/img/categories/sport/img1024x76858850eedb4603.jpg', 'img/img/categories/sport/img960x80058850eedb4603.jpg', 'img/img/categories/sport/img600x80058850eedb4603.jpg', 'Фитоняшка', '58850eedb4603'),
+(20, 'sport', 'img/img/categories/sport/img1920x1080588510e7a40aa.jpg', 'img/img/categories/sport/img1024x768588510e7a40aa.jpg', 'img/img/categories/sport/img960x800588510e7a40aa.jpg', 'img/img/categories/sport/img600x800588510e7a40aa.jpg', 'Фитоняшка', '588510e7a40aa'),
+(41, 'oruzhie', 'img/img/categories/oruzhie/img1920x10805885183b47485.jpg', 'img/img/categories/oruzhie/img1024x7685885183b47485.jpg', 'img/img/categories/oruzhie/img960x8005885183b47485.jpg', 'img/img/categories/oruzhie/img600x8005885183b47485.jpg', 'Авиация флот м16', '5885183b47485'),
+(42, 'oruzhie', 'img/img/categories/oruzhie/img1920x10805885183c80b44.jpg', 'img/img/categories/oruzhie/img1024x7685885183c80b44.jpg', 'img/img/categories/oruzhie/img960x8005885183c80b44.jpg', 'img/img/categories/oruzhie/img600x8005885183c80b44.jpg', 'Авиация флот м16', '5885183c80b44'),
+(43, 'oruzhie', 'img/img/categories/oruzhie/img1920x10805885183d9b368.jpg', 'img/img/categories/oruzhie/img1024x7685885183d9b368.jpg', 'img/img/categories/oruzhie/img960x8005885183d9b368.jpg', 'img/img/categories/oruzhie/img600x8005885183d9b368.jpg', 'Авиация флот м16', '5885183d9b368'),
+(44, 'oruzhie', 'img/img/categories/oruzhie/img1920x10805885183e99e96.jpg', 'img/img/categories/oruzhie/img1024x7685885183e99e96.jpg', 'img/img/categories/oruzhie/img960x8005885183e99e96.jpg', 'img/img/categories/oruzhie/img600x8005885183e99e96.jpg', 'Авиация флот м16', '5885183e99e96');
 
 -- --------------------------------------------------------
 
@@ -88,11 +78,11 @@ INSERT INTO `images_db` (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800
 -- Структура таблицы `users_db`
 --
 
-CREATE TABLE `users_db` (
+CREATE TABLE IF NOT EXISTS `users_db` (
   `id` int(11) NOT NULL,
   `user` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users_db`
@@ -131,17 +121,17 @@ ALTER TABLE `users_db`
 -- AUTO_INCREMENT для таблицы `categories_db`
 --
 ALTER TABLE `categories_db`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT для таблицы `images_db`
 --
 ALTER TABLE `images_db`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT для таблицы `users_db`
 --
 ALTER TABLE `users_db`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

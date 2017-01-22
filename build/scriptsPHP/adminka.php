@@ -174,9 +174,10 @@ function showPhoto(){
             if($row['img1920x1080']){
                 
                 $out .= '<div class="col s12 m4 l3 image_gallery transition">
+                <p class="img_size average_text">1920x1080</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="1920x1080" numberimg="'.$row['id'].'">×</p>
-            <p class="img_size average_text">1920x1080</p>
+            
                 <div class="for_hight2">
                  <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -207,9 +208,10 @@ function showPhoto(){
             if($row['img1024x768']){
                 
                 $out .= '<div class="col s12 m4 l3 image_gallery">
+                <p class="img_size average_text">1024x768</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-            <p class="img_size average_text">1024x768</p>
+            
                 <div class="for_hight2">
                  <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -237,9 +239,10 @@ function showPhoto(){
              if($row['img960x800']){
                  
                    $out .= '<div class="col s12 m4 l3 image_gallery">
+                   <p class="img_size average_text">960x800</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
-            <p class="img_size average_text">960x800</p>
+            
                 <div class="for_hight2">
                  <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
@@ -262,7 +265,37 @@ function showPhoto(){
 //                    </div>
 //                </div>
 //              </div>';  
-            };       
+            }; 
+            if($row['img600x800']){
+                 
+                   $out .= '<div class="col s12 m4 l3 image_gallery">
+                   <p class="img_size average_text">600x800</p>
+            <div class="for_hight">
+            <p class="remove_btn" sizing="img600x800" numberimg="'.$row['id'].'">×</p>
+            
+                <div class="for_hight2">
+                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
+                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                .$row['img600x800']."'".
+                ');">
+                </div>
+            </div>
+          </div>'; 
+                 
+//               $out .= 
+//                '<div class="col s12 m4 l3 image_gallery">
+//                <div class="for_hight">
+//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+//                    <div class="for_hight2">
+//                        <div class="img_wrap">
+//                            <a href="'.$row['url'].'/'.$row['id'].
+//                            '"></a>
+//                            <img class="img_block" src="../'.$row['img1024x768'].'">
+//                        </div>
+//                    </div>
+//                </div>
+//              </div>';  
+            };  
         };
        $out .= '</div>'; 
     };    
@@ -296,9 +329,12 @@ function removeCat(){
                         unlink($file);  
                         };
                    rmdir($dir);
-              };
-                $sql3 = "DELETE FROM `categories_db` WHERE `cat_name` = '$showCatalogVal'";
+                 $sql4 = "DELETE FROM `images_db` WHERE `url` = '$catt'";
+                mysqli_query($myconnect, $sql4); 
+                  $sql3 = "DELETE FROM `categories_db` WHERE `categories` = '$catt'";
                 mysqli_query($myconnect, $sql3);
+              };
+              
                 echo 'deleted_cat';
             }  
     }

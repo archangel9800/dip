@@ -194,8 +194,11 @@ if (error != '') {
             success: function(data){
                 $('#info').html(data);
                 event.preventDefault();
+                location.reload();
             },
             beforeSend: function(data){
+                $("#btn_add_img").attr('disabled',true);
+                $('#info').html('Загрузка...');
                 event.preventDefault();
             },
         });
