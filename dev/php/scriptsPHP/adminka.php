@@ -45,7 +45,7 @@ function login(){
     $sql = "SELECT * FROM users_db" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+60);
+            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+660);
               $inc = include 'admin/includes/adminka/panel.php';
               return $inc; 
                                                                           

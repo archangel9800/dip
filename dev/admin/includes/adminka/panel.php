@@ -1,7 +1,7 @@
 
 	 
 	
-	  <div class="add_remove_catalog_img col s12 m8 l6 offset-m2">
+	  <div  class="add_remove_catalog_img col s12 m8 l6 offset-m2">
           <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Добавление каталога: <span class="err_add error"></span> </p>
               <div class="row col s11 m11 l11 offset-s1 offset-m1 offset-l1 lines">
                 <div class="input-field col s6">
@@ -33,9 +33,9 @@
                             <div class="input-field col s6">
                               <input id="add_about" placeholder="О фотографии, например горы (обяз.)" type="text" class="validate average_text">
                             </div>
-                        <button name="add" id="btn_add_img" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
+                        <button id="btn_add_img" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
               </form>
-              <div class="col s12" id="info"></div>
+              <p class="row col s10 m12 l11 offset-s1  offset-l1" id="info"></p>
         </div>
             <div class="remove_image col s12 m12 l6">
               

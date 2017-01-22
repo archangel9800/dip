@@ -7,7 +7,10 @@ function adminka(){
         backgroundColor:  'transparent !important',
       }); 
     
-    
+  
+
+        
+        
 //    вводим логин и закрываем форму входа
     function closeloginBlock(){
          $.post(
@@ -63,7 +66,8 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
 //    Добавляем каталог
     $("body").on('click',"#adminka #btn_add_cat", add_catalog); 
-    function add_catalog(){
+    function add_catalog(event){
+    event.preventDefault();    
     $add_val =  $("#adminka #add_cat").val();
         if( $add_val == '' ){
            $("#adminka .err_add").html("Введите название каталога!");
@@ -118,7 +122,8 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
 //Удаляем каталог   
     $("body").on('click','#adminka .remove_cat_bl #rem_cat', removeCat); 
-    function removeCat(){
+    function removeCat(event){
+        event.preventDefault();
         $showCatalogVal = $("#adminka .remove_cat_bl ul .active").text();
         if($showCatalogVal){
             
@@ -139,54 +144,63 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         } 
         
         
-        
-        
     }
-        
-        
-        
-        
+//    $("body").on('click','#adminka #btn_add_img', sendImg);
+//        function sendImg(event){
+//        event.preventDefault();    
+//        };
+//      
 
         
-    $("body").on('change','#adminka #file', addImg);     
-    function addImg(){
-    var data = new FormData();
+    $("body").on('click','#adminka #btn_add_img', addImg);     
+    function addImg(event){
+        event.preventDefault();
+            $catName = $("#adminka .remove_cat_bl ul .active").text();
+            $aboutImg = $("#adminka #add_about").val();
+        
+    var dataaray = new FormData();
 var error = '';
+        if($('#adminka #file').val() == '' || $("#adminka .remove_cat_bl ul .active").text() == '' || $aboutImg == '') {               
+               error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
+               $('#info').html(error);
+            } else {  
+        
+        
     jQuery.each($('#adminka #file')[0].files, function(i, file) {
- 
             if(file.name.length < 1) {               
-               error = error + ' Файл имеет неправильный размер! '; 
+               error = error + ' Имя файла не правильное! '; 
             } //Проверка на длину имени             
-            if(file.size > 1000000) {
-                error = error + ' File ' + file.name + ' is to big.';
+            else if(file.size > 8000000) {
+                error = error + ' Файл ' + file.name + ' больше 8 мб!';
             } //Проверка размера файла
-            if(file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
-                error = error + 'File  ' + file.name + '  doesnt match png, jpg or gif';
+            else if(file.type != 'image/png' && file.type != 'image/jpg' && !file.type != 'image/gif' && file.type != 'image/jpeg' ) {
+                error = error + 'Файл  ' + file.name + '  не является png, jpg или gif!';
             } //Проверка типа файлов
-        data.append('file-'+i, file);
+        
+        dataaray.append('file-'+i, file);
     });
- 
-if (error != '') {$('#info').html(error);} else {
-    $("body").on('click','#adminka #btn_add_img', send);
-        function send(e){
-        e.preventDefault();
+        dataaray.append('catName', $catName);
+          dataaray.append('aboutImg', $aboutImg);
+if (error != '') {
+            $('#info').html(error);
+    } else {
         $.ajax({
             url: '../scriptsPHP/upload.php',
-            data: data,
-            cache: false,
             contentType: false,
-            processData: false,
+            processData: false, 
             type: 'POST',
+            data: dataaray,
+            cache: false,
             success: function(data){
                 $('#info').html(data);
-
-            }
+                event.preventDefault();
+            },
+            beforeSend: function(data){
+                event.preventDefault();
+            },
         });
-        
-        
-    };
-    
          }
+    }
     }
 
         
