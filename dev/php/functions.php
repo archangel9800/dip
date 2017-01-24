@@ -8,7 +8,7 @@
 //для адресной строки
 function getArticle($route){
     //соединяюсь с базой
-    echo $route;
+//    echo $route;
     $myconnect = connectToDb();
     if ($route=='') {
         $sql = "SELECT * FROM categories_db WHERE categories='main'" ;

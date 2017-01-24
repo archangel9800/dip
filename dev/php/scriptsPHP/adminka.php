@@ -18,6 +18,9 @@ switch ( $_POST['action'] )
     case 'show':
         showPhoto();
         break;
+    case 'remOneImg':
+        remOneImg();
+        break;
 }
 
 function cookie(){
@@ -123,6 +126,8 @@ function addCat(){
                 echo("exists_cat_name");
             }else{
                 echo("not_exists");
+//                $seq = array("not_exists", "bar");
+//                echo $seq;
 //                Создаем директорию и БД
                 $path = "img/img/categories/$for_addres_str";
                  mkdir ($path, 0777);
@@ -156,8 +161,26 @@ function showCatalog(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Показываем фото из выбраного альбома
-function showPhoto(){
+function showPhotoo(){
     $showPhoto = $_POST['showPhoto'];  
     if($showPhoto){ 
         //соединяюсь с базой
@@ -171,23 +194,23 @@ function showPhoto(){
         $out ='';
         $out .= '<div class="row" id="imgContent">';
         while($row = mysqli_fetch_assoc($result)) {
-            if($row['img1920x1080']){
+            if($row['img1920x1080'] and $row['img1920x1080'] != ''){
                 
                 $out .= '<div class="col s12 m4 l3 image_gallery transition">
                 <p class="img_size average_text">1920x1080</p>
             <div class="for_hight">
-            <p class="remove_btn" sizing="1920x1080" numberimg="'.$row['id'].'">×</p>
+            <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
             
                 <div class="for_hight2">
-                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                 
+                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img1920x1080']."'".
                 ');">
                 </div>
             </div>
           </div>'; 
                  
-                
+//                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
                 
 //               $out .= 
 //                '<div class="col s12 m4 l3 image_gallery transition">
@@ -205,23 +228,23 @@ function showPhoto(){
                 
                 
             };
-            if($row['img1024x768']){
+            if($row['img1024x768'] and $row['img1024x768'] != ''){
                 
-                $out .= '<div class="col s12 m4 l3 image_gallery">
+                $out .= '<div class="col s12 m4 l3 image_gallery transition">
                 <p class="img_size average_text">1024x768</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
             
                 <div class="for_hight2">
-                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                 
+                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img1024x768']."'".
                 ');">
                 </div>
             </div>
           </div>'; 
                 
-                
+//                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
 //               $out .= 
 //                '<div class="col s12 m4 l3 image_gallery">
 //                <div class="for_hight">
@@ -236,22 +259,23 @@ function showPhoto(){
 //                </div>
 //              </div>';  
             };
-             if($row['img960x800']){
+             if($row['img960x800'] and $row['img960x800'] != ''){
                  
-                   $out .= '<div class="col s12 m4 l3 image_gallery">
+                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
                    <p class="img_size average_text">960x800</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
             
                 <div class="for_hight2">
-                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                 
+                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img960x800']."'".
                 ');">
                 </div>
             </div>
           </div>'; 
                  
+//                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
 //               $out .= 
 //                '<div class="col s12 m4 l3 image_gallery">
 //                <div class="for_hight">
@@ -266,22 +290,23 @@ function showPhoto(){
 //                </div>
 //              </div>';  
             }; 
-            if($row['img600x800']){
+            if($row['img600x800'] and $row['img600x800'] != ''){
                  
-                   $out .= '<div class="col s12 m4 l3 image_gallery">
+                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
                    <p class="img_size average_text">600x800</p>
             <div class="for_hight">
             <p class="remove_btn" sizing="img600x800" numberimg="'.$row['id'].'">×</p>
             
                 <div class="for_hight2">
-                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-                 <img numberimg="'.$row['id'].'" style="background-image: url('."'../"
+                
+                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
                 .$row['img600x800']."'".
                 ');">
                 </div>
             </div>
           </div>'; 
                  
+//                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
 //               $out .= 
 //                '<div class="col s12 m4 l3 image_gallery">
 //                <div class="for_hight">
@@ -304,6 +329,180 @@ function showPhoto(){
     };
     
 };
+
+
+
+
+
+
+
+
+
+
+
+
+//загружает выбраный раздел картинок
+function showPhoto(){
+    //соединяюсь с базой
+    $myconnect = connectToDb();
+    // Переменная хранит число сообщений выводимых на станице  
+    $num = 5;  
+    // Извлекаем из URL текущую страницу  
+    $page = $_GET['page'];  
+    
+    
+    $showPhoto = $_POST['showPhoto'];  
+    if($showPhoto){ 
+    $sql0 = "SELECT * FROM categories_db WHERE cat_name = '$showPhoto'" ;
+            $result = mysqli_query($myconnect, $sql0);
+            while($row = mysqli_fetch_assoc($result)) {
+              $name_of = $row['categories']; 
+              $name_ofimg1920x1080 = $row['img1920x1080']; 
+              $name_ofimg1024x768 = $row['img1024x768']; 
+              $name_ofimg960x800 = $row['img960x800']; 
+              $name_ofimg600x800 = $row['img600x800']; 
+            };
+//        echo $name_of;
+        
+    };
+    
+        $sql = "SELECT COUNT(*) FROM `images_db` WHERE url = '$name_of' ORDER BY id DESC";
+        $result = mysqli_query($myconnect, $sql); 
+        $posts = mysqli_fetch_assoc($result); 
+        // Находим общее число страниц  
+        $total = intval(($posts["COUNT(*)"] - 1) / $num) + 1;  
+        // Определяем начало сообщений для текущей страницы  
+        $page = intval($page);  
+        // Если значение $page меньше единицы или отрицательно  
+        // переходим на первую страницу  
+        // А если слишком большое, то переходим на последнюю  
+        if(empty($page) or $page < 0) $page = 1;  
+          if($page > $total) $page = $total;  
+        // Вычисляем начиная к какого номера  
+        // следует выводить сообщения  
+        $start = $page * $num - $num;  
+        // Выбираем $num сообщений начиная с номера $start  
+        $sql2 = "SELECT * FROM `images_db` WHERE url = '$name_of' LIMIT $start, $num";
+        $result2 = mysqli_query($myconnect, $sql2);
+        while ( $postrow[] = mysqli_fetch_array($result2));
+    
+            
+    
+    
+        echo '<div class="row" id="imgContent">';
+        for($i = 0; $i < $num; $i++){  
+            if ($postrow[$i] != ''){
+              if($postrow[$i]['img1920x1080'] and $postrow[$i]['img1920x1080'] != ''){
+                
+                    echo '<div class="col s12 m4 l3 image_gallery transition">
+                    <p class="img_size average_text">1920x1080</p>
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$postrow[$i]['id'].'">×</p>
+
+                    <div class="for_hight2">
+
+                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                    .$postrow[$i]['img1920x1080']."'".
+                    ');">
+                    </div>
+                </div>
+              </div>'; 
+              }
+             if($postrow[$i]['img1024x768'] and $postrow[$i]['img1024x768'] != ''){
+                
+                    echo '<div class="col s12 m4 l3 image_gallery transition">
+                    <p class="img_size average_text">1024x768</p>
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img1024x768" numberimg="'.$postrow[$i]['id'].'">×</p>
+
+                    <div class="for_hight2">
+
+                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                    .$postrow[$i]['img1024x768']."'".
+                    ');">
+                    </div>
+                </div>
+              </div>'; 
+              }
+              if($postrow[$i]['img960x800'] and $postrow[$i]['img960x800'] != ''){
+                
+                    echo '<div class="col s12 m4 l3 image_gallery transition">
+                    <p class="img_size average_text">960x800</p>
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img960x800" numberimg="'.$postrow[$i]['id'].'">×</p>
+
+                    <div class="for_hight2">
+
+                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                    .$postrow[$i]['img960x800']."'".
+                    ');">
+                    </div>
+                </div>
+              </div>'; 
+              }  
+               if($postrow[$i]['img600x800'] and $postrow[$i]['img600x800'] != ''){
+                
+                    echo '<div class="col s12 m4 l3 image_gallery transition">
+                    <p class="img_size average_text">600x800</p>
+                <div class="for_hight">
+                <p class="remove_btn" sizing="img600x800" numberimg="'.$postrow[$i]['id'].'">×</p>
+
+                    <div class="for_hight2">
+
+                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                    .$postrow[$i]['img600x800']."'".
+                    ');">
+                    </div>
+                </div>
+              </div>'; 
+              }  
+                
+           };
+        } ; 
+        echo '</div>'; 
+        
+        
+    // Проверяем нужны ли стрелки назад  
+    if ($page != 1) $pervpage = '<a href='.BASEURLADM.'page?page=1><<</a>  
+                                   <a href= '.BASEURLADM.'page?page='. ($page - 1) .'><</a> ';  
+    // Проверяем нужны ли стрелки вперед  
+    if ($page != $total) $nextpage = ' <a href='.BASEURLADM.'page?page='. ($page + 1) .'>></a>  
+                                       <a href='.BASEURLADM.$ress.'page?page='.$total. '>>></a>';  
+
+    // Находим две ближайшие станицы с обоих краев, если они есть  
+    if($page - 2 > 0) $page2left = ' <a href='.BASEURLADM.'page?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.BASEURLADM.'page?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURLADM.'page?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURLADM.'page?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
+
+    // Вывод меню
+    echo '<div id="pag_main">';    
+    echo $pervpage.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$nextpage;      
+    echo '</div>';      
+        
+
+
+closeConnectionToDb($myconnect);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -344,13 +543,31 @@ function removeCat(){
 }
 
 
-
-
-
-
-
-
-
+function remOneImg(){
+    $id = $_POST['id'];
+    $sizing = $_POST['sizing'];
+    $myconnect = connectToDb();
+    $sql = "SELECT * FROM images_db WHERE id = '$id'" ;
+        $result = mysqli_query($myconnect, $sql);
+        while($row = mysqli_fetch_assoc($result)) {
+            $remFile = $row["$sizing"];
+            unlink($remFile);  
+           $sql2 = "UPDATE `images_db` SET `$sizing`= '' WHERE id = '$id'";
+            mysqli_query($myconnect, $sql2); 
+            echo 'del_img';
+        };
+    $sql3 = "SELECT * FROM images_db WHERE id = '$id'" ;
+        $result3 = mysqli_query($myconnect, $sql3);
+        while($row = mysqli_fetch_assoc($result3)) {
+            if($row['img1920x1080'] == '' and $row['img1024x768'] == '' and $row['img960x800'] == '' and $row['img600x800'] == ''){
+               $sql4 = "DELETE FROM `images_db` WHERE `id` = '$id'";
+               mysqli_query($myconnect, $sql4); 
+            };  
+        }; 
+    
+closeConnectionToDb($myconnect);
+    
+};
 
 
 

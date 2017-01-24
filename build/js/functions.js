@@ -85,6 +85,23 @@ $("body").on('click','#adminka .login_btn',sendLogin);
                      $("#adminka .err_add").removeClass('okk').addClass('error').html("Такой каталог существует!");   
                     }else if(data == "not_exists"){
                       $("#adminka .err_add").removeClass('error').addClass('okk').html("Каталог создан!");
+                      $("#adminka .select-wrapper .list").html("");
+                        
+//                        $.post(
+//                            "../functions.php",{
+//                            "inp_add_cat_val": $("#adminka #add_cat").val(),
+//                            "action": "add", 
+//                            },
+//                            ifSuccess2
+//                        );
+//                        function ifSuccess2(data){
+//                            $("#adminka .select-wrapper .list").html(data);
+//                        };
+                        
+                        
+                        
+                        
+                        
                         location.reload(true);
                        
                     }
@@ -106,7 +123,7 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             );
         function ifSuccess(data){
                     $("#adminka .remove_image").html(data);
-            
+                    $('.materialboxed').materialbox();
                 }
         
     }
@@ -145,13 +162,9 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         
         
     }
-//    $("body").on('click','#adminka #btn_add_img', sendImg);
-//        function sendImg(event){
-//        event.preventDefault();    
-//        };
-//      
+    
 
-        
+//   Добавление изображений и обрезка     
     $("body").on('click','#adminka #btn_add_img', addImg);     
     function addImg(event){
         event.preventDefault();
@@ -208,6 +221,38 @@ if (error != '') {
 
         
         
+//        Удаление одного изображения
+            $("body").on('click','#adminka .remove_btn', remOneImg);
+        function remOneImg(){    
+            $id = $(this).attr('numberimg');
+            $sizing = $(this).attr('sizing');
+            $dispNone = $(this).parent().parent();
+            $.post(
+                "../functions.php",{
+                'id': $id,
+                'sizing': $sizing,
+                "action": "remOneImg", 
+                },
+                ifSuccess
+            );
+             function ifSuccess(data){
+                    console.log(data);
+                 
+                         if(data == 'del_img'){
+                             $('#info').html('Удалено!');
+                             $dispNone.css({
+                                display: 'none',
+                             });
+                             
+                             setTimeout(function(){
+                                    $('#info').html('');
+                            }, 1000);
+                         }
+                    
+                 
+                    }
+                }
+       
         
         
         
@@ -223,15 +268,9 @@ if (error != '') {
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+            
+        };
+
         
     
       } 
@@ -239,7 +278,7 @@ if (error != '') {
         
         
         
-    }    
+        
         
         
 

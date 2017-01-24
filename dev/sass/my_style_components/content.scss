@@ -268,7 +268,20 @@
         }
         
         
-        
+        #pag_main{
+                b{
+                color: #fff59d;
+                }
+               a{
+                color: red; /* Цвет ссылок */
+               }
+               a:visited {
+                color: #cecece; /* Цвет посещенных ссылок */
+               }
+               a:active {
+                color: #fff59d; /* Цвет активных ссылок */
+               }
+        }
         
         
         

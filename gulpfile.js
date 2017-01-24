@@ -120,7 +120,7 @@ if (using == 'html'){
     
   gulp.task('browserSync', function() {
   browserSync({
-    proxy:'http://dip/fon/gallery/diplom/dip/build/', 
+    proxy:'http://dip/build/', 
     notify: false,  
   });
 });

@@ -35,7 +35,7 @@
                             </div>
                         <button id="btn_add_img" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
               </form>
-              <p class="row col s10 m12 l11 offset-s1  offset-l1" id="info"></p>
+              <p class="row col s10 m12 l11 offset-s1 offset-l1" id="info"></p>
         </div>
             <div class="remove_image col s12 m12 l6">
               
