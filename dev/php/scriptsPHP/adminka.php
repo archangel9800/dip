@@ -1,6 +1,26 @@
 <?php
 
-
+function getArticleAdm($route){
+    //соединяюсь с базой
+//    echo $route;
+   $route = substr(strrchr($route, "/"), 1);
+    $myconnect = connectToDb();
+    if ($route=='') {
+        $sql = "SELECT * FROM categories_db WHERE categories='main'" ;
+    }
+    else {
+        $sql = "SELECT * FROM categories_db WHERE categories='$route'" ;
+    }
+    $result = mysqli_query($myconnect, $sql);
+    if (mysqli_num_rows($result) == 0){
+        $sql = "SELECT * FROM categories_db WHERE categories='404' " ;
+        $result = mysqli_query($myconnect, $sql);
+    }
+    // результат в ассоциативный массив
+    $row = mysqli_fetch_assoc($result);
+    closeConnectionToDb($myconnect);
+    return $row;
+}
 
 switch ( $_POST['action'] )
 {   case 'cookie':
@@ -142,18 +162,20 @@ function addCat(){
 
 
 //вывод списка каталогов
-function showCatalog(){
+function showCatalog($masA){
   //соединяюсь с базой
     $myconnect = connectToDb();
     $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
     $result = mysqli_query($myconnect, $sql);
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
-        $out .='<option class="average_text" value="'.
+       
+        $out .='<option class="average_text" VALUE="'.BASEURLADM.$row['categories'].'" idcat="'.
              $row['id_cat'].
                 '">' 
             .$row['cat_name'].
             '</option>';
+        
     }
      closeConnectionToDb($myconnect);
     return $out;   
@@ -179,156 +201,156 @@ function showCatalog(){
 
 
 
-//Показываем фото из выбраного альбома
-function showPhotoo(){
-    $showPhoto = $_POST['showPhoto'];  
-    if($showPhoto){ 
-        //соединяюсь с базой
-    $myconnect = connectToDb();    
-    $sql = "SELECT * FROM categories_db WHERE cat_name = '$showPhoto'" ;
-    $result = mysqli_query($myconnect, $sql);
-    while($row = mysqli_fetch_assoc($result)) {
-      $name_of = $row['categories']; 
-        $sql = "SELECT * FROM images_db WHERE url = '$name_of'" ;
-        $result = mysqli_query($myconnect, $sql);
-        $out ='';
-        $out .= '<div class="row" id="imgContent">';
-        while($row = mysqli_fetch_assoc($result)) {
-            if($row['img1920x1080'] and $row['img1920x1080'] != ''){
-                
-                $out .= '<div class="col s12 m4 l3 image_gallery transition">
-                <p class="img_size average_text">1920x1080</p>
-            <div class="for_hight">
-            <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
-            
-                <div class="for_hight2">
-                 
-                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
-                .$row['img1920x1080']."'".
-                ');">
-                </div>
-            </div>
-          </div>'; 
-                 
-//                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-                
-//               $out .= 
-//                '<div class="col s12 m4 l3 image_gallery transition">
-//                <div class="for_hight">
-//                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
-//                    <div class="for_hight2">
-//                        <div class="img_wrap">
-//                            <a href="'.$row['url'].'/'.$row['id'].
-//                            '"></a>
-//                            <img class="img_block" src="../'.$row['img1920x1080'].'">
-//                        </div>
-//                    </div>
+////Показываем фото из выбраного альбома
+//function showPhotoo(){
+//    $showPhoto = $_POST['showPhoto'];  
+//    if($showPhoto){ 
+//        //соединяюсь с базой
+//    $myconnect = connectToDb();    
+//    $sql = "SELECT * FROM categories_db WHERE cat_name = '$showPhoto'" ;
+//    $result = mysqli_query($myconnect, $sql);
+//    while($row = mysqli_fetch_assoc($result)) {
+//      $name_of = $row['categories']; 
+//        $sql = "SELECT * FROM images_db WHERE url = '$name_of'" ;
+//        $result = mysqli_query($myconnect, $sql);
+//        $out ='';
+//        $out .= '<div class="row" id="imgContent">';
+//        while($row = mysqli_fetch_assoc($result)) {
+//            if($row['img1920x1080'] and $row['img1920x1080'] != ''){
+//                
+//                $out .= '<div class="col s12 m4 l3 image_gallery transition">
+//                <p class="img_size average_text">1920x1080</p>
+//            <div class="for_hight">
+//            <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+//            
+//                <div class="for_hight2">
+//                 
+//                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
+//                .$row['img1920x1080']."'".
+//                ');">
 //                </div>
-//              </div>';  
-                
-                
-            };
-            if($row['img1024x768'] and $row['img1024x768'] != ''){
-                
-                $out .= '<div class="col s12 m4 l3 image_gallery transition">
-                <p class="img_size average_text">1024x768</p>
-            <div class="for_hight">
-            <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-            
-                <div class="for_hight2">
-                 
-                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
-                .$row['img1024x768']."'".
-                ');">
-                </div>
-            </div>
-          </div>'; 
-                
-//                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-//               $out .= 
-//                '<div class="col s12 m4 l3 image_gallery">
-//                <div class="for_hight">
-//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-//                    <div class="for_hight2">
-//                        <div class="img_wrap">
-//                            <a href="'.$row['url'].'/'.$row['id'].
-//                            '"></a>
-//                            <img class="img_block" src="../'.$row['img1024x768'].'">
-//                        </div>
-//                    </div>
+//            </div>
+//          </div>'; 
+//                 
+////                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
+//                
+////               $out .= 
+////                '<div class="col s12 m4 l3 image_gallery transition">
+////                <div class="for_hight">
+////                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$row['id'].'">×</p>
+////                    <div class="for_hight2">
+////                        <div class="img_wrap">
+////                            <a href="'.$row['url'].'/'.$row['id'].
+////                            '"></a>
+////                            <img class="img_block" src="../'.$row['img1920x1080'].'">
+////                        </div>
+////                    </div>
+////                </div>
+////              </div>';  
+//                
+//                
+//            };
+//            if($row['img1024x768'] and $row['img1024x768'] != ''){
+//                
+//                $out .= '<div class="col s12 m4 l3 image_gallery transition">
+//                <p class="img_size average_text">1024x768</p>
+//            <div class="for_hight">
+//            <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+//            
+//                <div class="for_hight2">
+//                 
+//                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
+//                .$row['img1024x768']."'".
+//                ');">
 //                </div>
-//              </div>';  
-            };
-             if($row['img960x800'] and $row['img960x800'] != ''){
-                 
-                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
-                   <p class="img_size average_text">960x800</p>
-            <div class="for_hight">
-            <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
-            
-                <div class="for_hight2">
-                 
-                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
-                .$row['img960x800']."'".
-                ');">
-                </div>
-            </div>
-          </div>'; 
-                 
-//                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-//               $out .= 
-//                '<div class="col s12 m4 l3 image_gallery">
-//                <div class="for_hight">
-//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-//                    <div class="for_hight2">
-//                        <div class="img_wrap">
-//                            <a href="'.$row['url'].'/'.$row['id'].
-//                            '"></a>
-//                            <img class="img_block" src="../'.$row['img1024x768'].'">
-//                        </div>
-//                    </div>
+//            </div>
+//          </div>'; 
+//                
+////                <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
+////               $out .= 
+////                '<div class="col s12 m4 l3 image_gallery">
+////                <div class="for_hight">
+////                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+////                    <div class="for_hight2">
+////                        <div class="img_wrap">
+////                            <a href="'.$row['url'].'/'.$row['id'].
+////                            '"></a>
+////                            <img class="img_block" src="../'.$row['img1024x768'].'">
+////                        </div>
+////                    </div>
+////                </div>
+////              </div>';  
+//            };
+//             if($row['img960x800'] and $row['img960x800'] != ''){
+//                 
+//                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
+//                   <p class="img_size average_text">960x800</p>
+//            <div class="for_hight">
+//            <p class="remove_btn" sizing="img960x800" numberimg="'.$row['id'].'">×</p>
+//            
+//                <div class="for_hight2">
+//                 
+//                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
+//                .$row['img960x800']."'".
+//                ');">
 //                </div>
-//              </div>';  
-            }; 
-            if($row['img600x800'] and $row['img600x800'] != ''){
-                 
-                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
-                   <p class="img_size average_text">600x800</p>
-            <div class="for_hight">
-            <p class="remove_btn" sizing="img600x800" numberimg="'.$row['id'].'">×</p>
-            
-                <div class="for_hight2">
-                
-                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
-                .$row['img600x800']."'".
-                ');">
-                </div>
-            </div>
-          </div>'; 
-                 
-//                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
-//               $out .= 
-//                '<div class="col s12 m4 l3 image_gallery">
-//                <div class="for_hight">
-//                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
-//                    <div class="for_hight2">
-//                        <div class="img_wrap">
-//                            <a href="'.$row['url'].'/'.$row['id'].
-//                            '"></a>
-//                            <img class="img_block" src="../'.$row['img1024x768'].'">
-//                        </div>
-//                    </div>
+//            </div>
+//          </div>'; 
+//                 
+////                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
+////               $out .= 
+////                '<div class="col s12 m4 l3 image_gallery">
+////                <div class="for_hight">
+////                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+////                    <div class="for_hight2">
+////                        <div class="img_wrap">
+////                            <a href="'.$row['url'].'/'.$row['id'].
+////                            '"></a>
+////                            <img class="img_block" src="../'.$row['img1024x768'].'">
+////                        </div>
+////                    </div>
+////                </div>
+////              </div>';  
+//            }; 
+//            if($row['img600x800'] and $row['img600x800'] != ''){
+//                 
+//                   $out .= '<div class="col s12 m4 l3 image_gallery transition">
+//                   <p class="img_size average_text">600x800</p>
+//            <div class="for_hight">
+//            <p class="remove_btn" sizing="img600x800" numberimg="'.$row['id'].'">×</p>
+//            
+//                <div class="for_hight2">
+//                
+//                 <img class="materialboxed" numberimg="'.$row['id'].'" style="background-image: url('."'../"
+//                .$row['img600x800']."'".
+//                ');">
 //                </div>
-//              </div>';  
-            };  
-        };
-       $out .= '</div>'; 
-    };    
-     closeConnectionToDb($myconnect);
-    echo $out;
-    };
-    
-};
+//            </div>
+//          </div>'; 
+//                 
+////                 <a href="'.BASEURL.$row['url'].'/'.$row['id'].'"></a>
+////               $out .= 
+////                '<div class="col s12 m4 l3 image_gallery">
+////                <div class="for_hight">
+////                <p class="remove_btn" sizing="img1024x768" numberimg="'.$row['id'].'">×</p>
+////                    <div class="for_hight2">
+////                        <div class="img_wrap">
+////                            <a href="'.$row['url'].'/'.$row['id'].
+////                            '"></a>
+////                            <img class="img_block" src="../'.$row['img1024x768'].'">
+////                        </div>
+////                    </div>
+////                </div>
+////              </div>';  
+//            };  
+//        };
+//       $out .= '</div>'; 
+//    };    
+//     closeConnectionToDb($myconnect);
+//    echo $out;
+//    };
+//    
+//};
 
 
 
@@ -342,18 +364,18 @@ function showPhotoo(){
 
 
 //загружает выбраный раздел картинок
-function showPhoto(){
+function showPhoto($masA){
     //соединяюсь с базой
+    $ress = $masA['categories'];
     $myconnect = connectToDb();
     // Переменная хранит число сообщений выводимых на станице  
     $num = 5;  
     // Извлекаем из URL текущую страницу  
     $page = $_GET['page'];  
-    
-    
     $showPhoto = $_POST['showPhoto'];  
-    if($showPhoto){ 
-    $sql0 = "SELECT * FROM categories_db WHERE cat_name = '$showPhoto'" ;
+    echo $ress;
+    if($ress){ 
+    $sql0 = "SELECT * FROM categories_db WHERE cat_name = '$ress'" ;
             $result = mysqli_query($myconnect, $sql0);
             while($row = mysqli_fetch_assoc($result)) {
               $name_of = $row['categories']; 
@@ -463,17 +485,17 @@ function showPhoto(){
         
         
     // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURLADM.'page?page=1><<</a>  
-                                   <a href= '.BASEURLADM.'page?page='. ($page - 1) .'><</a> ';  
+    if ($page != 1) $pervpage = '<a href='.BASEURLADM.'?page=1><<</a>  
+                                   <a href= '.BASEURLADM.'?page='. ($page - 1) .'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURLADM.'page?page='. ($page + 1) .'>></a>  
-                                       <a href='.BASEURLADM.$ress.'page?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a href='.BASEURLADM.'?page='. ($page + 1) .'>></a>  
+                                       <a href='.BASEURLADM.$ress.'?page='.$total. '>>></a>';  
 
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURLADM.'page?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURLADM.'page?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURLADM.'page?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURLADM.'page?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a href='.BASEURLADM.'?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.BASEURLADM.'?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURLADM.'?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURLADM.'?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
 
     // Вывод меню
     echo '<div id="pag_main">';    

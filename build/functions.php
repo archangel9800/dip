@@ -26,6 +26,7 @@ function getArticle($route){
     closeConnectionToDb($myconnect);
     return $row;
 }
+//для адресной строки
 
     
 

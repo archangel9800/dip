@@ -8,10 +8,12 @@ function getSliderImg(){
         $result = mysqli_query($myconnect, $sql);
         $out ='';
         while($row = mysqli_fetch_assoc($result)) {
+            if ($row['img1920x1080'] != ''){
             $out .=
             '<div class="swiper-slide img_wrap">
                     <img src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
                 </div>';
+            }
         };
      closeConnectionToDb($myconnect);
     return $out;
@@ -112,11 +114,11 @@ function getAll($mas){
     $myconnect = connectToDb();
     $ress = $mas['categories'];
     // Переменная хранит число сообщений выводимых на станице  
+//    echo $ress;
     $num = 12;  
     // Извлекаем из URL текущую страницу  
-    $page = $_GET['page'];  
+    $page = $_GET['page'];;
     
-//    var_dump($mas);
     if ($ress == ''){
             $out ='';
            $out .=  
@@ -125,6 +127,27 @@ function getAll($mas){
              <p class="big_text col s4 offset-s4">Page not found!</p>
              <img class="big_text col s4 offset-s4" src="'.BASEURL.'img/img/err.png" alt="Page not found">
            </div>';
+        echo $out;
+    }else if($ress == 'main'){
+        $sql2 = "SELECT * FROM `images_db` ORDER BY RAND() LIMIT 12";
+        $result2 = mysqli_query($myconnect, $sql2);  
+        while ( $postrow[] = mysqli_fetch_array($result2));
+        echo '<div class="row" id="imgContent">';
+        for($i = 0; $i < $num; $i++){  
+            if ($postrow[$i] != ''){
+            echo ('<div class="col s12 m4 l3 image_gallery transition">
+            <div class="for_hight">
+                <div class="for_hight2">
+                 <a href="'.BASEURL.$postrow[$i]['url'].'/page?page='.$total.'/img?img='.$postrow[$i]['id'].'"></a>
+                 <img numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                .$postrow[$i]['img1920x1080']."'".
+                ');">
+                </div>
+            </div>
+          </div>');
+            };
+        } ; 
+        echo '</div>';
     }else{
         $sql = "SELECT COUNT(*) FROM `images_db` WHERE url = '$ress' ORDER BY id DESC";
         $result = mysqli_query($myconnect, $sql); 
@@ -164,17 +187,17 @@ function getAll($mas){
         
         
     // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURL.$ress.'/page?page=1><<</a>  
-                                   <a href= '.BASEURL.$ress.'/page?page='.($page - 1).'><</a> ';  
+    if ($page != 1) $pervpage = '<a href='.BASEURL.$ress.'?page=1><<</a>  
+                                   <a href= '.BASEURL.$ress.'?page='.($page - 1).'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURL.$ress.'/page?page='.($page + 1).'>></a>  
-                                       <a href='.BASEURL.$ress.'/page?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a href='.BASEURL.$ress.'?page='.($page + 1).'>></a>  
+                                       <a href='.BASEURL.$ress.'?page='.$total. '>>></a>';  
 
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.$ress.'/page?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURL.$ress.'/page?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.$ress.'/page?page='.($page + 2).'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.$ress.'/page?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.$ress.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.BASEURL.$ress.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.$ress.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.$ress.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
 
     // Вывод меню
     echo '<div id="pag_main">';    

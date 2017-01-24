@@ -1,7 +1,9 @@
 <?php
 require_once '../functions.php';
 $route = $_GET['route'];
-$mas = getArticle($route);
+$masA = getArticleAdm($route);
+//echo  substr(strrchr("qwerty/dfg", "/"), 1);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

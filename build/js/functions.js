@@ -24,6 +24,7 @@ function adminka(){
                         $("#adminka #add_remove").html(data);
 //                        $('body').html(data);
                         $('#adminka select').material_select(); 
+                        
                     }
                         
                 };
@@ -110,24 +111,24 @@ $("body").on('click','#adminka .login_btn',sendLogin);
         }   
 }
   
-// Показываем фото
-     $("body").on('change','#adminka .remove_cat_bl select', showPhoto); 
-    function showPhoto(){
-        $showPhoto = $("#adminka .remove_cat_bl ul .active").text();;
-             $.post(
-                "../functions.php",{
-                "showPhoto": $showPhoto,
-                "action": "show", 
-                },
-                ifSuccess
-            );
-        function ifSuccess(data){
-                    $("#adminka .remove_image").html(data);
-                    $('.materialboxed').materialbox();
-                }
-        
-    }
-    
+//// Показываем фото
+//     $("body").on('change','#adminka .remove_cat_bl select', showPhoto); 
+//    function showPhoto(){
+//        $showPhoto = $("#adminka .remove_cat_bl ul .active").text();;
+//             $.post(
+//                "../functions.php",{
+//                "showPhoto": $showPhoto,
+//                "action": "show", 
+//                },
+//                ifSuccess
+//            );
+//        function ifSuccess(data){
+//                    $("#adminka .remove_image").html(data);
+//                    $('.materialboxed').materialbox();
+//                }
+//        
+//    }
+//    
     
     
     

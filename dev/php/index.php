@@ -3,7 +3,7 @@ require_once '/functions.php';
 $route = $_GET['route'];
 
 $mas = getArticle($route);
-
+//echo $route; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
