@@ -1,6 +1,9 @@
 <?php
 require_once '../functions.php';
-//echo  substr(strrchr("qwerty/dfg", "/"), 1);
+//$url = $_GET['route'];
+//$urlSegments = explode('/', $url);
+//$mas = getArticle($urlSegments);
+//var_dump($_GET['route']);
 
 ?>
 <!DOCTYPE html>
@@ -18,7 +21,7 @@ require_once '../functions.php';
 
 		<section id="adminka" class="adaptive_container transition">
     <div id="add_remove" class="row">
-     <?php require_once 'includes/adminka/login.php'; ?>  
+<!--     <?php require_once 'includes/adminka/login.php'; ?>  -->
 <!--     <?php require_once 'includes/adminka/panel.php'; ?>  -->
     </div>
 </section>

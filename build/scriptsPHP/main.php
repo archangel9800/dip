@@ -1,6 +1,5 @@
 <?php
 
-
 switch ( $_POST['action'] )
 {   case 'oneImg':
         oneImg();
@@ -35,6 +34,7 @@ function getSliderImg(){
 //Добавляет кнопки с категориями и делает одну активную
 function getGenres($mas){
     //соединяюсь с базой
+//    var_dump( $mas);
     $myconnect = connectToDb();
     $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
     $result = mysqli_query($myconnect, $sql);

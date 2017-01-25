@@ -27,14 +27,14 @@ function cookie(){
     $sql = "SELECT * FROM users_db" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if (isset($_COOKIE[$row['user']])) {
-                $inc = include 'admin/includes/adminka/panel.php';
-              return $inc;
-                
-        }
+            if (isset($_COOKIE[$row['user']])) {  
+                $inc = require_once 'admin/includes/adminka/panel.php';
+        } else{
+               $inc = require_once 'admin/includes/adminka/login.php';
+            }
         };
      closeConnectionToDb($myconnect);
-    
+    return $inc;
     
 };
 
@@ -48,7 +48,8 @@ function login(){
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
             if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+660);
-              $inc = include 'admin/includes/adminka/panel.php';
+              $inc = require_once 'admin/includes/adminka/panel.php';
+                
               return $inc; 
                                                                           
             }else{
@@ -144,13 +145,13 @@ function showCatalog($mas){
     $result = mysqli_query($myconnect, $sql);
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
-       
-        $out .='<option class="average_text" VALUE="'.BASEURLADM.$row['categories'].'" idcat="'.
-             $row['id_cat'].
-                '">' 
-            .$row['cat_name'].
-            '</option>';
-        
+         if ($row['categories'] == $mas['categories']){
+             $out .='<li class="transition col s3 valign active"><a href="'.BASEURLADM.$row['categories'].'?route='.$row['categories'].
+        '"idcat="'.$row['id_cat'].'">'.$row['cat_name'].'</a></li>';
+         }else{
+             $out .='<li class="transition col s3 valign"><a href="'.BASEURLADM.$row['categories'].'?route='.$row['categories'].
+        '"idcat="'.$row['id_cat'].'">'.$row['cat_name'].'</a></li>';
+         }
     }
      closeConnectionToDb($myconnect);
     return $out;   
@@ -158,9 +159,11 @@ function showCatalog($mas){
 
 
 
-
 //загружает выбраный раздел картинок
 function showPhoto($mas){
+    var_dump( $mas);
+    var_dump( $url);
+    echo $res;
     //соединяюсь с базой
     $ress = $mas['categories'];
     $myconnect = connectToDb();

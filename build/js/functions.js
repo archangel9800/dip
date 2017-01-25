@@ -63,9 +63,9 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     event.preventDefault();    
     $add_val =  $("#adminka #add_cat").val();
         if( $add_val == '' ){
-           $("#adminka .err_add").html("Введите название каталога!");
+           $("#adminka #info").html("Введите название каталога!");
         } else{
-           $("#adminka .err_add").html(""); 
+           $("#adminka #info").html(""); 
             $.post(
                 "../functions.php",{
                 "inp_add_cat_val": $("#adminka #add_cat").val(),
@@ -75,9 +75,9 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             );
                 function ifSuccess(data){
                     if(data == "exists_cat_name"){
-                     $("#adminka .err_add").removeClass('okk').addClass('error').html("Такой каталог существует!");   
+                     $("#adminka #info").removeClass('okk').addClass('error').html("Такой каталог существует!");   
                     }else if(data == "not_exists"){
-                      $("#adminka .err_add").removeClass('error').addClass('okk').html("Каталог создан!");
+                      $("#adminka #info").removeClass('error').addClass('okk').html("Каталог создан!");
                       $("#adminka .select-wrapper .list").html("");
                         
 //                        $.post(
@@ -143,7 +143,7 @@ $("body").on('click','#adminka .login_btn',sendLogin);
             );
              function ifSuccess(data){
                     if(data == "deleted_cat"){
-                     $("#adminka .err_del_cat").html("Каталог удален!");   
+                     $("#adminka #info").html("Каталог удален!");   
                         location.reload();
                     }
                 }

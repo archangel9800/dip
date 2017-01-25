@@ -16,9 +16,11 @@ function getArticle($urlSegments){
     $myconnect = connectToDb();
     if (empty($urlSegments[0])) {
         $sql = "SELECT * FROM categories_db WHERE categories='main'" ;
-    }else if($urlSegments[0] == 'admin'){
+    }
+    else if($urlSegments[0] == 'admin'){
         $sql = "SELECT * FROM categories_db WHERE categories='$urlSegments[1]'"; 
-    }else{
+    }
+    else{
         $sql = "SELECT * FROM categories_db WHERE categories='$urlSegments[0]'" ;
     }
     $result = mysqli_query($myconnect, $sql);
