@@ -98,7 +98,7 @@ if($_FILES){
         if($width == 1920 and $height == 1080 ){
                     
 
-        $sql = "SELECT * FROM categories_db WHERE `cat_name` = '$catName'";
+        $sql = "SELECT * FROM categories_db WHERE `id_cat` = '$catName'";
              $result = mysqli_query($myconnect, $sql);    
               while($row = mysqli_fetch_assoc($result)) {
 //                  echo $row['categories'];

@@ -1,21 +1,28 @@
 <?php
 require_once '../functions.php';
-session_start();
-if($_SESSION['admin']){
-	header("Location: admin.php");
-	exit;
-}
 
-$admin = 'admin';
-$pass = 'admin';
+ session_start();
+    if($_SESSION['admin']){
+        header("Location: /admin.php");
+        echo "pass notsdfghfghdfghdfghdfgh";
+        exit;
+    }
 
-if($_POST['submit']){
-	if($admin == $_POST['user'] AND $pass == $_POST['pass']){
-		$_SESSION['admin'] = $admin;
-		header("Location: admin.php");
-		exit;
-	}else header("Location: index.php");
-}
+    $admin = 'admin';
+    $pass = 'admin';
+
+    if($_POST['submit']){
+        if($admin == $_POST['user'] AND $pass == $_POST['pass']){
+            $_SESSION['admin'] = $admin;
+            header("Location: /admin.php");
+            echo "pass notsdfghfghdfghdfghdfgh";
+            exit;
+        }else {
+            echo "pass notsdfghfghdfghdfghdfgh";
+//            header("Location: enter.php");
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +36,11 @@ if($_POST['submit']){
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
+
+		
 	 <section id="adminka" class="adaptive_container transition">
     <div id="add_remove" class="row">
+    
         <form method="post" class="row admin_login">
           <div class="col s6 m4 l4 offset-s3 offset-m4 offset-l4"><p class="average_text">Введите пароль и логин</p></div>
           <div class="row col s6 m4 l4 offset-s3 offset-m4 offset-l4 lines">
@@ -43,10 +53,18 @@ if($_POST['submit']){
               <input id="password" placeholder="Пароль" type="password" name="pass" class="validate average_text">
             </div>
           </div>
-          <input value="Войти" class="login_btn col s2 m2 l2 offset-s5 offset-m5 offset-l5 btn waves-effect waves-light average_text" type="submit" name="submit">
+          <button class="login_btn col s2 m2 l2 offset-s5 offset-m5 offset-l5 btn waves-effect waves-light average_text" type="submit" name="submit">Войти</button>
      </form>
+
+    
+    
     </div>
-</section>cript type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
+</section>
+	 
+	
+	
+	
+	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/functions.js"></script>	

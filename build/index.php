@@ -30,17 +30,7 @@ $mas = getArticle($urlSegments);
             <div class="swiper-wrapper">
             
             <?php echo getSliderImg(); ?>
-<!--
-                <div class="swiper-slide img_wrap">
-                    <img src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (2).png" class="img_block">
-                </div>
-                <div class="swiper-slide img_wrap">
-                    <img src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (3).png" class="img_block">
-                </div>
-                <div class="swiper-slide img_wrap">
-                    <img src="img/img/Material-Design-17.jpg" class="img_block">
-                </div>
--->
+
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>

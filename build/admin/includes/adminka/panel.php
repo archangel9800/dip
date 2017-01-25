@@ -1,4 +1,5 @@
 <?php
+
 $url = $_GET['route'];
 $urlSegments = explode('/', $url);
 $mas = getArticle($urlSegments);

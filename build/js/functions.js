@@ -9,51 +9,51 @@ function adminka(){
     
   
 //    вводим логин и закрываем форму входа
-    function closeloginBlock(){
-         $.post(
-                "../functions.php",{
-                "action": "cookie", 
-                },
-                ifSuccess
-            );
-                function ifSuccess(data){
-                    if(data){
-                        $("#adminka #add_remove").html(data);
-//                        $('body').html(data);
-                        $('#adminka select').material_select(); 
-                        
-                    }
-                        
-                };
-        };
-   closeloginBlock();      
-$("body").on('click','#adminka .login_btn',sendLogin); 
-   function sendLogin(){
-        $.post(
-            "../functions.php",{
-            "login": $("#adminka .admin_login #login").val(),   
-            "password": $("#adminka .admin_login #password").val(),
-            "action": "login",     
-            },
-            ifSuccess
-              );
-                function ifSuccess(data){
-                    if(data == 'error'){
-                        
-                    }else{
-                            $("#adminka #add_remove").html(data);
-//                                $('body').html(data);
-                    };
-           
-                    //инициализация выпадающих списков
-                    $('#adminka select').material_select(); 
-                    
-                    
-                };
-            
-       
-       
-            }; 
+//    function closeloginBlock(){
+//         $.post(
+//                "../functions.php",{
+//                "action": "cookie", 
+//                },
+//                ifSuccess
+//            );
+//                function ifSuccess(data){
+//                    if(data){
+//                        $("#adminka #add_remove").html(data);
+////                        $('body').html(data);
+//                        $('#adminka select').material_select(); 
+//                        
+//                    }
+//                        
+//                };
+//        };
+//   closeloginBlock();      
+//$("body").on('click','#adminka .login_btn',sendLogin); 
+//   function sendLogin(){
+//        $.post(
+//            "../functions.php",{
+//            "login": $("#adminka .admin_login #login").val(),   
+//            "password": $("#adminka .admin_login #password").val(),
+//            "action": "login",     
+//            },
+//            ifSuccess
+//              );
+//                function ifSuccess(data){
+//                    if(data == 'error'){
+//                        
+//                    }else{
+//                            $("#adminka #add_remove").html(data);
+////                                $('body').html(data);
+//                    };
+//           
+//                    //инициализация выпадающих списков
+//                    $('#adminka select').material_select(); 
+//                    
+//                    
+//                };
+//            
+//       
+//       
+//            }; 
      
 
     
@@ -128,10 +128,10 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     
     
 //Удаляем каталог   
-    $("body").on('click','#adminka .remove_cat_bl #rem_cat', removeCat); 
+    $("body").on('click','#adminka #rem_cat', removeCat); 
     function removeCat(event){
         event.preventDefault();
-        $showCatalogVal = $("#adminka .remove_cat_bl ul .active").text();
+        $showCatalogVal = $("#adminka .list_cat_bl ul .active a").attr('idcat');
         if($showCatalogVal){
             
             $.post(
@@ -158,18 +158,14 @@ $("body").on('click','#adminka .login_btn',sendLogin);
     $("body").on('click','#adminka #btn_add_img', addImg);     
     function addImg(event){
         event.preventDefault();
-            $catName = $("#adminka .remove_cat_bl ul .active").text();
+            $catName = $("#adminka .list_cat_bl ul .active a").attr('idcat');
             $aboutImg = $("#adminka #add_about").val();
-        
-    var dataaray = new FormData();
+            $dataaray = new FormData();
 var error = '';
-        if($('#adminka #file').val() == '' || $("#adminka .remove_cat_bl ul .active").text() == '' || $aboutImg == '') {               
+        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active a").attr('idcat') == '' || $aboutImg == '') {               
                error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
                $('#info').html(error);
-            } else if($('#adminka #file').files.length > 5){
-                error = error + 'Слишком много картинок!'; 
-               $('#info').html(error);
-            }else{  
+            } else{  
         
         
     jQuery.each($('#adminka #file')[0].files, function(i, file) {
@@ -183,10 +179,10 @@ var error = '';
                 error = error + 'Файл  ' + file.name + '  не является png, jpg или gif!';
             } //Проверка типа файлов
         
-        dataaray.append('file-'+i, file);
+        $dataaray.append('file-'+i, file);
     });
-        dataaray.append('catName', $catName);
-          dataaray.append('aboutImg', $aboutImg);
+        $dataaray.append('catName', $catName);
+          $dataaray.append('aboutImg', $aboutImg);
 if (error != '') {
             $('#info').html(error);
     } else {
@@ -195,7 +191,7 @@ if (error != '') {
             contentType: false,
             processData: false, 
             type: 'POST',
-            data: dataaray,
+            data: $dataaray,
             cache: false,
             success: function(data){
                 $('#info').html(data);

@@ -2,12 +2,7 @@
 
 
 switch ( $_POST['action'] )
-{   case 'cookie':
-        cookie();
-        break;
-    case 'login':
-        login();
-        break;
+{   
     case 'add':
         addCat();
         break;
@@ -21,46 +16,44 @@ switch ( $_POST['action'] )
         remOneImg();
         break;
 }
-
-function cookie(){
-    $myconnect = connectToDb();
-    $sql = "SELECT * FROM users_db" ;
-        $result = mysqli_query($myconnect, $sql);
-        while($row = mysqli_fetch_assoc($result)) {
-            if (isset($_COOKIE[$row['user']])) {  
-                $inc = require_once 'admin/includes/adminka/panel.php';
-        } else{
-               $inc = require_once 'admin/includes/adminka/login.php';
-            }
-        };
-     closeConnectionToDb($myconnect);
-    return $inc;
-    
-};
-
-
-function login(){ 
-  $login = $_POST['login'];
-  $password = $_POST['password'];
-//  echo($login.' '.$password);    
-    $myconnect = connectToDb();
-    $sql = "SELECT * FROM users_db" ;
-        $result = mysqli_query($myconnect, $sql);
-        while($row = mysqli_fetch_assoc($result)) {
-            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+660);
-              $inc = require_once 'admin/includes/adminka/panel.php';
-                
-              return $inc; 
-                                                                          
-            }else{
-                echo "error";
-            };
-        };
-     closeConnectionToDb($myconnect);
-
-};
-
-
+//
+//function cookie(){
+//    $myconnect = connectToDb();
+//    $sql = "SELECT * FROM users_db" ;
+//        $result = mysqli_query($myconnect, $sql);
+//        while($row = mysqli_fetch_assoc($result)) {
+//            if (isset($_COOKIE[$row['user']])) {  
+//                $inc = require_once 'admin/includes/adminka/panel.php';
+//        } else{
+//               $inc = require_once 'admin/includes/adminka/login.php';
+//            }
+//        };
+//     closeConnectionToDb($myconnect);
+//    return $inc;
+//    
+//};
+//
+//
+//function login(){ 
+//  $login = $_POST['login'];
+//  $password = $_POST['password'];
+////  echo($login.' '.$password);    
+//    $myconnect = connectToDb();
+//    $sql = "SELECT * FROM users_db" ;
+//        $result = mysqli_query($myconnect, $sql);
+//        while($row = mysqli_fetch_assoc($result)) {
+//            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+660);
+//              $inc = require_once 'admin/includes/adminka/panel.php';
+//                
+//              return $inc; 
+//                                                                          
+//            }else{
+//                echo "error";
+//            };
+//        };
+//     closeConnectionToDb($myconnect);
+//
+//};
 
 
 
@@ -114,7 +107,8 @@ function addCat(){
 	);
       return $str=iconv("UTF-8","UTF-8//IGNORE",strtr($string,$replace));
 };
-    $for_addres_str = GetInTranslit($inp_add_cat_val);  
+    $for_addres_str = GetInTranslit($inp_add_cat_val);
+    $for_addres_str = mb_strtolower($for_addres_str, 'UTF-8');
 //     соединяюсь с базой
      $myconnect = connectToDb();
     $sql = "SELECT COUNT(*) FROM `categories_db` WHERE cat_name = '$inp_add_cat_val' " ;
@@ -146,11 +140,10 @@ function showCatalog($mas){
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
          if ($row['categories'] == $mas['categories']){
-             $out .='<li class="transition col s3 valign active"><a href="'.BASEURLADM.$row['categories'].'?route='.$row['categories'].
-        '"idcat="'.$row['id_cat'].'">'.$row['cat_name'].'</a></li>';
+             $out .='<li class="transition col s4 m4 l3 active"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].'"idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
          }else{
-             $out .='<li class="transition col s3 valign"><a href="'.BASEURLADM.$row['categories'].'?route='.$row['categories'].
-        '"idcat="'.$row['id_cat'].'">'.$row['cat_name'].'</a></li>';
+             $out .='<li class="transition col s4 m4 l3"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].
+        '"idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
          }
     }
      closeConnectionToDb($myconnect);
@@ -161,9 +154,6 @@ function showCatalog($mas){
 
 //загружает выбраный раздел картинок
 function showPhoto($mas){
-    var_dump( $mas);
-    var_dump( $url);
-    echo $res;
     //соединяюсь с базой
     $ress = $mas['categories'];
     $myconnect = connectToDb();
@@ -171,17 +161,12 @@ function showPhoto($mas){
     $num = 5;  
     // Извлекаем из URL текущую страницу  
     $page = $_GET['page'];  
-    $showPhoto = $_POST['showPhoto'];  
-    echo $ress;
-    if($ress){ 
-    $sql0 = "SELECT * FROM categories_db WHERE cat_name = '$ress'" ;
+    $showPhoto = $_POST['showPhoto'];
+    if($ress){
+    $sql0 = "SELECT * FROM categories_db WHERE categories = '$ress'" ;
             $result = mysqli_query($myconnect, $sql0);
             while($row = mysqli_fetch_assoc($result)) {
-              $name_of = $row['categories']; 
-              $name_ofimg1920x1080 = $row['img1920x1080']; 
-              $name_ofimg1024x768 = $row['img1024x768']; 
-              $name_ofimg960x800 = $row['img960x800']; 
-              $name_ofimg600x800 = $row['img600x800']; 
+              $name_of = $row['categories'];
             };
         
     };
@@ -206,11 +191,8 @@ function showPhoto($mas){
         $result2 = mysqli_query($myconnect, $sql2);
         while ( $postrow[] = mysqli_fetch_array($result2));
     
-            
-    
-    
         echo '<div class="row" id="imgContent">';
-        for($i = 0; $i < $num; $i++){  
+        for($i = 0; $i < $num; $i++){ 
             if ($postrow[$i] != ''){
               if($postrow[$i]['img1920x1080'] and $postrow[$i]['img1920x1080'] != ''){
                 
@@ -283,17 +265,17 @@ function showPhoto($mas){
         
         
     // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURLADM.'?page=1><<</a>  
-                                   <a href= '.BASEURLADM.'?page='. ($page - 1) .'><</a> ';  
+    if ($page != 1) $pervpage = '<a href='.'?page=1><<</a>  
+                                   <a href= '.'?page='. ($page - 1) .'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURLADM.'?page='. ($page + 1) .'>></a>  
-                                       <a href='.BASEURLADM.$ress.'?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a href='.'?page='. ($page + 1) .'>></a>  
+                                       <a href='.$ress.'?page='.$total. '>>></a>';  
 
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURLADM.'?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURLADM.'?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURLADM.'?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURLADM.'?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a href='.'?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.'?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.'?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.'?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
 
     
     // Вывод меню
@@ -322,8 +304,8 @@ function removeCat(){
         $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            if($row['cat_name'] == $showCatalogVal){
-            $sql2 = "SELECT * FROM categories_db WHERE `cat_name` = '$showCatalogVal'" ;
+            if($row['id_cat'] == $showCatalogVal){
+            $sql2 = "SELECT * FROM categories_db WHERE `id_cat` = '$showCatalogVal'" ;
              $result2 = mysqli_query($myconnect, $sql2);    
               while($row2 = mysqli_fetch_assoc($result2)) {
                   $catt = $row2['categories'];

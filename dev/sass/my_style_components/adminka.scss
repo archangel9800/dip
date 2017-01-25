@@ -7,12 +7,21 @@
         margin-top: 1vh;
         background-color: rgba(0, 0, 0, 0.6);
          border-radius: 5px;
+            position: relative;
             &:hover{
                 background-color: rgba(0,0,0,0.7);
                 -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
                 -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
                 box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
                 }
+    
+             
+                        .logout{
+                            display: block;
+                            position: absolute;
+                            right: 10px;
+                            top: 5px;
+                        } 
             .admin_login {
                     .lines {
                           @media all and (orientation:landscape) {
@@ -49,7 +58,7 @@
                           }
                           @media all and (orientation:portrait) {
                                   margin-top: 2vw;
-                          } 
+                          }  
                     }
                     
                     .btn{
@@ -76,6 +85,7 @@
         height: auto;
         min-height: 85vh;
         .add_remove_catalog_img{
+             
                 p{
                         display: block;
                         color: #fff59d;
@@ -153,10 +163,12 @@
             
             .list_cat_bl{
                 ul{
+                    height: 100%;
+                    margin: 0;
                     li{
+                        
                         height: 100%;
                         border-bottom: 1px solid transparent;
-                        padding: 0.8vh 0.8vw 0.8vh 0.8vw;
                         text-align: center;
                         &:hover{
                                 background-color: rgba(48,90,196,0.3);
@@ -167,20 +179,14 @@
                         a{
                             text-decoration: none;
                             color: white;
-                            display: block;
                             width: 100%;
                             height: 100%;
-                            @include text-mix(
-                                /*<400*/    3.4vw,
-                                /*400-500*/ 3vw,
-                                /*500-600*/ 2.6vw,
-                                /*600-768*/ 1.6vw,
-                                /*768-800*/ 1.5vw,
-                                /*800-900*/ 1.4vw,
-                                /*900-992*/ 1.3vw,
-                               /*992-1200*/ 1.2vw,
-                                /*>1200*/   1vw
-                            );     
+                            text-align: center;
+                                span{
+                                    display: block;
+                                    width: 100%;
+                                    text-align: center;
+                                }
                         }
                     }
                     .active{
