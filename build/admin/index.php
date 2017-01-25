@@ -1,7 +1,5 @@
 <?php
 require_once '../functions.php';
-$route = $_GET['route'];
-$masA = getArticleAdm($route);
 //echo  substr(strrchr("qwerty/dfg", "/"), 1);
 
 ?>
@@ -11,7 +9,7 @@ $masA = getArticleAdm($route);
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	 <link rel="shortcut icon" href="../img/icons/favicon.png" type="image/png">
-	<title><?php echo $mas['cat_name']?></title>
+	<title><?php echo $masA['cat_name']?></title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/materialize.css"  media="screen,projection"/>
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>

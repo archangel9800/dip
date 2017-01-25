@@ -14,12 +14,12 @@
                     <div class="input-field col s6">
                         <select  onchange="window.location.href=this.options[this.selectedIndex].value" class="list average_text">
                           <option class="average_text" value="" disabled selected>Выберите альбом</option>
-                          <?php echo showCatalog($masA); ?>
+                          <?php echo showCatalog($mas); ?>
                         </select>
                   </div>
                 <button id="rem_cat" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Удалить папку</button>
               </div>
-          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление каталога, удаление изображений и добавление изображений</p>
+          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление каталога, удаление изображений и добавление изображений (Макс. 20 за раз)</p>
               <form enctype="multipart/form-data" method="POST" class="row col s10 m12 l11 offset-s1  offset-l1 down_block">
                         <div class="file-field input-field">
                           <div class="btn">
@@ -38,7 +38,7 @@
               <p class="row col s10 m12 l11 offset-s1 offset-l1" id="info"></p>
         </div>
       <div class="remove_image col s12 m12 l6">
-           <?php echo showPhoto($masA);?>
+           <?php echo showPhoto($mas);?>
       </div>
 	
 

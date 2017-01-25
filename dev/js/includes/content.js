@@ -11,18 +11,14 @@ $("body").on('click','#content #imgContent .for_hight2 img',oneImg);
             ifSuccess
               );
                 function ifSuccess(data){
-//                        console.log(data);  
                             $("#content #imgContent").html(data);
-                    
-           
-                    
-                    
                 };
-            
-       
-       
             }; 
  
+    
+
+
+    
    
 };
 

@@ -1,7 +1,7 @@
     #content{
         padding: 15px 15px 15px 15px;
         height: auto;
-        min-height: 85vh;
+//        min-height: 85vh;
         width: 90vw;
         margin: 0 auto;
         margin-top: 1vh;
@@ -67,10 +67,6 @@
                                 -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
                                 -o-background-size: cover; /* Opera 9.6+ */
                             }
-//                                .img_wrap {
-//                                    position: relative;
-//                                    height: 100%;
-//                                    width: 100%;
                                         a{
                                             position: absolute;
                                             top: 0;
@@ -91,29 +87,34 @@
         
         
         #oneImg{
-           height: 82vh;
             width: 100%;
             padding: 0;
             margin: 0;
-            @media (max-width: 992px){
-                                height: 60vh;
-                                }
+            height: auto;           
             .img_show{
                 overflow: hidden;
                 height: 100%;
                 float: left;
                     @media (max-width: 992px){
                                 float: none;
+                                height: 94%;
                                 }
                 .in_img{
                     width: auto;
                     height: 100%;
                     .valign {
+                         height: 100%;
                         margin: 0 auto;
+                        .material-placeholder{
+                            height: 100%;
+                            
                             img{
                                 height: auto;
                                 width: 100%;
-                            }  
+                                text-align: center;
+                            }
+                        }
+                              
                     }
                      
                 }
@@ -127,12 +128,18 @@
                     color: #fff59d;
                 }
                 a{
-                    display: block;
+                    float: left;
                     color:fuchsia;
                     @media (max-width: 992px){
                                 height: auto;
                                 display: inline-block;
                                 }
+                    &:hover{
+                       background-color: rgba(48,90,196,1);
+                        -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                        -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                        box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                    }
                 }  
             }
         }

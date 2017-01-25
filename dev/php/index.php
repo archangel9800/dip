@@ -1,8 +1,8 @@
 <?php
 require_once '/functions.php';
-$route = $_GET['route'];
-
-$mas = getArticle($route);
+$url = $_GET['route'];
+$urlSegments = explode('/', $url);
+$mas = getArticle($urlSegments);
 //echo $route; 
 ?>
 <!DOCTYPE html>

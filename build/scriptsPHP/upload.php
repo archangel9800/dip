@@ -75,7 +75,8 @@ function image_resize($src, $dst, $width, $height, $crop=0){
 
 //print_r($_FILES);
 $catName = $_POST['catName'];
-$aboutImg = $_POST['aboutImg'];
+$aboutImg  = preg_replace ('/[^\p{L}0-9 ]/iu','',$_POST['aboutImg']);
+
 $dir = '../tmp/';
   if( ! is_dir( $dir ) ) mkdir( $dir, 0777 );  
     $list = scandir($dir);

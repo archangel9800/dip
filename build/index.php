@@ -1,8 +1,8 @@
 <?php
 require_once '/functions.php';
-$route = $_GET['route'];
-
-$mas = getArticle($route);
+$url = $_GET['route'];
+$urlSegments = explode('/', $url);
+$mas = getArticle($urlSegments);
 //echo $route; 
 ?>
 <!DOCTYPE html>
@@ -141,10 +141,10 @@ $mas = getArticle($route);
   </div>
   <div class="col s9 m7 l4 push-s3 row transition search valign-wrapper">
         <div class="input-field col s8 m8 l8">
-          <input id="serch_field" type="text" placeholder="Например BMW" class="validate average_text">
+          <input id="search_field" type="text" placeholder="Например BMW" class="validate average_text">
         </div>
         <div class="btn-block col s4 valign">
-             <button class="btn waves-effect waves-light average_text" type="submit" name="action">Найти
+             <button id="search_btn" class="btn waves-effect waves-light average_text" type="submit" name="action">Найти
              </button>
         </div>
       </div>
@@ -152,52 +152,10 @@ $mas = getArticle($route);
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	<section id="content" class="adaptive_container transition">
      
-     
-<!--
-     <div id="block404" class="row">
-         <p class="big_text col s4 offset-s4">404</p>
-         <p class="big_text col s4 offset-s4">Page not found!</p>
-     </div>
--->
+
      <?php echo getAll($mas); ?>
 
-<!--
-         <div class="row" id="imgContent">       
-        <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                 <a href="#"></a>
-                 <img style="background-image: url('img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png');">
-                </div>
-            </div>
-          </div>
-      </div>
--->
-     
-     
-     
-     
-<!--
-      <div class="row" id="imgContent">       
-        <div class="col s12 m4 l3 image_gallery">
-            <div class="for_hight">
-                <div class="for_hight2">
-                    <div class="img_wrap">
-                        <img class="img_block" src="img/img/Material_Design_Wallpaper_WALLPAPERDNA (1).png">
-                    </div>
-                </div>
-            </div>
-          </div>
-      </div>
--->
 
-      
-
-      
-      
-      
-      
-      
       <div class="row transition" id="registr">
         <p class="fill_inp average_text">Заполните поля для регистрации</p>
         <div class="row lines col s11 offset-s1 offset-m1 offset-l1 valign-wrapper">

@@ -8,9 +8,6 @@ function adminka(){
       }); 
     
   
-
-        
-        
 //    вводим логин и закрываем форму входа
     function closeloginBlock(){
          $.post(
@@ -58,12 +55,7 @@ $("body").on('click','#adminka .login_btn',sendLogin);
        
             }; 
      
- 
 
-  
-    
-    
-    
     
 //    Добавляем каталог
     $("body").on('click',"#adminka #btn_add_cat", add_catalog); 
@@ -98,10 +90,7 @@ $("body").on('click','#adminka .login_btn',sendLogin);
 //                        function ifSuccess2(data){
 //                            $("#adminka .select-wrapper .list").html(data);
 //                        };
-                        
-                        
-                        
-                        
+
                         
                         location.reload(true);
                        
@@ -177,7 +166,10 @@ var error = '';
         if($('#adminka #file').val() == '' || $("#adminka .remove_cat_bl ul .active").text() == '' || $aboutImg == '') {               
                error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
                $('#info').html(error);
-            } else {  
+            } else if($('#adminka #file').files.length > 5){
+                error = error + 'Слишком много картинок!'; 
+               $('#info').html(error);
+            }else{  
         
         
     jQuery.each($('#adminka #file')[0].files, function(i, file) {
@@ -298,18 +290,14 @@ $("body").on('click','#content #imgContent .for_hight2 img',oneImg);
             ifSuccess
               );
                 function ifSuccess(data){
-//                        console.log(data);  
                             $("#content #imgContent").html(data);
-                    
-           
-                    
-                    
                 };
-            
-       
-       
             }; 
  
+    
+
+
+    
    
 };
 
@@ -461,8 +449,31 @@ function transition(){
 
 
 
-   //делает выбраный жанр активным
-//activBtn("#genre_w .genre");
+
+
+
+
+$("body").on('click','#genre_w #search_btn',search); 
+    function search(){
+   $searchVal = $('#genre_w #search_field').val();
+        if($searchVal == ''){
+            $('#genre_w #search_field').attr('placeholder','Введите здесь чтонибуть!')
+        } else {
+                  $.post(
+            "./functions.php",{
+            "searchVal": $searchVal,   
+            "action": "search",     
+            },
+            ifSuccess
+              );
+                function ifSuccess(data){
+                            $("#content").html(data);
+                };  
+        };
+        
+        
+
+            }; 
 
 function headerFunc(){
 
@@ -531,7 +542,7 @@ adminka();
     
     menuFunc();
     $(window).resize(menuFunc);
-
+    
     contentFunc();
     $(window).resize(contentFunc);
     

@@ -16,7 +16,7 @@ adminka();
     
     menuFunc();
     $(window).resize(menuFunc);
-
+    
     contentFunc();
     $(window).resize(contentFunc);
     
