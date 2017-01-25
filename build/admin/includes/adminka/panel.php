@@ -1,5 +1,5 @@
 <?php
-$url = $_GET['routeadm'];
+$url = $_GET['route'];
 $urlSegments = explode('/', $url);
 $mas = getArticle($urlSegments);
 //var_dump($_GET['route']);
