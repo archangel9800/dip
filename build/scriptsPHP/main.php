@@ -20,7 +20,7 @@ function getSliderImg(){
             if ($row['img1920x1080'] != ''){
             $out .=
             '<div class="swiper-slide img_wrap">
-                    <img src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
+                    <img alt="'.$row['about'].'" src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
                 </div>';
             }
         };
@@ -94,9 +94,9 @@ function getAll($mas){
             <div class="for_hight">
                
                  <a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080"></a>
-                 <img numberimg="'.$row['id'].'" style="background-image: url('."'"
+                 <div numberimg="'.$row['id'].'" style="background-image: url('."'"
                 .$row['img1920x1080']."'".
-                ');">
+                ');"></div>
                 
             </div>
           </div>');
@@ -127,7 +127,7 @@ function getAll($mas){
           <div class="col s12 m12 l10 img_show">
              <div class="in_img valign-wrapper">
                  <div class="valign">
-                      <img class="materialboxed forOneImg" alt="#" src="'.BASEURL.$row[$size].'">
+                      <img alt="'.$row['about'].'"  class="materialboxed forOneImg" alt="#" src="'.BASEURL.$row[$size].'">
                  </div>
              </div>
           </div>
@@ -161,9 +161,9 @@ function getAll($mas){
                 <div class="for_hight">
                     
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
-                     <img numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                     <div numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
                     .$postrow[$i]['img1920x1080']."'".
-                    ');">
+                    ');"></div>
                    
                 </div>
               </div>');
@@ -202,28 +202,6 @@ closeConnectionToDb($myconnect);
 
 
 
-
-//Загрузка одной картинки с разрешениями
-function oneImg(){
-   $oneImg = $_POST['oneImg'];
-//    echo $oneImg;   
-    $myconnect = connectToDb();
-    $sql = "SELECT * FROM images_db WHERE id = $oneImg" ;
-        $result = mysqli_query($myconnect, $sql);
-        while($row = mysqli_fetch_assoc($result)) {
-            $page = '';
-            $fh = fopen('./includes/oneImg.php','r') or die($php_errormsg);
-            while (! feof($fh)) {
-            $page .= fread($fh,1048576);
-            }
-            fclose($fh);
-        };
-     closeConnectionToDb($myconnect);
-    echo $page;
-
-       
-};
-
 //Поиск на главной
 function search(){
     $num = 12;  
@@ -256,9 +234,9 @@ function search(){
                 <div class="for_hight">
                     <div class="for_hight2">
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
-                     <img numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                     <div numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
                     .$postrow[$i]['img1920x1080']."'".
-                    ');">
+                    ');"></div>
                     </div>
                 </div>
               </div>');

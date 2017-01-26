@@ -166,9 +166,9 @@ function showPhoto($mas){
 
                     <div class="for_hight2">
 
-                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
                     .$postrow[$i]['img1920x1080']."'".
-                    ');">
+                    ');"></div>
                     </div>
                 </div>
               </div>'; 
@@ -182,9 +182,9 @@ function showPhoto($mas){
 
                     <div class="for_hight2">
 
-                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
                     .$postrow[$i]['img1024x768']."'".
-                    ');">
+                    ');"></div>
                     </div>
                 </div>
               </div>'; 
@@ -198,9 +198,9 @@ function showPhoto($mas){
 
                     <div class="for_hight2">
 
-                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
                     .$postrow[$i]['img960x800']."'".
-                    ');">
+                    ');"></div>
                     </div>
                 </div>
               </div>'; 
@@ -214,9 +214,9 @@ function showPhoto($mas){
 
                     <div class="for_hight2">
 
-                     <img class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
                     .$postrow[$i]['img600x800']."'".
-                    ');">
+                    ');"></div>
                     </div>
                 </div>
               </div>'; 

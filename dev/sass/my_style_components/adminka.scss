@@ -393,7 +393,7 @@
                             .material-placeholder{
                                 height: 100%;
                             }
-                            img{
+                            div{
                                 border: 1px solid lightgrey;        
                                 height: 100%;
                                 width: 100%;
@@ -407,14 +407,7 @@
                                 border-image-width: 0;
                             }
 
-                                        a{
-                                            position: absolute;
-                                            top: 0;
-                                            right: 0;
-                                            bottom: 0;
-                                            left: 0;
-                                            z-index: 1;
-                                        }
+                                      
    
                         }
                         
