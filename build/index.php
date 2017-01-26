@@ -1,5 +1,5 @@
 <?php
-require_once '/functions.php';
+require_once 'functions.php';
 $url = $_GET['route'];
 $urlSegments = explode('/', $url);
 $mas = getArticle($urlSegments);

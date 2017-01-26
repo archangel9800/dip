@@ -92,12 +92,12 @@ function getAll($mas){
             if ($row['img1920x1080'] != ''){
             echo ('<div class="col s12 m4 l3 image_gallery transition">
             <div class="for_hight">
-                <div class="for_hight2">
+               
                  <a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080"></a>
                  <img numberimg="'.$row['id'].'" style="background-image: url('."'"
                 .$row['img1920x1080']."'".
                 ');">
-                </div>
+                
             </div>
           </div>');
             };
@@ -159,12 +159,12 @@ function getAll($mas){
             if ($postrow[$i] != ''){
                 echo ('<div class="col s12 m4 l3 image_gallery transition">
                 <div class="for_hight">
-                    <div class="for_hight2">
+                    
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
                      <img numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
                     .$postrow[$i]['img1920x1080']."'".
                     ');">
-                    </div>
+                   
                 </div>
               </div>');
             };

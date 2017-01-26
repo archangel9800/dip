@@ -121,7 +121,7 @@ function addCat(){
 //                Создаем директорию и БД
                 $path = "img/img/categories/$for_addres_str";
                  mkdir ($path, 0777);
-              $sql2 =  "INSERT INTO `colorfull`.`categories_db` (`id_cat`, `categories`, `cat_name`, `info`) VALUES (NULL, '$for_addres_str', '$inp_add_cat_val', '')";
+              $sql2 =  "INSERT INTO `categories_db` (`id_cat`, `categories`, `cat_name`, `info`) VALUES (NULL, '$for_addres_str', '$inp_add_cat_val', '')";
                mysqli_query($myconnect, $sql2); 
             };    
         };

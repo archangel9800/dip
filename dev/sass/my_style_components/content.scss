@@ -52,21 +52,28 @@
                         position: relative;
                         padding-top: 60%;
                         height: 0;
-                        .for_hight2 {
-                                    position: absolute;
-                                    top: 0;
-                                    right: 0;
-                                    bottom: 0;
-                                    left: 0;
-                            img{
-                                height: 100%;
-                                width: 100%;
-                                background-repeat: no-repeat;
-                                background-size: cover;
-                                -moz-background-size: cover; /* Firefox 3.6+ */
-                                -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
-                                -o-background-size: cover; /* Opera 9.6+ */
-                            }
+//                        .for_hight2 {
+//                                    position: absolute;
+//                                    top: 0;
+//                                    right: 0;
+//                                    bottom: 0;
+//                                    left: 0;
+                                        img{
+                                            display: block;
+                                            position: absolute;
+                                            border: 1px solid lightgrey; 
+                                            top: 0;
+                                            right: 0;
+                                            bottom: 0;
+                                            left: 0;
+                                            height: 100%;
+                                            width: 100%;
+                                            background-repeat: no-repeat;
+                                            background-size: cover;
+                                            -moz-background-size: cover; /* Firefox 3.6+ */
+                                            -webkit-background-size: cover; /* Safari 3.1+ и Chrome 4.0+ */
+                                            -o-background-size: cover; /* Opera 9.6+ */
+                                        }
                                         a{
                                             position: absolute;
                                             top: 0;
@@ -77,7 +84,7 @@
                                         }
    
 //                                }
-                        }
+//                        }
                  }   
                 
             }

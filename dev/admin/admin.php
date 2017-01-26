@@ -1,5 +1,5 @@
 <?php
-require_once '../functions.php';
+require_once './../functions.php';
 require "auth.php";
 $url = $_GET['route'];
 $urlSegments = explode('/', $url);

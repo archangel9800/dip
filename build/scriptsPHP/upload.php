@@ -116,7 +116,7 @@ if($_FILES){
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
                   image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=0);
                   
-                  $sql2 =  "INSERT INTO `colorfull`.`images_db` 
+                  $sql2 =  "INSERT INTO `images_db` 
                   (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`, `name`) VALUES 
                   (NULL, '$url', '$img1920x1080', '$img1024x768', '$img960x800', '$img600x800', '$aboutImg', '$filename')";
                    mysqli_query($myconnect, $sql2); 
