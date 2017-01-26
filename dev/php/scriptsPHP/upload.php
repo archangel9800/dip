@@ -1,10 +1,6 @@
 <?php
-require_once 'config.php';
+require_once 'config/config.php';
 require_once 'connect.php';
-//                  chmod('../img/img/categories', 777);
-//                  chmod('../img/img', 777);
-//                  chmod('../img', 777);
-//                  chmod('../tmp', 777);
 
 function cleanDir($dir) {
     $files = glob($dir."/*");
