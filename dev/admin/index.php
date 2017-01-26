@@ -4,18 +4,11 @@ session_start();
 if($_SESSION['admin']){
 	header("Location: admin.php");
 	exit;
-}
-
-$admin = 'admin';
-$pass = 'admin';
+};
 
 if($_POST['submit']){
-	if($admin == $_POST['user'] AND $pass == $_POST['pass']){
-		$_SESSION['admin'] = $admin;
-		header("Location: admin.php");
-		exit;
-	}else header("Location: index.php");
-}
+    checkUser($_POST['user'],$_POST['pass']);   
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +39,10 @@ if($_POST['submit']){
           <input value="Войти" class="login_btn col s2 m2 l2 offset-s5 offset-m5 offset-l5 btn waves-effect waves-light average_text" type="submit" name="submit">
      </form>
     </div>
-</section>cript type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
+</section>
+    <script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/functions.js"></script>	
 </body>
-</html>
+</html>	

@@ -176,7 +176,6 @@ function getAll($mas){
     // Проверяем нужны ли стрелки вперед  
     if ($page != $total) $nextpage = ' <a href='.BASEURL.$ress.'?page='.($page + 1).'>></a>  
                                        <a href='.BASEURL.$ress.'?page='.$total. '>>></a>';  
-
     // Находим две ближайшие станицы с обоих краев, если они есть  
     if($page - 2 > 0) $page2left = ' <a href='.BASEURL.$ress.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
     if($page - 1 > 0) $page1left = '<a href='.BASEURL.$ress.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
@@ -225,7 +224,7 @@ function oneImg(){
        
 };
 
-
+//Поиск на главной
 function search(){
     $num = 12;  
     $myconnect = connectToDb();

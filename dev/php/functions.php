@@ -3,6 +3,7 @@
     require_once '/scriptsPHP/connect.php';
     require_once '/scriptsPHP/main.php';    
     require_once '/scriptsPHP/adminka.php';
+    require_once '/scriptsPHP/check.php';
     
 //$cntrName =  (empty($urlSegments[0])) ? 'main' : $urlSegments[0];
 //$actionName = (empty($urlSegments[1])) ? 'action_index' : 'action_'.$urlSegments[1];    

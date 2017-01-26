@@ -7,54 +7,6 @@ function adminka(){
         backgroundColor:  'transparent !important',
       }); 
     
-  
-//    вводим логин и закрываем форму входа
-//    function closeloginBlock(){
-//         $.post(
-//                "../functions.php",{
-//                "action": "cookie", 
-//                },
-//                ifSuccess
-//            );
-//                function ifSuccess(data){
-//                    if(data){
-//                        $("#adminka #add_remove").html(data);
-////                        $('body').html(data);
-//                        $('#adminka select').material_select(); 
-//                        
-//                    }
-//                        
-//                };
-//        };
-//   closeloginBlock();      
-//$("body").on('click','#adminka .login_btn',sendLogin); 
-//   function sendLogin(){
-//        $.post(
-//            "../functions.php",{
-//            "login": $("#adminka .admin_login #login").val(),   
-//            "password": $("#adminka .admin_login #password").val(),
-//            "action": "login",     
-//            },
-//            ifSuccess
-//              );
-//                function ifSuccess(data){
-//                    if(data == 'error'){
-//                        
-//                    }else{
-//                            $("#adminka #add_remove").html(data);
-////                                $('body').html(data);
-//                    };
-//           
-//                    //инициализация выпадающих списков
-//                    $('#adminka select').material_select(); 
-//                    
-//                    
-//                };
-//            
-//       
-//       
-//            }; 
-     
 
     
 //    Добавляем каталог
@@ -100,32 +52,8 @@ function adminka(){
         }   
 }
   
-//// Показываем фото
-//     $("body").on('change','#adminka .remove_cat_bl select', showPhoto); 
-//    function showPhoto(){
-//        $showPhoto = $("#adminka .remove_cat_bl ul .active").text();;
-//             $.post(
-//                "../functions.php",{
-//                "showPhoto": $showPhoto,
-//                "action": "show", 
-//                },
-//                ifSuccess
-//            );
-//        function ifSuccess(data){
-//                    $("#adminka .remove_image").html(data);
-//                    $('.materialboxed').materialbox();
-//                }
-//        
-//    }
-//    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     
 //Удаляем каталог   
     $("body").on('click','#adminka #rem_cat', removeCat); 
@@ -244,16 +172,7 @@ if (error != '') {
        
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         
