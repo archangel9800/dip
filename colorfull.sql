@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Янв 26 2017 г., 21:22
+-- Время создания: Янв 26 2017 г., 22:49
 -- Версия сервера: 5.7.11
 -- Версия PHP: 5.6.19
 
@@ -230,12 +230,12 @@ ALTER TABLE `users_db`
 -- AUTO_INCREMENT для таблицы `categories_db`
 --
 ALTER TABLE `categories_db`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT для таблицы `images_db`
 --
 ALTER TABLE `images_db`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 --
 -- AUTO_INCREMENT для таблицы `users_db`
 --
