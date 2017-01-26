@@ -173,12 +173,21 @@
                         }
             
             .list_cat_bl{
+                margin-bottom: 0;
                 ul{
                     height: 100%;
                     margin: 0;
                     li{
-                        
-                        height: 100%;
+                         @media all and (orientation:landscape) {
+                                            margin-bottom: 1vh;
+                                            margin-top: 1vh;
+                                            height: 2.3vw;
+                                  }
+                                  @media all and (orientation:portrait) {
+                                           margin-bottom: 1vw;
+                                          margin-top: 1vw;
+                                          height: 2.3vh; 
+                                  } 
                         border-bottom: 1px solid transparent;
                         text-align: center;
                         &:hover{
@@ -273,37 +282,50 @@
                                 }
                             }
                         }
-                #add_about{
-                    color: white;
-                     @media all and (orientation:landscape) {
-                                            height: 2.3vw;
-                                  }
-                                  @media all and (orientation:portrait) {
-                                          height: 2.3vh; 
-                                  } 
-                }
                 
                 
                 
                 
-                
-            }
-                            
-                .btn{
-                            padding: 0;
-                            height: 2.3vw; 
-                            line-height: 0;
-                                 @media all and (orientation:landscape) {
-                                            height: 2.3vw; 
-                                            margin-bottom: 2vh;
-                                            margin-top: 2vh;  
-                                  }
-                                  @media all and (orientation:portrait) {
-                                          height: 2.3vh; 
-                                          margin-bottom: 2vw;
-                                          margin-top: 2vw;
-                                  } 
+                 .about-field{ 
+                     position: relative;
+                         @media all and (orientation:landscape) {
+                                                height: 2.3vw; 
+                                                margin-bottom: 2vh;
+                                                margin-top: 2vh;  
+                                      }
+                                      @media all and (orientation:portrait) {
+                                              height: 2.3vh; 
+                                              margin-bottom: 2vw;
+                                              margin-top: 2vw;
+                                      } 
+                                #add_about{
+                                    position: absolute;
+                                    bottom: 0;
+                                    margin: 0;
+                                    color: white;
+                                     height: 100%;
+                                }
+
+
                             }
+           
+                        }
+                    .btn{
+                                padding: 0;
+                                height: 2.3vw; 
+                                line-height: 0;
+                                     @media all and (orientation:landscape) {
+                                                height: 2.3vw; 
+                                                margin-bottom: 2vh;
+                                                margin-top: 2vh;  
+                                      }
+                                      @media all and (orientation:portrait) {
+                                              height: 2.3vh; 
+                                              margin-bottom: 2vw;
+                                              margin-top: 2vw;
+                                      } 
+                                }
+                
             }
     }
     .remove_image{

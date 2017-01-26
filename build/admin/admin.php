@@ -32,13 +32,13 @@ $mas = getArticle($urlSegments);
                 <button id="btn_add_cat" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Добавить папку</button>
               </div>
             <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Выберите одну из папок для удаления и добавления папки и фото</p>
-           <div class="row col s12 m11 l11 offset-s0 offset-m1 offset-l1 lines list_cat_bl">
-                         <ul class="categories_chose col s12 row valign-wrapper">
+           <div class="row col s12 m11 l11 offset-s0 offset-m1 offset-l1 list_cat_bl">
+                         <ul class="categories_chose col s12 row">
                               <?php echo showCatalog($mas);?>
                          </ul>
               </div>
               <button id="rem_cat" class="col s4 m4 l4 offset-s4 offset-m4 offset-l4 btn waves-effect waves-light average_text" type="submit" name="action">Удалить папку</button>
-          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление каталога, удаление изображений и добавление изображений (Макс. 20 за раз)</p>
+          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление каталога, удаление изображений и добавление изображений</p>
               <form enctype="multipart/form-data" method="POST" class="row col s10 m12 l11 offset-s1  offset-l1 down_block">
                         <div class="file-field input-field">
                           <div class="btn">
@@ -49,10 +49,10 @@ $mas = getArticle($urlSegments);
                             <input class="file-path validate average_text" type="text" placeholder="1920x1080 (обяз.)">
                           </div>
                         </div>
-                            <div class="input-field col s6">
+                            <div class="input-field about-field col s6">
                               <input id="add_about" placeholder="О фотографии, например горы (обяз.)" type="text" class="validate average_text">
                             </div>
-                        <button id="btn_add_img" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
+                        <button id="btn_add_img" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
               </form>
               <p class="row col s10 m12 l11 offset-s1 offset-l1" id="info"></p>
         </div>

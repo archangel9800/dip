@@ -16,44 +16,7 @@ switch ( $_POST['action'] )
         remOneImg();
         break;
 }
-//
-//function cookie(){
-//    $myconnect = connectToDb();
-//    $sql = "SELECT * FROM users_db" ;
-//        $result = mysqli_query($myconnect, $sql);
-//        while($row = mysqli_fetch_assoc($result)) {
-//            if (isset($_COOKIE[$row['user']])) {  
-//                $inc = require_once 'admin/includes/adminka/panel.php';
-//        } else{
-//               $inc = require_once 'admin/includes/adminka/login.php';
-//            }
-//        };
-//     closeConnectionToDb($myconnect);
-//    return $inc;
-//    
-//};
-//
-//
-//function login(){ 
-//  $login = $_POST['login'];
-//  $password = $_POST['password'];
-////  echo($login.' '.$password);    
-//    $myconnect = connectToDb();
-//    $sql = "SELECT * FROM users_db" ;
-//        $result = mysqli_query($myconnect, $sql);
-//        while($row = mysqli_fetch_assoc($result)) {
-//            if($row['user'] == $login and  $row['password'] == $password){ SetCookie($row['user'],$row['password'],time()+660);
-//              $inc = require_once 'admin/includes/adminka/panel.php';
-//                
-//              return $inc; 
-//                                                                          
-//            }else{
-//                echo "error";
-//            };
-//        };
-//     closeConnectionToDb($myconnect);
-//
-//};
+
 
 
 
