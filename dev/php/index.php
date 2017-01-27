@@ -16,7 +16,7 @@ $mas = getArticle($urlSegments);
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
-
+<div id="main_wrapper">
 
 	<!--#insert file="includes/-header.php"-->
 	<!--#insert file="includes/-menu.php"-->
@@ -25,7 +25,7 @@ $mas = getArticle($urlSegments);
 	<!--#insert file="includes/-footer.php"-->
 	
 	
-	
+</div>	
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>

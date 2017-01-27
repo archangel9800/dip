@@ -66,32 +66,52 @@
 
 
 html {
-    background-color: #E6E6E6;
-//height: auto;
-//background:
-//	linear-gradient(
-//		cyan,
-//		transparent
-//	),
-//	linear-gradient(
-//		-45deg,
-//		magenta,
-//		transparent
-//	),
-//	linear-gradient(
-//		45deg,
-//		yellow,
-//		transparent
-//	);
-//background-blend-mode: multiply;
-//@media (max-width: 320px){
-//                background: none;
-//            }
+    
+        
 
 //Минимальные значения для боди и сброс стилей
     body{
+        
+        #main_wrapper{
+             padding-top: 1vh;
+            padding-bottom: 1vh;
+            min-height: 100vh;
+            
+            height: auto;
+                 background-color: #E6E6E6;
+   
+        -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+    
+
+//    max-height: 100vh;
+    background:
+        linear-gradient(
+            cyan,
+            transparent
+        ),
+        linear-gradient(
+            -45deg,
+            magenta,
+            transparent
+        ),
+        linear-gradient(
+            45deg,
+            yellow,
+            transparent
+        );
+    background-blend-mode: multiply;
+    @media (max-width: 320px){
+                background: none;
+            }
+        }
+        
+        
         min-width: 320px;
         min-height: 480px;
+        height: auto;
         a, p, div, section, h1, h2, h3, h4, h5{
             margin: 0;
             padding: 0;

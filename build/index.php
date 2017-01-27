@@ -16,7 +16,7 @@ $mas = getArticle($urlSegments);
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
-
+<div id="main_wrapper">
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container transition">
@@ -191,14 +191,14 @@ $mas = getArticle($urlSegments);
       
 </section>
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<section id="footer" class="adaptive_container transition">
+<section id="footer" class="adaptive_container transition valign-wrapper">
    
-    
+   <p class="valign average_text">2017, Ivan Levcovets</p> 
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	
 	
-	
+</div>	
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
