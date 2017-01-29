@@ -331,7 +331,7 @@
     .remove_image{
         min-height: inherit;
         height: inherit;
-        
+        padding-top: 2vh;
         #imgContent{
             display: block;
             height: 100%;
@@ -356,47 +356,47 @@
                         position: relative;
                         padding-top: 60%;
                         height: 0;
-                            .remove_btn{
-                            position: absolute;
-                            font-weight: bold;
-                            color: red;
-                            z-index: 2;
-                            top: 0;
-                            &:hover{
-                                    color: blue;
-                                }      
-                                 @media all and (orientation:landscape) {
-                                           right: 0.3vw;  
-                                  }
-                                  @media all and (orientation:portrait) {
-                                          right: 0.3vh;
-                                  } 
-                                    @include text-mix(
-                                    /*<400*/    2.5vw,
-                                    /*400-500*/ 2.4vw,
-                                    /*500-600*/ 2.2vw,
-                                    /*600-768*/ 1.9vw,
-                                    /*768-800*/ 1.7vw,
-                                    /*800-900*/ 1.5vw,
-                                    /*900-992*/ 1.4vw,
-                                   /*992-1200*/ 1.3vw,
-                                    /*>1200*/   1.2vw
-                                     );
-                            }
+//                            .remove_btn{
+//                            position: absolute;
+//                            font-weight: bold;
+//                            color: red;
+//                            z-index: 2;
+//                            top: 0;
+//                            &:hover{
+//                                    color: blue;
+//                                }      
+//                                 @media all and (orientation:landscape) {
+//                                           right: 0.3vw;  
+//                                  }
+//                                  @media all and (orientation:portrait) {
+//                                          right: 0.3vh;
+//                                  } 
+//                                    @include text-mix(
+//                                    /*<400*/    2.5vw,
+//                                    /*400-500*/ 2.4vw,
+//                                    /*500-600*/ 2.2vw,
+//                                    /*600-768*/ 1.9vw,
+//                                    /*768-800*/ 1.7vw,
+//                                    /*800-900*/ 1.5vw,
+//                                    /*900-992*/ 1.4vw,
+//                                   /*992-1200*/ 1.3vw,
+//                                    /*>1200*/   1.2vw
+//                                     );
+//                            }
 
-                        .for_hight2 {
-                                    position: absolute;
-                                    top: 0;
-                                    right: 0;
-                                    bottom: 0;
-                                    left: 0;
-                            .material-placeholder{
-                                height: 100%;
-                            }
+//                        .for_hight2 {
+//                                    position: absolute;
+//                                    top: 0;
+//                                    right: 0;
+//                                    bottom: 0;
+//                                    left: 0;
                             div{
-                                border: 1px solid lightgrey;        
-                                height: 100%;
-                                width: 100%;
+                                position: absolute;
+                                top: 0;
+                                right: 0;
+                                bottom: 0;
+                                left: 0;
+                                border: 1px solid lightgrey;  
                                 background-repeat: no-repeat;
                                 background-size: contain;
                                 -moz-background-size: contain; /* Firefox 3.6+ */
@@ -406,16 +406,116 @@
                                 outline: none;
                                 border-image-width: 0;
                             }
+                        a{
+                            position: absolute;
+                                top: 0;
+                                right: 0;
+                                bottom: 0;
+                                left: 0;
+                            z-index: 1;
+                        }
 
                                       
    
-                        }
+//                        }
                         
                  }   
                 
             }
             
         }
+         #oneImg{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            height: 88vh;
+            padding-top: 2vh; 
+                .img_show{
+                    overflow: hidden;
+                    height: 100%;
+                    float: left;
+                    padding: 0;
+                        @media (max-width: 992px){
+                                    float: none;
+                                    height: 94%;
+                                    }
+                    
+                .material-placeholder{
+//                    height: 100%;
+                    .in_img{
+                        width: auto;
+                        height: 100%;
+                        .valign {
+                             height: 100%;
+                            margin: 0 auto;
+
+                                .forOneImg{
+                                    height: 100%;
+                                    width: auto;
+                                    z-index: 25;
+                                    text-align: center;
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+                .proportions {
+                    padding: 0;
+                    float: right;
+                        @media (max-width: 992px){
+                                    float: none;
+                                    }
+                    p{
+                        color: #fff59d;
+                    }
+                    a{
+                        float: left;
+                        color:fuchsia;
+                        @media (max-width: 992px){
+                                    height: auto;
+                                    display: inline-block;
+                                    }
+                        &:hover{
+                           background-color: rgba(48,90,196,1);
+                            -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                            -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                            box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
+                        }
+                    }
+                    .remove_btn_adm{
+                                float: right;
+                                font-weight: bold;
+                                color: red;
+                                z-index: 2;
+                                top: 0;
+                                &:hover{
+                                        color: blue;
+                                    }      
+                                     @media all and (orientation:landscape) {
+                                               right: 0.3vw;  
+                                      }
+                                      @media all and (orientation:portrait) {
+                                              right: 0.3vh;
+                                      } 
+                                        @include text-mix(
+                                        /*<400*/    2.5vw,
+                                        /*400-500*/ 2.4vw,
+                                        /*500-600*/ 2.2vw,
+                                        /*600-768*/ 1.9vw,
+                                        /*768-800*/ 1.7vw,
+                                        /*800-900*/ 1.5vw,
+                                        /*900-992*/ 1.4vw,
+                                       /*992-1200*/ 1.3vw,
+                                        /*>1200*/   1.2vw
+                                         );
+                    }
+                }
+        }
+        
+        
     }
     
     

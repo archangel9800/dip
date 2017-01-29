@@ -1,4 +1,24 @@
 function adminka(){
+        if($("#adminka").length > 0){
+            if($('#adminka .remove_image .forOneImg').width() >= $('#adminka .remove_image .forOneImg').height()){
+               $('#adminka .remove_image .forOneImg').css({
+                   width: '100%',
+                   height: 'auto',
+            }); 
+                
+            } else{
+                $('#adminka .remove_image .forOneImg').css({
+                   width: 'auto',
+                   height: '86vh',
+            }); 
+               
+            } 
+        
+        
+    
+    }
+
+}
     if($("#adminka").length > 0){
     //инициализация выпадающих списков
         $('#adminka select').material_select();  
@@ -181,9 +201,9 @@ if (error != '') {
 
         
     
-      } 
-        
-        
+      
+
+
         
         
         
@@ -445,7 +465,7 @@ $(document).ready(function () {
 
 //скрипты админки   
 adminka();
-    
+$(window).resize(adminka);    
     
 //        setTimeout(centerImg, 200);
 //    $(window).resize(function(){

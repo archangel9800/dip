@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 //скрипты админки   
 adminka();
-    
+$(window).resize(adminka);    
     
 //        setTimeout(centerImg, 200);
 //    $(window).resize(function(){
