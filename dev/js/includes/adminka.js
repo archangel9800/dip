@@ -59,7 +59,7 @@ function adminka(){
     $("body").on('click','#adminka #rem_cat', removeCat); 
     function removeCat(event){
         event.preventDefault();
-        $showCatalogVal = $("#adminka .list_cat_bl ul .active a").attr('idcat');
+        $showCatalogVal = $("#adminka .list_cat_bl ul .active a").attr('data-idcat');
         if($showCatalogVal){
             
             $.post(
@@ -86,11 +86,11 @@ function adminka(){
     $("body").on('click','#adminka #btn_add_img', addImg);     
     function addImg(event){
         event.preventDefault();
-            $catName = $("#adminka .list_cat_bl ul .active a").attr('idcat');
+            $catName = $("#adminka .list_cat_bl ul .active a").attr('data-idcat');
             $aboutImg = $("#adminka #add_about").val();
             $dataaray = new FormData();
 var error = '';
-        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active a").attr('idcat') == '' || $aboutImg == '') {               
+        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active a").attr('data-idcat') == '' || $aboutImg == '') {               
                error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
                $('#info').html(error);
             } else{  
@@ -141,8 +141,8 @@ if (error != '') {
 //        Удаление одного изображения
             $("body").on('click','#adminka .remove_btn', remOneImg);
         function remOneImg(){    
-            $id = $(this).attr('numberimg');
-            $sizing = $(this).attr('sizing');
+            $id = $(this).attr('data-numberimg');
+            $sizing = $(this).attr('data-sizing');
             $dispNone = $(this).parent().parent();
             $.post(
                 "../functions.php",{

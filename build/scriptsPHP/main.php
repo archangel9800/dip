@@ -1,9 +1,7 @@
 <?php
 
 switch ( $_POST['action'] )
-{   case 'oneImg':
-        oneImg();
-        break;
+{   
     case 'search':
         search();
         break;
@@ -17,10 +15,11 @@ function getSliderImg(){
         $result = mysqli_query($myconnect, $sql);
         $out ='';
         while($row = mysqli_fetch_assoc($result)) {
+            $way = 'img/img/categories/'.$row['url'].'/';
             if ($row['img1920x1080'] != ''){
             $out .=
             '<div class="swiper-slide img_wrap">
-                    <img alt="'.$row['about'].'" src="'.BASEURL.$row['img1920x1080'].'" class="img_block">
+                    <img alt="'.$row['about'].'" src="'.BASEURL.$way.$row['img1920x1080'].'" class="img_block">
                 </div>';
             }
         };
@@ -89,13 +88,14 @@ function getAll($mas){
         $result2 = mysqli_query($myconnect, $sql2);
          echo '<div class="row" id="imgContent">'; 
         while($row = mysqli_fetch_assoc($result2)) {
+            $way = 'img/img/categories/'.$row['url'].'/';
             if ($row['img1920x1080'] != ''){
             echo ('<div class="col s12 m4 l3 image_gallery transition">
             <div class="for_hight">
                
                  <a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080"></a>
-                 <div numberimg="'.$row['id'].'" style="background-image: url('."'"
-                .$row['img1920x1080']."'".
+                 <div data-numberimg="'.$row['id'].'" style="background-image: url('."'"
+                .$way.$row['img1920x1080']."'".
                 ');"></div>
                 
             </div>
@@ -108,6 +108,7 @@ function getAll($mas){
         $sql2 = "SELECT * FROM `images_db` WHERE id = '$img'";
         $result2 = mysqli_query($myconnect, $sql2);
         while($row = mysqli_fetch_assoc($result2)) {
+             $way = 'img/img/categories/'.$row['url'].'/';
             echo '<div class="row" id="oneImg">
          <div class="col s12 m12 l2 proportions">
               <p class="average_text">Размеры:</p>';
@@ -127,7 +128,7 @@ function getAll($mas){
           <div class="col s12 m12 l10 img_show">
              <div class="in_img valign-wrapper">
                  <div class="valign">
-                      <img alt="'.$row['about'].'"  class="materialboxed forOneImg" alt="#" src="'.BASEURL.$row[$size].'">
+                      <img alt="'.$row['about'].'"  class="materialboxed forOneImg" alt="#" src="'.BASEURL.$way.$row[$size].'">
                  </div>
              </div>
           </div>
@@ -155,14 +156,15 @@ function getAll($mas){
         $result2 = mysqli_query($myconnect, $sql2);  
         while ( $postrow[] = mysqli_fetch_array($result2));
         echo '<div class="row" id="imgContent">';
-        for($i = 0; $i < $num; $i++){  
+        for($i = 0; $i < $num; $i++){
+         $way = 'img/img/categories/'.$postrow[$i]['url'].'/';
             if ($postrow[$i] != ''){
                 echo ('<div class="col s12 m4 l3 image_gallery transition">
                 <div class="for_hight">
                     
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
-                     <div numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
-                    .$postrow[$i]['img1920x1080']."'".
+                     <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                    .$way.$postrow[$i]['img1920x1080']."'".
                     ');"></div>
                    
                 </div>
@@ -227,6 +229,7 @@ function search(){
         $sql2 = "SELECT * FROM `images_db` WHERE about LIKE '%$searchVal%' AND img1920x1080 != '' LIMIT $start, $num";
         $result2 = mysqli_query($myconnect, $sql2);  
         while ( $postrow[] = mysqli_fetch_array($result2));
+        $way = 'img/img/categories/'.$postrow[$i]['url'].'/';
         echo '<div class="row" id="imgContent">';
         for($i = 0; $i < $num; $i++){  
             if ($postrow[$i] != ''){
@@ -234,8 +237,8 @@ function search(){
                 <div class="for_hight">
                     <div class="for_hight2">
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
-                     <div numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
-                    .$postrow[$i]['img1920x1080']."'".
+                     <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                    .$way.$postrow[$i]['img1920x1080']."'".
                     ');"></div>
                     </div>
                 </div>

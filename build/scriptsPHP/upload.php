@@ -99,22 +99,29 @@ if($_FILES){
               while($row = mysqli_fetch_assoc($result)) {
 //                  echo $row['categories'];
                   $filename = uniqid();
+                  $filename2 = uniqid();
+                  $filename3 = uniqid();
                   $url = $row['categories'];
-                  $dest = 'img/img/categories/'.$row['categories'];
+                 $dest = 'img/img/categories/'.$url.'/';
                   
-                 $img960x800 = $dest.'/img960x800'.$filename.$valType;       
-                 $img1024x768 = $dest.'/img1024x768'.$filename.$valType;         $img600x800 = $dest.'/img600x800'.$filename.$valType;
-                 $img1920x1080 = $dest.'/img1920x1080'.$filename.$valType;
+                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;       
+                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType;         $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType;
+                 $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
                   
-                  
-                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
+                        image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
                   image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
                   image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=0);
                   
+                  
+                  
+                 $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
+                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;
+                 $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
+                  
                   $sql2 =  "INSERT INTO `images_db` 
-                  (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`, `name`) VALUES 
-                  (NULL, '$url', '$img1920x1080', '$img1024x768', '$img960x800', '$img600x800', '$aboutImg', '$filename')";
+                  (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`) VALUES 
+                  (NULL, '$url', '$img1920x1080Bd', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$aboutImg')";
                    mysqli_query($myconnect, $sql2); 
                   
               };

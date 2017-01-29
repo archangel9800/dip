@@ -103,10 +103,10 @@ function showCatalog($mas){
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
          if ($row['categories'] == $mas['categories']){
-             $out .='<li class="transition col s4 m4 l3 active"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].'"idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
+             $out .='<li class="transition col s4 m4 l3 active"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].'"data-idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
          }else{
              $out .='<li class="transition col s4 m4 l3"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].
-        '"idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
+        '"data-idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
          }
     }
      closeConnectionToDb($myconnect);
@@ -122,6 +122,7 @@ function showPhoto($mas){
     $myconnect = connectToDb();
     // Переменная хранит число сообщений выводимых на станице  
     $num = 5;  
+   
     // Извлекаем из URL текущую страницу  
     $page = $_GET['page'];  
     $showPhoto = $_POST['showPhoto'];
@@ -156,17 +157,18 @@ function showPhoto($mas){
     
         echo '<div class="row" id="imgContent">';
         for($i = 0; $i < $num; $i++){ 
+         $way = 'img/img/categories/'.$postrow[$i]['url'].'/';
             if ($postrow[$i] != ''){
               if($postrow[$i]['img1920x1080'] and $postrow[$i]['img1920x1080'] != ''){
                 
                     echo '<div class="col s12 m4 l3 image_gallery transition">
                     <p class="img_size average_text">1920x1080</p>
                 <div class="for_hight">
-                <p class="remove_btn" sizing="img1920x1080" numberimg="'.$postrow[$i]['id'].'">×</p>
+                <p class="remove_btn" data-sizing="img1920x1080" data-numberimg="'.$postrow[$i]['id'].'">×</p>
 
                     <div class="for_hight2">
 
-                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
                     .$postrow[$i]['img1920x1080']."'".
                     ');"></div>
                     </div>
@@ -178,11 +180,11 @@ function showPhoto($mas){
                     echo '<div class="col s12 m4 l3 image_gallery transition">
                     <p class="img_size average_text">1024x768</p>
                 <div class="for_hight">
-                <p class="remove_btn" sizing="img1024x768" numberimg="'.$postrow[$i]['id'].'">×</p>
+                <p class="remove_btn" data-sizing="img1024x768" data-numberimg="'.$postrow[$i]['id'].'">×</p>
 
                     <div class="for_hight2">
 
-                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
                     .$postrow[$i]['img1024x768']."'".
                     ');"></div>
                     </div>
@@ -194,11 +196,11 @@ function showPhoto($mas){
                     echo '<div class="col s12 m4 l3 image_gallery transition">
                     <p class="img_size average_text">960x800</p>
                 <div class="for_hight">
-                <p class="remove_btn" sizing="img960x800" numberimg="'.$postrow[$i]['id'].'">×</p>
+                <p class="remove_btn" data-sizing="img960x800" data-numberimg="'.$postrow[$i]['id'].'">×</p>
 
                     <div class="for_hight2">
 
-                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
                     .$postrow[$i]['img960x800']."'".
                     ');"></div>
                     </div>
@@ -210,11 +212,11 @@ function showPhoto($mas){
                     echo '<div class="col s12 m4 l3 image_gallery transition">
                     <p class="img_size average_text">600x800</p>
                 <div class="for_hight">
-                <p class="remove_btn" sizing="img600x800" numberimg="'.$postrow[$i]['id'].'">×</p>
+                <p class="remove_btn" data-sizing="img600x800" data-numberimg="'.$postrow[$i]['id'].'">×</p>
 
                     <div class="for_hight2">
 
-                     <div class="materialboxed" numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../"
+                     <div class="materialboxed" data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
                     .$postrow[$i]['img600x800']."'".
                     ');"></div>
                     </div>
@@ -300,7 +302,8 @@ function remOneImg(){
     $sql = "SELECT * FROM images_db WHERE id = '$id'" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
-            $remFile = $row["$sizing"];
+            $way = 'img/img/categories/'.$row['url'].'/';
+            $remFile = $way.$row["$sizing"];
             unlink($remFile);  
            $sql2 = "UPDATE `images_db` SET `$sizing`= '' WHERE id = '$id'";
             mysqli_query($myconnect, $sql2); 
