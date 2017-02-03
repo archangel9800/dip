@@ -162,31 +162,41 @@ function showPhoto($mas){
         $result2 = mysqli_query($myconnect, $sql2);
         while($row = mysqli_fetch_assoc($result2)) {
              $way = 'img/img/categories/'.$row['url'].'/';
-            echo '<div class="row valign-wrapper" id="oneImg">
-         <div class="col s12 m12 l3 proportions valign row">
+           echo '<div class="col s12 m12 l12 proportions row">
               <p class="average_text">Размеры:</p>';
-              if(!empty($row['img1920x1080'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1920x1080" class="average_text"><span>|</span> 1920x1080 <span>|</span></a><span class="remove_btn_adm" data-sizing="img1920x1080" data-numberimg="'.$row['id'].'">×</span></div>';
+            
+            if(!empty($row['img2560x1600'])){
+                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img2560x1600" class="average_text"><span>|</span> 2560x1600 <span>| </span></a><span class="remove_btn_adm" data-sizing="img2560x1600" data-numberimg="'.$row['id'].'">×</span></div>';
                 };
+            
+            
+              if(!empty($row['img1920x1080'])){
+                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1920x1080" class="average_text"><span>|</span> 1920x1080 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1920x1080" data-numberimg="'.$row['id'].'">×</span></div>';
+                };
+            if(!empty($row['img1600x900'])){
+                 echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1600x900" class="average_text"><span>|</span> 1600x900 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1600x900" data-numberimg="'.$row['id'].'">×</span></div>'; 
+                  };
              if(!empty($row['img1024x768'])){
-                 echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1024x768" class="average_text"><span>|</span> 1024x768 <span>|</span></a><span class="remove_btn_adm" data-sizing="img1024x768" data-numberimg="'.$row['id'].'">×</span></div>'; 
+                 echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1024x768" class="average_text"><span>|</span> 1024x768 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1024x768" data-numberimg="'.$row['id'].'">×</span></div>'; 
                   };
              if(!empty($row['img960x800'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img960x800" class="average_text"><span>|</span> 960x800 <span>|</span></a><span class="remove_btn_adm" data-sizing="img960x800" data-numberimg="'.$row['id'].'">×</span></div>';
+                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img960x800" class="average_text"><span>|</span> 960x800 <span>| </span></a><span class="remove_btn_adm" data-sizing="img960x800" data-numberimg="'.$row['id'].'">×</span></div>';
              };
               if(!empty($row['img600x800'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img600x800" class="average_text"><span>|</span> 600x800 <span>|</span></a><span class="remove_btn_adm" data-sizing="img600x800" data-numberimg="'.$row['id'].'">×</span></div>'; 
+                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img600x800" class="average_text"><span>|</span> 600x800 <span>| </span></a><span class="remove_btn_adm" data-sizing="img600x800" data-numberimg="'.$row['id'].'">×</span></div>'; 
               };
-         echo '</div>
-          <div class="col s12 m12 l9 valign img_show">
-             <div class="in_img materialboxed valign-wrapper">
-                 <div class="valign">
-                      <img alt="'.$row['about'].'"  class="forOneImg" alt="#" src="'.BASEURL.$way.$row[$sizead].'">
+         echo '</div>';
+       if($row[$sizead]){     
+            echo '<div class="row col s12 m12 l12" id="oneImg">
+          <div class="col s12 m12 l12 valign img_show">
+             <div class="in_img materialboxed">
+                 <div class="valign-wrapper">
+                      <img alt="'.$row['about'].'"  class="forOneImg valign" alt="#" src="'.BASEURL.$way.$row[$sizead].'">
                  </div>
              </div>
-          </div>
-      </div>';
-            
+          </div>';
+       }
+      echo '</div>';    
         }          
     } else{
         $sql2 = "SELECT * FROM `images_db` WHERE url = '$name_of' LIMIT $start, $num";
@@ -198,12 +208,11 @@ function showPhoto($mas){
          $way = 'img/img/categories/'.$postrow[$i]['url'].'/';
            if ($postrow[$i] != ''){
               echo '<div class="col s12 m4 l3 image_gallery transition">
-                        <p class="img_size average_text">1920x1080</p>
                     <div class="for_hight">
                     
                         <a href="'.BASEURLADM.$postrow[$i]['url'].'?page='.$page.'&imgad='.$postrow[$i]['id'].'&sizead=img1920x1080"></a>    
                          <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
-                        .$postrow[$i]['img1920x1080']."'".
+                        .$postrow[$i]['img510x300']."'".
                         ');"></div>
                        
                     </div>
@@ -222,22 +231,22 @@ function showPhoto($mas){
             
                
           // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.'?page=1><<</a>  
-                                   <a href= '.'?page='. ($page - 1) .'><</a> ';  
+    if ($page != 1) $pervpage = '<a class="average_text" href='.'?page=1><<</a>  
+                                   <a class="average_text" href= '.'?page='. ($page - 1) .'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.'?page='. ($page + 1) .'>></a>  
-                                       <a href='.$ress.'?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a class="average_text" href='.'?page='. ($page + 1) .'>></a>  
+                                       <a class="average_text" href='.$ress.'?page='.$total. '>>></a>';  
 
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.'?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.'?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.'?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.'?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a class="average_text" href='.'?page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a class="average_text" href='.'?page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a class="average_text" href='.'?page='. ($page + 2) .'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a class="average_text" href='.'?page='. ($page + 1) .'>'. ($page + 1) .'</a>'; 
 
     
     // Вывод меню
     echo '<div id="pag_main">';    
-    echo $pervpage.$page2left.$page1left.'<b>';
+    echo $pervpage.$page2left.$page1left.'<b class="average_text">';
      if ($page1right != ''){
         echo $page;  
      };        
@@ -311,9 +320,12 @@ function remOneImg(){
     $sql3 = "SELECT * FROM images_db WHERE id = '$id'" ;
         $result3 = mysqli_query($myconnect, $sql3);
         while($row = mysqli_fetch_assoc($result3)) {
-            if($row['img1920x1080'] == '' and $row['img1024x768'] == '' and $row['img960x800'] == '' and $row['img600x800'] == ''){
+            if($row['img2560x1600'] == '' and $row['img1920x1080'] == '' and $row['img1600x900'] == '' and $row['img1024x768'] == '' and $row['img960x800'] == '' and $row['img600x800'] == ''){
                $sql4 = "DELETE FROM `images_db` WHERE `id` = '$id'";
-               mysqli_query($myconnect, $sql4); 
+                $remFile = $way.$row["img510x300"];
+                unlink($remFile);  
+               mysqli_query($myconnect, $sql4);
+                
             };  
         }; 
     

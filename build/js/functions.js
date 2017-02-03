@@ -9,7 +9,7 @@ function adminka(){
             } else{
                 $('#adminka .remove_image .forOneImg').css({
                    width: 'auto',
-                   height: '86vh',
+                   height: '75vh',
             }); 
                
             } 
@@ -144,7 +144,12 @@ if (error != '') {
             success: function(data){
                 $('#info').html(data);
                 event.preventDefault();
-                location.reload();
+                
+                setTimeout(function(){
+                        location.reload();
+                    }, 0);
+                
+                
             },
             beforeSend: function(data){
                 $("#btn_add_img").attr('disabled',true);
@@ -159,11 +164,11 @@ if (error != '') {
         
         
 //        Удаление одного изображения
-            $("body").on('click','#adminka .remove_btn', remOneImg);
+            $("body").on('click','#adminka .remove_btn_adm', remOneImg);
         function remOneImg(){    
             $id = $(this).attr('data-numberimg');
             $sizing = $(this).attr('data-sizing');
-            $dispNone = $(this).parent().parent();
+            $dispNone = $(this).parent();
             $.post(
                 "../functions.php",{
                 'id': $id,

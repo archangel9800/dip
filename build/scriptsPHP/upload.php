@@ -78,7 +78,8 @@ $dir = '../tmp/';
     $list = scandir($dir);
     unset($list[0],$list[1]);
 $i = 0;
-if($_FILES){
+$imgCount = count($_FILES, COUNT_RECURSIVE)/6;
+if($_FILES and $imgCount <= 10){
     $myconnect = connectToDb();
     foreach ($_FILES as $key => $value) {
         if ($value['size'] < 8000000 or $value['type'] == 'image/png' or $value['type'] == 'image/jpg' or !$value['type'] == 'image/gif' or $value['type'] == 'image/jpeg' ){
@@ -91,54 +92,102 @@ if($_FILES){
         
         $width = $picVal[0];
         $height = $picVal[1];
-        if($width == 1920 and $height == 1080 ){
+        $proportions = ($width/1.5) - $height;     
+        if($width <= 1920 and $height <= 1080 and $proportions > 0){
                     
 
         $sql = "SELECT * FROM categories_db WHERE `id_cat` = '$catName'";
              $result = mysqli_query($myconnect, $sql);    
               while($row = mysqli_fetch_assoc($result)) {
-//                  echo $row['categories'];
+                  $filename = uniqid();
+                  $filename2 = uniqid();
+                  $filename3 = uniqid();
+                  $url = $row['categories'];
+                  $dest = 'img/img/categories/'.$url.'/';
+                  
+                 $img510x300 = $dest.$filename.$filename2.$filename3.'img510x300'.$valType;  
+                 $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType; 
+                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;       
+                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType;  
+                 $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
+                  
+                  image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);                
+                  image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
+                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
+                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
+                  
+                 $img510x300Bd = $filename.$filename2.$filename3.'img510x300'.$valType;   
+                 $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;  
+                 $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
+                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      
+                 $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
+                  
+                  $sql2 =  "INSERT INTO `images_db` 
+                 (`id`, `url`, `img2560x1600`, `img1920x1080`, `img1600x900`, `img1024x768`, `img960x800`, `img600x800`, `img510x300`, `about`) VALUES 
+                 (NULL, '$url', '', '$img1920x1080Bd', '', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$img510x300Bd', '$aboutImg')";
+                   mysqli_query($myconnect, $sql2); 
+                  
+              };
+            cleanDir($dir);
+        
+        }else if($width <= 2560 and $width > 1920 and $height <= 1600 and $height > 1080 and $proportions > 0){
+        $sql = "SELECT * FROM categories_db WHERE `id_cat` = '$catName'";
+             $result = mysqli_query($myconnect, $sql);    
+              while($row = mysqli_fetch_assoc($result)) {
                   $filename = uniqid();
                   $filename2 = uniqid();
                   $filename3 = uniqid();
                   $url = $row['categories'];
                  $dest = 'img/img/categories/'.$url.'/';
                   
+                  
+                 $img510x300 = $dest.$filename.$filename2.$filename3.'img510x300'.$valType; 
+                 $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType; 
                  $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType;         $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType;
+                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType; 
+                 $img1600x900 = $dest.$filename.$filename2.$filename3.'img1600x900'.$valType; 
                  $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
+                 $img2560x1600 = $dest.$filename.$filename2.$filename3.'img2560x1600'.$valType;
                   
-                        image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
-                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);  
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
-                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=0);
+                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
+                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, '../'.$img1600x900, 1600, 900, $crop=1);
+                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
+                  image_resize($pic, '../'.$img2560x1600, 2560, 1600, $crop=1);
                   
-                  
-                  
+                 $img510x300Bd = $filename.$filename2.$filename3.'img510x300'.$valType;  
+                 $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;  
                  $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;
+                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      
+                 $img1600x900Bd = $filename.$filename2.$filename3.'img1600x900'.$valType;      
                  $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
+                 $img2560x1600Bd = $filename.$filename2.$filename3.'img2560x1600'.$valType;
                   
-                  $sql2 =  "INSERT INTO `images_db` 
-                  (`id`, `url`, `img1920x1080`, `img1024x768`, `img960x800`, `img600x800`, `about`) VALUES 
-                  (NULL, '$url', '$img1920x1080Bd', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$aboutImg')";
+                 $sql2 =  "INSERT INTO `images_db` 
+                 (`id`, `url`, `img2560x1600`, `img1920x1080`, `img1600x900`, `img1024x768`, `img960x800`, `img600x800`, `img510x300`, `about`) VALUES 
+                 (NULL, '$url', '$img2560x1600Bd', '$img1920x1080Bd', '$img1600x900Bd', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$img510x300Bd', '$aboutImg')";
                    mysqli_query($myconnect, $sql2); 
                   
               };
             cleanDir($dir);
        
             
-         
+           
         } else{
-          echo 'bad_size';  
+          echo 'Неправильное разрешение';  
         };
         $i++;
-            
+         
         }
     }
     closeConnectionToDb($myconnect);   
     
-}
+} else{
+  echo 'Файлов больше 10';  
+};
 
     
 

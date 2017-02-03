@@ -19,7 +19,7 @@ function getSliderImg(){
             if ($row['img1920x1080'] != ''){
             $out .=
             '<div class="swiper-slide img_wrap">
-                    <img alt="'.$row['about'].'" src="'.BASEURL.$way.$row['img1920x1080'].'" class="img_block">
+                    <img alt="'.$row['about'].'" src="'.BASEURL.$way.$row['img960x800'].'" class="img_block">
                 </div>';
             }
         };
@@ -95,7 +95,7 @@ function getAll($mas){
                
                  <a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080"></a>
                  <div data-numberimg="'.$row['id'].'" style="background-image: url('."'"
-                .$way.$row['img1920x1080']."'".
+                .$way.$row['img510x300']."'".
                 ');"></div>
                 
             </div>
@@ -112,9 +112,15 @@ function getAll($mas){
             echo '<div class="row" id="oneImg">
          <div class="col s12 m12 l2 proportions">
               <p class="average_text">Размеры:</p>';
-              if(!empty($row['img1920x1080'])){
+            if(!empty($row['img2560x1600'])){
+                echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img2560x1600" class="average_text"><span>|</span> 2560x1600 <span>|</span></a>';
+                };
+            if(!empty($row['img1920x1080'])){
                 echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080" class="average_text"><span>|</span> 1920x1080 <span>|</span></a>';
                 };
+            if(!empty($row['img1600x900'])){
+                 echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1600x900" class="average_text"><span>|</span> 1600x900 <span>|</span></a>'; 
+                  };
              if(!empty($row['img1024x768'])){
                  echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1024x768" class="average_text"><span>|</span> 1024x768 <span>|</span></a>'; 
                   };
@@ -164,7 +170,7 @@ function getAll($mas){
                     
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
                      <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
-                    .$way.$postrow[$i]['img1920x1080']."'".
+                    .$way.$postrow[$i]['img510x300']."'".
                     ');"></div>
                    
                 </div>
@@ -173,20 +179,20 @@ function getAll($mas){
         } ; 
         echo '</div>'; 
     // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURL.$ress.'?page=1><<</a>  
-                                   <a href= '.BASEURL.$ress.'?page='.($page - 1).'><</a> ';  
+    if ($page != 1) $pervpage = '<a class="average_text" href='.BASEURL.$ress.'?page=1><<</a>  
+                                   <a class="average_text" href= '.BASEURL.$ress.'?page='.($page - 1).'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURL.$ress.'?page='.($page + 1).'>></a>  
-                                       <a href='.BASEURL.$ress.'?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a class="average_text" href='.BASEURL.$ress.'?page='.($page + 1).'>></a>  
+                                       <a class="average_text" href='.BASEURL.$ress.'?page='.$total. '>>></a>';  
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.$ress.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURL.$ress.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.$ress.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.$ress.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a class="average_text" href='.BASEURL.$ress.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a class="average_text" href='.BASEURL.$ress.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a class="average_text" href='.BASEURL.$ress.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a class="average_text" href='.BASEURL.$ress.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
 
     // Вывод меню
     echo '<div id="pag_main">';    
-    echo $pervpage.$page2left.$page1left.'<b>';
+    echo $pervpage.$page2left.$page1left.'<b class="average_text">';
      if ($page1right != ''){
         echo $page;  
      };        
@@ -212,7 +218,6 @@ function search(){
      $sql = "SELECT COUNT(*) FROM `images_db` WHERE about LIKE '%$searchVal%' ORDER BY id DESC";
         $result = mysqli_query($myconnect, $sql); 
         $posts = mysqli_fetch_assoc($result); 
-    
         // Находим общее число страниц  
         $total = intval(($posts["COUNT(*)"] - 1) / $num) + 1;  
         // Определяем начало сообщений для текущей страницы  
@@ -226,19 +231,19 @@ function search(){
         // следует выводить сообщения  
         $start = $page * $num - $num;  
         // Выбираем $num сообщений начиная с номера $start  
-        $sql2 = "SELECT * FROM `images_db` WHERE about LIKE '%$searchVal%' AND img1920x1080 != '' LIMIT $start, $num";
+        $sql2 = "SELECT * FROM `images_db` WHERE about LIKE '%$searchVal%' AND img510x300 != '' LIMIT $start, $num";
         $result2 = mysqli_query($myconnect, $sql2);  
         while ( $postrow[] = mysqli_fetch_array($result2));
-        $way = 'img/img/categories/'.$postrow[$i]['url'].'/';
         echo '<div class="row" id="imgContent">';
         for($i = 0; $i < $num; $i++){  
+        $way = 'img/img/categories/'.$postrow[$i]['url'].'/';  
             if ($postrow[$i] != ''){
                 echo ('<div class="col s12 m4 l3 image_gallery transition">
                 <div class="for_hight">
                     <div class="for_hight2">
                      <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
                      <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
-                    .$way.$postrow[$i]['img1920x1080']."'".
+                    .$way.$postrow[$i]['img510x300']."'".
                     ');"></div>
                     </div>
                 </div>
@@ -247,17 +252,17 @@ function search(){
         } ; 
         echo '</div>'; 
     // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURL.$searchVal.'?page=1><<</a>  
-                                   <a href= '.BASEURL.$searchVal.'?page='.($page - 1).'><</a> ';  
+    if ($page != 1) $pervpage = '<a href='.BASEURL.'?page=1><<</a>  
+                                   <a href= '.BASEURL.'?page='.($page - 1).'><</a> ';  
     // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURL.$searchVal.'?page='.($page + 1).'>></a>  
-                                       <a href='.BASEURL.$searchVal.'?page='.$total. '>>></a>';  
+    if ($page != $total) $nextpage = ' <a href='.BASEURL.'?page='.($page + 1).'>></a>  
+                                       <a href='.BASEURL.'?page='.$total. '>>></a>';  
 
     // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.$searchVal.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURL.$searchVal.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.$searchVal.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.$searchVal.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
+    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.BASEURL.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
 
     // Вывод меню
     echo '<div id="pag_main">';    
