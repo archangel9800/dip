@@ -1,12 +1,5 @@
 <?php
 
-switch ( $_POST['action'] )
-{   
-    case 'search':
-        search();
-        break;
-}
-
 //загружает 10 случайных картинок для с лайдера
 function getSliderImg(){
       //соединяюсь с базой
@@ -35,7 +28,7 @@ function getGenres($mas){
     //соединяюсь с базой
 //    var_dump( $mas);
     $myconnect = connectToDb();
-    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
+    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' AND categories != 'search' " ;
     $result = mysqli_query($myconnect, $sql);
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
@@ -83,6 +76,69 @@ function getAll($mas){
              <img class="big_text col s4 offset-s4" src="'.BASEURL.'img/img/err.png" alt="Page not found">
            </div>';
         echo $out;
+    }else if($ress == 'search'){
+        
+    $num = 12;
+    $searchVal = preg_replace ('/[^\p{L}0-9 ]/iu','',$_GET['searchval']);
+     $sql = "SELECT COUNT(*) FROM `images_db` WHERE about LIKE '%$searchVal%' ORDER BY id DESC";
+        $result = mysqli_query($myconnect, $sql); 
+        $posts = mysqli_fetch_assoc($result); 
+        // Находим общее число страниц  
+        $total = intval(($posts["COUNT(*)"] - 1) / $num) + 1;  
+        // Определяем начало сообщений для текущей страницы  
+        $page = intval($page);  
+        // Если значение $page меньше единицы или отрицательно  
+        // переходим на первую страницу  
+        // А если слишком большое, то переходим на последнюю  
+        if(empty($page) or $page < 0) $page = 1;  
+          if($page > $total) $page = $total;  
+        // Вычисляем начиная к какого номера  
+        // следует выводить сообщения  
+        $start = $page * $num - $num;  
+        // Выбираем $num сообщений начиная с номера $start  
+        $sql2 = "SELECT * FROM `images_db` WHERE about LIKE '%$searchVal%' AND img510x300 != '' LIMIT $start, $num";
+        $result2 = mysqli_query($myconnect, $sql2);  
+        while ( $postrow[] = mysqli_fetch_array($result2));
+        echo '<div class="row" id="imgContent">';
+        for($i = 0; $i < $num; $i++){  
+        $way = 'img/img/categories/'.$postrow[$i]['url'].'/';  
+            if ($postrow[$i] != ''){
+                echo ('<div class="col s12 m4 l3 image_gallery transition">
+                <div class="for_hight">
+                    <div class="for_hight2">
+                     <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
+                     <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
+                    .$way.$postrow[$i]['img510x300']."'".
+                    ');"></div>
+                    </div>
+                </div>
+              </div>');
+            };
+        } ; 
+        echo '</div>'; 
+    // Проверяем нужны ли стрелки назад  
+    if ($page != 1) $pervpage = '<a href='.BASEURL.'search'.'?page=1'.'&searchval='.$searchVal.'><<</a>  
+                                   <a href= '.BASEURL.'search'.'?page='.($page - 1).'&searchval='.$searchVal.'><</a> ';  
+    // Проверяем нужны ли стрелки вперед  
+    if ($page != $total) $nextpage = ' <a href='.BASEURL.'search'.'?page='.($page + 1).'&searchval='.$searchVal.'>></a>  
+                                       <a href='.BASEURL.'search'.'?page='.$total.'&searchval='.$searchVal.'>>></a>';  
+
+    // Находим две ближайшие станицы с обоих краев, если они есть  
+    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.'search'.'?page='.($page - 2).'&searchval='.$searchVal.'>'.($page - 2) .'</a> | ';  
+    if($page - 1 > 0) $page1left = '<a href='.BASEURL.'search'.'?page='.($page - 1).'&searchval='.$searchVal.'>'.($page - 1) .'</a> | ';  
+    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.'search'.'?page='.($page + 2).'&searchval='.$searchVal.'>'. ($page + 2) .'</a>';  
+    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.'search'.'?page='.($page + 1).'&searchval='.$searchVal.'>'. ($page + 1) .'</a>'; 
+
+    // Вывод меню
+    echo '<div id="pag_main">';    
+    echo $pervpage.$page2left.$page1left.'<b>';
+     if ($page1right != ''){
+        echo $page;  
+     };        
+    echo '</b>'.$page1right.$page2right.$nextpage;      
+    echo '</div>'; 
+        
+        
     }else if($ress == 'main'){
         $sql2 = "SELECT * FROM `images_db` ORDER BY RAND() LIMIT 12";
         $result2 = mysqli_query($myconnect, $sql2);
@@ -205,78 +261,5 @@ closeConnectionToDb($myconnect);
 };
 
 
-
-
-
-
-
-//Поиск на главной
-function search(){
-    $num = 12;  
-    $myconnect = connectToDb();
-    $searchVal = preg_replace ('/[^\p{L}0-9 ]/iu','',$_POST['searchVal']);
-     $sql = "SELECT COUNT(*) FROM `images_db` WHERE about LIKE '%$searchVal%' ORDER BY id DESC";
-        $result = mysqli_query($myconnect, $sql); 
-        $posts = mysqli_fetch_assoc($result); 
-        // Находим общее число страниц  
-        $total = intval(($posts["COUNT(*)"] - 1) / $num) + 1;  
-        // Определяем начало сообщений для текущей страницы  
-        $page = intval($page);  
-        // Если значение $page меньше единицы или отрицательно  
-        // переходим на первую страницу  
-        // А если слишком большое, то переходим на последнюю  
-        if(empty($page) or $page < 0) $page = 1;  
-          if($page > $total) $page = $total;  
-        // Вычисляем начиная к какого номера  
-        // следует выводить сообщения  
-        $start = $page * $num - $num;  
-        // Выбираем $num сообщений начиная с номера $start  
-        $sql2 = "SELECT * FROM `images_db` WHERE about LIKE '%$searchVal%' AND img510x300 != '' LIMIT $start, $num";
-        $result2 = mysqli_query($myconnect, $sql2);  
-        while ( $postrow[] = mysqli_fetch_array($result2));
-        echo '<div class="row" id="imgContent">';
-        for($i = 0; $i < $num; $i++){  
-        $way = 'img/img/categories/'.$postrow[$i]['url'].'/';  
-            if ($postrow[$i] != ''){
-                echo ('<div class="col s12 m4 l3 image_gallery transition">
-                <div class="for_hight">
-                    <div class="for_hight2">
-                     <a href="'.BASEURL.$postrow[$i]['url'].'?page='.$page.'&img='.$postrow[$i]['id'].'&size=img1920x1080"></a>
-                     <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'"
-                    .$way.$postrow[$i]['img510x300']."'".
-                    ');"></div>
-                    </div>
-                </div>
-              </div>');
-            };
-        } ; 
-        echo '</div>'; 
-    // Проверяем нужны ли стрелки назад  
-    if ($page != 1) $pervpage = '<a href='.BASEURL.'?page=1><<</a>  
-                                   <a href= '.BASEURL.'?page='.($page - 1).'><</a> ';  
-    // Проверяем нужны ли стрелки вперед  
-    if ($page != $total) $nextpage = ' <a href='.BASEURL.'?page='.($page + 1).'>></a>  
-                                       <a href='.BASEURL.'?page='.$total. '>>></a>';  
-
-    // Находим две ближайшие станицы с обоих краев, если они есть  
-    if($page - 2 > 0) $page2left = ' <a href='.BASEURL.'?page='.($page - 2).'>'.($page - 2) .'</a> | ';  
-    if($page - 1 > 0) $page1left = '<a href='.BASEURL.'?page='.($page - 1).'>'.($page - 1) .'</a> | ';  
-    if($page + 2 <= $total) $page2right = ' | <a href='.BASEURL.'?page='.($page + 2).'>'. ($page + 2) .'</a>';  
-    if($page + 1 <= $total) $page1right = ' | <a href='.BASEURL.'?page='.($page + 1).'>'. ($page + 1) .'</a>'; 
-
-    // Вывод меню
-    echo '<div id="pag_main">';    
-    echo $pervpage.$page2left.$page1left.'<b>';
-     if ($page1right != ''){
-        echo $page;  
-     };        
-    echo '</b>'.$page1right.$page2right.$nextpage;      
-    echo '</div>';  
-    
-    
-    closeConnectionToDb($myconnect);
-    
-    
-}
 
 

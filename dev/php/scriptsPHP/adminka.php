@@ -98,7 +98,7 @@ function addCat(){
 function showCatalog($mas){
   //соединяюсь с базой
     $myconnect = connectToDb();
-    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
+    $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' AND categories != 'search' " ;
     $result = mysqli_query($myconnect, $sql);
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
@@ -274,7 +274,7 @@ function removeCat(){
   $showCatalogVal = $_POST['showCatalogVal'];   
     if($showCatalogVal){
         $myconnect = connectToDb();
-        $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' " ;
+        $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' AND categories != 'search' " ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
             if($row['id_cat'] == $showCatalogVal){

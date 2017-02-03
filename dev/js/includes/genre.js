@@ -8,18 +8,7 @@ $("body").on('click','#genre_w #search_btn',search);
         if($searchVal == ''){
             $('#genre_w #search_field').attr('placeholder','Введите здесь чтонибуть!')
         } else {
-                  $.post(
-            "./functions.php",{
-            "searchVal": $searchVal,   
-            "action": "search",     
-            },
-            ifSuccess
-              );
-                function ifSuccess(data){
-                            $("#content").html(data);
-                };  
+                    window.location = "/build/search?page=1&searchval="+$searchVal;
         };
         
-        
-
             }; 
