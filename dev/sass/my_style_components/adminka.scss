@@ -380,7 +380,35 @@
                         position: relative;
                         padding-top: 60%;
                         height: 0;
-
+                        .remove_btn_adm{
+                            position: absolute;
+                            right: 0;
+                            cursor: pointer;
+                                    font-weight: bold;
+                                    color: red;
+                                    z-index: 2;
+                                    top: 0;
+                                    &:hover{
+                                            color: blue;
+                                        }      
+                                         @media all and (orientation:landscape) {
+                                                   right: 0.3vw;  
+                                          }
+                                          @media all and (orientation:portrait) {
+                                                  right: 0.3vh;
+                                          } 
+                                            @include text-mix(
+                                            /*<400*/    2.5vw,
+                                            /*400-500*/ 2.4vw,
+                                            /*500-600*/ 2.2vw,
+                                            /*600-768*/ 1.9vw,
+                                            /*768-800*/ 1.7vw,
+                                            /*800-900*/ 1.5vw,
+                                            /*900-992*/ 1.4vw,
+                                           /*992-1200*/ 1.3vw,
+                                            /*>1200*/   1.2vw
+                                             );
+                        }
 
                             div{
                                 position: absolute;

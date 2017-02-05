@@ -145,9 +145,9 @@ if (error != '') {
                 $('#info').html(data);
                 event.preventDefault();
                 
-//                setTimeout(function(){
-//                        location.reload();
-//                    }, 0);
+                setTimeout(function(){
+                        location.reload();
+                    }, 0);
                 
                 
             },
@@ -169,6 +169,7 @@ if (error != '') {
             $id = $(this).attr('data-numberimg');
             $sizing = $(this).attr('data-sizing');
             $dispNone = $(this).parent();
+            $dispNoneAll = $(this).parent().parent();
             $.post(
                 "../functions.php",{
                 'id': $id,
@@ -183,6 +184,15 @@ if (error != '') {
                          if(data == 'del_img'){
                              $('#info').html('Удалено!');
                              $dispNone.css({
+                                display: 'none',
+                             });
+                             
+                             setTimeout(function(){
+                                    $('#info').html('');
+                            }, 1000);
+                         }else if(data == 'del_all_img'){
+                             $('#info').html('Удалено!');
+                             $dispNoneAll.css({
                                 display: 'none',
                              });
                              

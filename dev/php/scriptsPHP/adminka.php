@@ -94,7 +94,7 @@ function addCat(){
 
 
 function dropdownCatalog($mas){
-            if($mas['categories'] == ''){
+            if($mas['categories'] == '' or $mas['categories'] == 'main'){
             echo 'ВЫБЕРИТЕ РАЗДЕЛ';
         }else{
             echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['categories'].'</span>';
@@ -205,6 +205,7 @@ function showPhoto($mas){
       echo '</div>';    
         }          
     } else{
+                             
         $sql2 = "SELECT * FROM `images_db` WHERE url = '$name_of' LIMIT $start, $num";
         $result2 = mysqli_query($myconnect, $sql2);
         while ( $postrow[] = mysqli_fetch_array($result2));
@@ -215,7 +216,7 @@ function showPhoto($mas){
            if ($postrow[$i] != ''){
               echo '<div class="col s12 m4 l3 image_gallery transition">
                     <div class="for_hight">
-                    
+                        <span class="remove_btn_adm" data-numberimg="'.$postrow[$i]['id'].'">×</span>
                         <a href="'.BASEURLADM.$postrow[$i]['url'].'?page='.$page.'&imgad='.$postrow[$i]['id'].'&sizead=img1920x1080"></a>    
                          <div data-numberimg="'.$postrow[$i]['id'].'" style="background-image: url('."'../".$way
                         .$postrow[$i]['img510x300']."'".
@@ -228,14 +229,7 @@ function showPhoto($mas){
                 
     }    
                 
-                
-                
             
-                
-                
-//         <p class="remove_btn" data-sizing="img1920x1080" data-numberimg="'.$postrow[$i]['id'].'">×</p>    
-            
-               
           // Проверяем нужны ли стрелки назад  
     if ($page != 1) $pervpage = '<a class="average_text" href='.'?page=1><<</a>  
                                    <a class="average_text" href= '.'?page='. ($page - 1) .'><</a> ';  
@@ -336,35 +330,31 @@ function remOneImg(){
             };  
         }; 
     } else if($_POST['sizing'] == '' and $_POST['id'] != ''){
-        
-        $sql3 = "SELECT * FROM images_db WHERE id = '$id'" ;
-        $result3 = mysqli_query($myconnect, $sql3);
-        while($row = mysqli_fetch_assoc($result3)) {
-            
+        $sql9 = "SELECT * FROM images_db WHERE id = '$id'" ;
+        $result9 = mysqli_query($myconnect, $sql9);
+        while($row = mysqli_fetch_assoc($result9)) {
+          $way = 'img/img/categories/'.$row['url'].'/';
+          $sql8 = "SELECT `img2560x1600`,`img1920x1080`,`img1600x900`,`img1024x768`,`img960x800`,`img600x800`,`img510x300`FROM images_db WHERE id = '$id'";
+                $result8 = mysqli_query($myconnect, $sql8);
+            while($row = mysqli_fetch_assoc($result8)) {
+                 foreach ($row as $key => $value) {
+//                 echo $key.'=>'.$value.'<br />';
+                     if($value){
+                        $remFile = $way.$value; 
+                        unlink($remFile);
+                     } 
+                }
+            }
+        }
                $sql4 = "DELETE FROM `images_db` WHERE `id` = '$id'";
-                $remFile = $way.$row["img510x300"];
-                    unlink($remFile); 
-                $remFile = $way.$row["img600x800"];
-                    unlink($remFile);
-                $remFile = $way.$row["img960x800"];
-                    unlink($remFile);
-                $remFile = $way.$row["img1024x768"];
-                    unlink($remFile);
-                $remFile = $way.$row["img1600x900"];
-                    unlink($remFile);
-                $remFile = $way.$row["img1920x1080"];
-                    unlink($remFile);
-                $remFile = $way.$row["img2560x1600"];
-                    unlink($remFile);
-            
                mysqli_query($myconnect, $sql4);
-                
+                echo 'del_all_img';
              
         };
         
         
         
-    }
+    
     
     
 closeConnectionToDb($myconnect);
