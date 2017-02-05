@@ -87,6 +87,7 @@ $mas = getArticle($urlSegments);
 </section>
 <!--  !!!!!!!!!!END!!!!!!!!!!-->
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
+<!--
 <section id="menu" class="transition">
   <ul class="btn_menu">
     <li class="mobile_m menu_text transition">MENU</li>
@@ -99,6 +100,7 @@ $mas = getArticle($urlSegments);
    
     
 </section>
+-->
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 
 
@@ -113,11 +115,8 @@ $mas = getArticle($urlSegments);
 
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="genre_w" class="row adaptive_container transition valign-wrapper">
-  <div class="genre col s12 m8 l8 row transition valign">
-     <?php echo getGenres($mas); ?>
  
-  </div>
-  <div class="col s9 m7 l4 push-s3 row transition search valign-wrapper">
+   <div class="col s8 m6 l4 push-s2 push-m6 push-l8 row transition search valign-wrapper">
         <div class="input-field col s8 m8 l8">
           <input id="search_field" type="text" placeholder="Например BMW" class="validate average_text">
         </div>
@@ -126,6 +125,15 @@ $mas = getArticle($urlSegments);
              </button>
         </div>
       </div>
+ 
+  <div class="genre col s8 m5 l4 push-s4 pull-m6 pull-l4 row transition valign">
+   <a class="btn dropdown-button average_text" href="#!" data-activates="dropdown_cat"> <?php echo dropdownGenres($mas); ?><i class="average_text material-icons mdi-navigation-arrow-drop-down right">&#xE5C5;</i></a>
+      <ul id="dropdown_cat" class="transition dropdown-content">
+        <?php echo getGenres($mas); ?>
+      </ul>
+  </div>
+
+      
 </section>
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 	<section id="content" class="adaptive_container transition">

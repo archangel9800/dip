@@ -19,10 +19,91 @@
                 box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
                 }
     
+    
+    
     .genre{
          padding: 0px 5px 0px 0px;
          margin: 0;
          height: auto;
+        position: relative;
+            @media (max-width: 600px){
+                margin: 0.5vh 0 0.5vh 0;
+                }
+        .dropdown-button{
+            display: block;
+            box-shadow: none;
+            background-color: transparent;
+            color: #fff59d;
+            line-height: normal;
+            height: auto;
+            float: left;
+            &:hover{
+                                background-color: rgba(48,90,196,0.5);
+                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                            }
+            @media all and (orientation:portrait) {
+                        padding: 1vh 1.5vw 1vh 1.5vw;
+                    }
+                    @media all and (orientation:landscape){
+                        padding: 1vh 1.5vw 1vh 1.5vw;
+                    }
+            i{
+                margin-left: 1vh
+            }
+        }
+        #dropdown_cat{
+            border-radius: 5px;
+            top: 100% !important;
+            width: auto !important;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-top: 1vh;
+            border: 2px solid rgba(38, 166, 154, 0.5);   
+            &:hover{    
+                border: 2px solid rgb(38, 166, 154); 
+                background-color: rgba(0,0,0,0.7);
+                -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
+                -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
+                box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
+                }
+            li{
+                width: auto !important;
+                padding: 0;
+                width: 100% !important;
+                background-color: transparent !important;
+                a{
+                    width: 100% !important;
+                    color: #fff59d;
+                    border-bottom: 1px solid transparent;
+                            &:hover{
+                                background-color: rgba(48,90,196,0.5);
+                                color: #ff9800;
+                            }
+                      @media all and (orientation:portrait) {
+                          
+                            padding: 0.4vh 10.5vw 0.4vh 1.5vw;
+                        }
+                        @media all and (orientation:landscape) {
+                            
+                            padding: 1.5vh 10.5vw 1.5vh 1.5vw;
+                        }
+                }
+                .active{
+                        border-bottom: 1px solid #fff59d;
+                        background-color: rgba(48,90,196,0.7);
+                    color: #ff9800;
+                            &:hover{
+                                background-color: rgba(48,90,196,1);
+                            }
+                    }
+            }
+        }
+        
+        
+        
+        
+        
         div{
             padding: 0;
             a{
@@ -69,12 +150,19 @@
                             }
                     }
         }
+        
+        
     }
+    
+    
+    
     
     .search{
         margin: 0;
+        float: right;
           @media (max-width: 600px){
               margin-top:  1vw;
+              float: none;
           }
          
         .input-field{

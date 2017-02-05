@@ -20,13 +20,23 @@ function getSliderImg(){
     return $out;
 }
 
-
+function dropdownGenres($mas){
+    if($mas['categories'] == 'main' or $mas['categories'] == ''){
+        echo 'Выберите раздел';
+    }else if($mas['categories'] == 'search'){
+        echo 'Раздел: Результаты поиска '.$_GET['searchval'];
+    }else{
+        echo 'Раздел: '.$mas['categories'];
+    }
+    
+    
+}
 
 
 //Добавляет кнопки с категориями и делает одну активную
 function getGenres($mas){
     //соединяюсь с базой
-//    var_dump( $mas);
+//    var_dump( $mas['categories']);
     $myconnect = connectToDb();
     $sql = "SELECT * FROM categories_db WHERE categories != 404 AND categories != 'main' AND categories != 'search' " ;
     $result = mysqli_query($myconnect, $sql);
@@ -34,18 +44,18 @@ function getGenres($mas){
     while($row = mysqli_fetch_assoc($result)) {
         if ($row['categories'] == $mas['categories']){
              $out .=
-            '<div class="col s3 m3 l2 genres"><a class="active transition" href="'.BASEURL.
+            '<li class="col s3 m3 l2 genres"><a class="average_text active transition" href="'.BASEURL.
             $row['categories'].
             '">'
             .$row['cat_name'].
-            '</a></div>';
+            '</a></li>';
         }else{
         $out .=
-        '<div class="col s3 m3 l2 genres"><a class="transition"  href="'.BASEURL.
+        '<li class="col s3 m3 l2 genres"><a class="average_text transition"  href="'.BASEURL.
             $row['categories'].
             '">'
             .$row['cat_name'].
-            '</a></div>';
+            '</a></li>';
        }   
     }
      closeConnectionToDb($myconnect);
