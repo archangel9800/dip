@@ -313,6 +313,7 @@ function remOneImg(){
     $id = $_POST['id'];
     $sizing = $_POST['sizing'];
     $myconnect = connectToDb();
+    if($_POST['sizing'] != '' and $_POST['id'] != ''){
     $sql = "SELECT * FROM images_db WHERE id = '$id'" ;
         $result = mysqli_query($myconnect, $sql);
         while($row = mysqli_fetch_assoc($result)) {
@@ -334,6 +335,37 @@ function remOneImg(){
                 
             };  
         }; 
+    } else if($_POST['sizing'] == '' and $_POST['id'] != ''){
+        
+        $sql3 = "SELECT * FROM images_db WHERE id = '$id'" ;
+        $result3 = mysqli_query($myconnect, $sql3);
+        while($row = mysqli_fetch_assoc($result3)) {
+            
+               $sql4 = "DELETE FROM `images_db` WHERE `id` = '$id'";
+                $remFile = $way.$row["img510x300"];
+                    unlink($remFile); 
+                $remFile = $way.$row["img600x800"];
+                    unlink($remFile);
+                $remFile = $way.$row["img960x800"];
+                    unlink($remFile);
+                $remFile = $way.$row["img1024x768"];
+                    unlink($remFile);
+                $remFile = $way.$row["img1600x900"];
+                    unlink($remFile);
+                $remFile = $way.$row["img1920x1080"];
+                    unlink($remFile);
+                $remFile = $way.$row["img2560x1600"];
+                    unlink($remFile);
+            
+               mysqli_query($myconnect, $sql4);
+                
+             
+        };
+        
+        
+        
+    }
+    
     
 closeConnectionToDb($myconnect);
     

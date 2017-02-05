@@ -107,7 +107,8 @@ if($_FILES and $imgCount <= 10){
                   
                  $img510x300 = $dest.$filename.$filename2.$filename3.'img510x300'.$valType;  
                  $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType; 
-                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;       
+                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;
+                 $img1600x900 = $dest.$filename.$filename2.$filename3.'img1600x900'.$valType; 
                  $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType;  
                  $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
                   
@@ -115,17 +116,19 @@ if($_FILES and $imgCount <= 10){
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
                   image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
                   image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, '../'.$img1600x900, 1600, 900, $crop=1);
                   image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
                   
                  $img510x300Bd = $filename.$filename2.$filename3.'img510x300'.$valType;   
                  $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;  
                  $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      
+                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;
+                 $img1600x900Bd = $filename.$filename2.$filename3.'img1600x900'.$valType; 
                  $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
                   
                   $sql2 =  "INSERT INTO `images_db` 
                  (`id`, `url`, `img2560x1600`, `img1920x1080`, `img1600x900`, `img1024x768`, `img960x800`, `img600x800`, `img510x300`, `about`) VALUES 
-                 (NULL, '$url', '', '$img1920x1080Bd', '', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$img510x300Bd', '$aboutImg')";
+                 (NULL, '$url', '', '$img1920x1080Bd', '$img1600x900Bd', '$img1024x768Bd', '$img960x800Bd', '$img600x800Bd', '$img510x300Bd', '$aboutImg')";
                    mysqli_query($myconnect, $sql2); 
                   
               };

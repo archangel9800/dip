@@ -79,7 +79,7 @@ function adminka(){
     $("body").on('click','#adminka #rem_cat', removeCat); 
     function removeCat(event){
         event.preventDefault();
-        $showCatalogVal = $("#adminka .list_cat_bl ul .active a").attr('data-idcat');
+        $showCatalogVal = $("#adminka .list_cat_bl ul .active").attr('data-idcat');
         if($showCatalogVal){
             
             $.post(
@@ -106,11 +106,11 @@ function adminka(){
     $("body").on('click','#adminka #btn_add_img', addImg);     
     function addImg(event){
         event.preventDefault();
-            $catName = $("#adminka .list_cat_bl ul .active a").attr('data-idcat');
+            $catName = $("#adminka .list_cat_bl ul .active").attr('data-idcat');
             $aboutImg = $("#adminka #add_about").val();
             $dataaray = new FormData();
 var error = '';
-        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active a").attr('data-idcat') == '' || $aboutImg == '') {               
+        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active").attr('data-idcat') == '' || $aboutImg == '') {               
                error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
                $('#info').html(error);
             } else{  
@@ -145,9 +145,9 @@ if (error != '') {
                 $('#info').html(data);
                 event.preventDefault();
                 
-                setTimeout(function(){
-                        location.reload();
-                    }, 0);
+//                setTimeout(function(){
+//                        location.reload();
+//                    }, 0);
                 
                 
             },

@@ -48,7 +48,7 @@ $mas = getArticle($urlSegments);
                             <input id="file" name="file[]" type="file" class="average_text" multiple>
                           </div>
                           <div class="file-path-wrapper">
-                            <input class="file-path validate average_text" type="text" placeholder="не бльше 2560x1600 и широкий формат">
+                            <input class="file-path validate average_text" type="text" placeholder="Не бльше 2560x1600, 10 шт. и широкий формат">
                           </div>
                         </div>
                             <div class="input-field about-field col s6">
