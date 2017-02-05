@@ -21,24 +21,26 @@ $mas = getArticle($urlSegments);
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
+<div id="main_wrapper">
 <section id="adminka" class="adaptive_container transition">
     <div id="add_remove" class="row">
 	  <div  class="add_remove_catalog_img col s12 m8 l6 offset-m2">
-          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Добавление каталога</p>
+          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Добавление раздела</p>
               <div class="row col s11 m11 l11 offset-s1 offset-m1 offset-l1 lines">
                 <div class="input-field col s6">
                   <input id="add_cat" placeholder="Название каталога" type="text" class="validate average_text">
                 </div>
-                <button id="btn_add_cat" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Добавить папку</button>
+                <button id="btn_add_cat" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Добавить раздел</button>
               </div>
-            <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Выберите одну из папок для удаления и добавления папки и фото</p>
-           <div class="row col s12 m11 l11 offset-s0 offset-m1 offset-l1 list_cat_bl">
-                         <ul class="categories_chose col s12 row">
-                              <?php echo showCatalog($mas);?>
-                         </ul>
+            <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Выберите один из разделов для удаления и добавления раздела и фото</p>
+           <div class="row col s6 m6 l6 offset-s1 offset-m1 offset-l1 list_cat_bl">
+            <a class="btn dropdown-button average_text" href="#!" data-activates="dropdown_cat_adm"> <?php echo dropdownCatalog($mas); ?><i class="average_text material-icons mdi-navigation-arrow-drop-down right">&#xE5C5;</i></a>
+              <ul id="dropdown_cat_adm" class="transition dropdown-content">
+                <?php echo showCatalog($mas); ?>
+              </ul>            
               </div>
-              <button id="rem_cat" class="col s4 m4 l4 offset-s4 offset-m4 offset-l4 btn waves-effect waves-light average_text" type="submit" name="action">Удалить папку</button>
-          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление каталога, удаление изображений и добавление изображений</p>
+              <button id="rem_cat" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Удалить раздел</button>
+          <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление изображений и добавление изображений</p>
               <form enctype="multipart/form-data" method="POST" class="row col s10 m12 l11 offset-s1  offset-l1 down_block">
                         <div class="file-field input-field">
                           <div class="btn">
@@ -61,7 +63,9 @@ $mas = getArticle($urlSegments);
       </div>	
     </div>
      <a class="logout average_text" href="admin.php?do=logout">Выход</a>
+     
 </section>
+</div>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>

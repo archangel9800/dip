@@ -21,13 +21,14 @@ function getSliderImg(){
 }
 
 function dropdownGenres($mas){
-    if($mas['categories'] == 'main' or $mas['categories'] == ''){
-        echo 'Выберите раздел';
-    }else if($mas['categories'] == 'search'){
-        echo 'Раздел: Результаты поиска '.$_GET['searchval'];
-    }else{
-        echo 'Раздел: '.$mas['categories'];
-    }
+            if($mas['categories'] == 'main' or $mas['categories'] == ''){
+            echo 'ВЫБЕРИТЕ РЗДЕЛ';
+        }else if($mas['categories'] == 'search'){
+            echo 'РАЗДЕЛ: Результаты поиска <span class="yellow_text">'.$_GET['searchval'].'</span>';
+        }else{
+            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['categories'].'</span>';
+        }
+    
     
     
 }

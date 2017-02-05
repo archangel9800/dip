@@ -7,10 +7,12 @@
         width: 90vw;
         margin: 0 auto;
         margin-top: 1vh;
-        background-color: rgba(0, 0, 0, 0.6);
          border-radius: 5px;
             position: relative;
+            border: 2px solid rgba(38, 166, 154, 0.6);  
+            background-color: rgba(0, 0, 0, 0.6);
             &:hover{
+                 border: 2px solid rgb(38, 166, 154);  
                 background-color: rgba(0,0,0,0.7);
                 -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
                 -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.6);
@@ -174,56 +176,80 @@
             
             .list_cat_bl{
                 margin-bottom: 0;
-                ul{
-                    height: 100%;
-                    margin: 0;
-                    li{
-                         @media all and (orientation:landscape) {
-                                            margin-bottom: 1vh;
-                                            margin-top: 1vh;
-                                            height: 2.3vw;
-                                  }
-                                  @media all and (orientation:portrait) {
-                                           margin-bottom: 1vw;
-                                          margin-top: 1vw;
-                                          height: 2.3vh; 
-                                  } 
-                        border-bottom: 1px solid transparent;
-                        text-align: center;
-                        &:hover{
-                                background-color: rgba(48,90,196,0.3);
-                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
-                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
-                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.3);
+                position: relative;
+                .dropdown-button{
+            text-transform: none;       
+            display: block;
+            box-shadow: none;
+            background-color: transparent;
+            color: #fff59d;
+            line-height: normal;
+            height: auto;
+            float: left;
+            &:hover{
+                                background-color: rgba(48,90,196,0.5);
+                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
                             }
-                        a{
-                            text-decoration: none;
-                            color: white;
-                            width: 100%;
-                            height: 100%;
-                            text-align: center;
-                                span{
-                                    display: block;
-                                    width: 100%;
-                                    text-align: center;
-                                }
-                        }
+            @media all and (orientation:portrait) {
+                        padding: 1vh 1.5vw 1vh 1.5vw;
                     }
-                    .active{
+                    @media all and (orientation:landscape){
+                        padding: 1vh 1.5vw 1vh 1.5vw;
+                    }
+            i{
+                margin-left: 1vh
+            }
+        }
+        #dropdown_cat_adm{
+            max-height: 50vh;
+            border-radius: 5px;
+            top: 75% !important;
+            width: auto !important;
+            background-color: rgba(0, 0, 0, 0.6);
+            margin-top: 1vh;
+            border: 2px solid rgba(38, 166, 154, 0.5);   
+            &:hover{    
+                border: 2px solid rgb(38, 166, 154); 
+                background-color: rgba(0,0,0,0.8);
+                -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
+                -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
+                box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
+                }
+            li{
+                width: auto !important;
+                padding: 0;
+                width: 100% !important;
+                background-color: transparent !important;
+                a{
+                    width: 100% !important;
+                    color: #fff59d;
+                    border-bottom: 1px solid transparent;
+                            &:hover{
+                                background-color: rgba(48,90,196,0.5);
+                                color: #ff9800;
+                            }
+                      @media all and (orientation:portrait) {
+                          
+                            padding: 0.4vh 10.5vw 0.4vh 1.5vw;
+                        }
+                        @media all and (orientation:landscape) {
+                            
+                            padding: 1.5vh 10.5vw 1.5vh 1.5vw;
+                        }
+                }
+                .active{
                         border-bottom: 1px solid #fff59d;
-                        background-color: rgba(48,90,196,0.6);
-                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
-                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
-                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.6);
+                        background-color: rgba(48,90,196,0.7);
+                    color: #ff9800;
                             &:hover{
                                 background-color: rgba(48,90,196,1);
-                                -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
-                                -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
-                                box-shadow: 0px 0px 9px 4px rgba(48,90,196,1);
                             }
                     }
-                    
+            }
                 }
+                
             } 
             
             
@@ -354,40 +380,8 @@
                         position: relative;
                         padding-top: 60%;
                         height: 0;
-//                            .remove_btn{
-//                            position: absolute;
-//                            font-weight: bold;
-//                            color: red;
-//                            z-index: 2;
-//                            top: 0;
-//                            &:hover{
-//                                    color: blue;
-//                                }      
-//                                 @media all and (orientation:landscape) {
-//                                           right: 0.3vw;  
-//                                  }
-//                                  @media all and (orientation:portrait) {
-//                                          right: 0.3vh;
-//                                  } 
-//                                    @include text-mix(
-//                                    /*<400*/    2.5vw,
-//                                    /*400-500*/ 2.4vw,
-//                                    /*500-600*/ 2.2vw,
-//                                    /*600-768*/ 1.9vw,
-//                                    /*768-800*/ 1.7vw,
-//                                    /*800-900*/ 1.5vw,
-//                                    /*900-992*/ 1.4vw,
-//                                   /*992-1200*/ 1.3vw,
-//                                    /*>1200*/   1.2vw
-//                                     );
-//                            }
 
-//                        .for_hight2 {
-//                                    position: absolute;
-//                                    top: 0;
-//                                    right: 0;
-//                                    bottom: 0;
-//                                    left: 0;
+
                             div{
                                 position: absolute;
                                 top: 0;

@@ -93,7 +93,13 @@ function addCat(){
 
 
 
-
+function dropdownCatalog($mas){
+            if($mas['categories'] == ''){
+            echo 'ВЫБЕРИТЕ РАЗДЕЛ';
+        }else{
+            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['categories'].'</span>';
+        }
+}
 //вывод списка каталогов
 function showCatalog($mas){
   //соединяюсь с базой
@@ -103,7 +109,7 @@ function showCatalog($mas){
     $out ='';
     while($row = mysqli_fetch_assoc($result)) {
          if ($row['categories'] == $mas['categories']){
-             $out .='<li class="transition col s4 m4 l3 active"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].'"data-idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
+             $out .='<li class="transition col s4 m4 l3"><a class="active average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].'"data-idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';
          }else{
              $out .='<li class="transition col s4 m4 l3"><a class="average_text valign-wrapper" href="'.BASEURLADM.$row['categories'].
         '"data-idcat="'.$row['id_cat'].'"><span class="valign">'.$row['cat_name'].'</span></a></li>';

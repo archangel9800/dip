@@ -30,6 +30,7 @@
                 margin: 0.5vh 0 0.5vh 0;
                 }
         .dropdown-button{
+            text-transform: none;
             display: block;
             box-shadow: none;
             background-color: transparent;
@@ -54,18 +55,19 @@
             }
         }
         #dropdown_cat{
+            max-height: 50vh;
             border-radius: 5px;
             top: 100% !important;
             width: auto !important;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.6);
             margin-top: 1vh;
             border: 2px solid rgba(38, 166, 154, 0.5);   
             &:hover{    
                 border: 2px solid rgb(38, 166, 154); 
-                background-color: rgba(0,0,0,0.7);
-                -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
-                -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
-                box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.5);
+                background-color: rgba(0,0,0,0.8);
+                -webkit-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
+                -moz-box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
+                box-shadow: 0px 0px 44px -10px rgba(0,0,0,0.8);
                 }
             li{
                 width: auto !important;

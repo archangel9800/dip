@@ -22,6 +22,7 @@ if($_POST['submit']){
 	<link type="text/css" rel="stylesheet" href="<?php echo BASEURL;?>css/basestyle.css"  media="screen,projection"/>
 </head>
 <body>
+ <div id="main_wrapper">
 	 <section id="adminka" class="adaptive_container transition">
     <div id="add_remove" class="row">
         <form method="post" class="row admin_login">
@@ -40,6 +41,7 @@ if($_POST['submit']){
      </form>
     </div>
 </section>
+   </div>
     <script type="text/javascript" src="<?php echo BASEURL;?>js/jquery-3.1.1.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/materialize.js"></script>
 	<script type="text/javascript" src="<?php echo BASEURL;?>js/swiper.jquery.js"></script>
