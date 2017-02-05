@@ -22,7 +22,9 @@ $mas = getArticle($urlSegments);
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
 <section id="header" class="row valign-wrapper adaptive_container transition">
     <div class="col s11 m5 l5 logo_block">
-        <h1 class=""><a href="main"><img src="<?php echo BASEURL;?>img/icons/logo2.png" alt="colorful gallery" class="transition"></a></h1>
+        <h1 class=""><a href="main">
+        <img src="<?php echo BASEURL;?>img/svg/logo2.svg" alt="logo" onerror="this.onerror=null; this.src='<?php echo BASEURL;?>img/icons/logo2.png'">
+        </a></h1>
         <h2 class="big_text">Ваша галерея обоев и картинок</h2>
     </div>
     <div id="s_slider" class="col s0 m6 l6 transition">
@@ -85,7 +87,6 @@ $mas = getArticle($urlSegments);
 </section>
 <!--  !!!!!!!!!!END!!!!!!!!!!-->
 	<!--  !!!!!!!!!!START!!!!!!!!!!-->
-<!--
 <section id="menu" class="transition">
   <ul class="btn_menu">
     <li class="mobile_m menu_text transition">MENU</li>
@@ -98,7 +99,6 @@ $mas = getArticle($urlSegments);
    
     
 </section>
--->
 <!-- !!!!!!!!!!END!!!!!!!!!!-->
 
 
