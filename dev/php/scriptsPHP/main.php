@@ -178,26 +178,22 @@ function getAll($mas){
              $way = 'img/img/categories/'.$row['url'].'/';
             echo '<div class="row" id="oneImg">
          <div class="col s12 m12 l2 proportions">
-              <p class="average_text">Размеры:</p>';
-            if(!empty($row['img2560x1600'])){
-                echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img2560x1600" class="average_text"><span>|</span> 2560x1600 <span>|</span></a>';
-                };
-            if(!empty($row['img1920x1080'])){
-                echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1920x1080" class="average_text"><span>|</span> 1920x1080 <span>|</span></a>';
-                };
-            if(!empty($row['img1600x900'])){
-                 echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1600x900" class="average_text"><span>|</span> 1600x900 <span>|</span></a>'; 
-                  };
-             if(!empty($row['img1024x768'])){
-                 echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img1024x768" class="average_text"><span>|</span> 1024x768 <span>|</span></a>'; 
-                  };
-             if(!empty($row['img960x800'])){
-                echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img960x800" class="average_text"><span>|</span> 960x800 <span>|</span></a>';
-             };
-              if(!empty($row['img600x800'])){
-                echo '<a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size=img600x800" class="average_text"><span>|</span> 600x800 <span>|</span></a>'; 
-              };
-         echo '</div>
+              <p class="average_text">Размеры:</p><ul>';
+            
+            $sql8 = "SELECT `img2560x1600`,`img1920x1080`,`img1600x900`,`img1024x768`,`img960x800`,`img600x800` FROM images_db WHERE id = '$img'";
+                $result8 = mysqli_query($myconnect, $sql8);
+            while($row2 = mysqli_fetch_assoc($result8)) {
+                 foreach ($row2 as $key => $value) {
+//                 echo $key.'=>'.$value.'<br />';
+                     if($value){
+                         echo '<li><a href="'.BASEURL.$row['url'].'?img='.$row['id'].'&size='.$key.'" class="average_text"><span>|</span> '.$key.' <span>|</span></a></li>';
+                         
+                         
+                         
+                     } 
+                }
+            }       
+         echo '</ul></div>
           <div class="col s12 m12 l10 img_show">
              <div class="in_img valign-wrapper">
                  <div class="valign">

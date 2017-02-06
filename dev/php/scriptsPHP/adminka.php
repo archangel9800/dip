@@ -162,35 +162,30 @@ function showPhoto($mas){
       
             
                 
-            if($imgad != ''){
-        
-        $sql2 = "SELECT * FROM `images_db` WHERE id = '$imgad'";
-        $result2 = mysqli_query($myconnect, $sql2);
-        while($row = mysqli_fetch_assoc($result2)) {
-             $way = 'img/img/categories/'.$row['url'].'/';
-           echo '<div class="col s12 m12 l12 proportions row">
+        if($imgad != ''){
+            
+            
+            $sql = "SELECT * FROM images_db WHERE id = '$imgad'" ;
+        $result = mysqli_query($myconnect, $sql);
+        while($row = mysqli_fetch_assoc($result)) {
+          $way = 'img/img/categories/'.$row['url'].'/';
+        echo '<div class="col s12 m12 l12 proportions row">
               <p class="average_text">Размеры:</p>';
-            
-            if(!empty($row['img2560x1600'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img2560x1600" class="average_text"><span>|</span> 2560x1600 <span>| </span></a><span class="remove_btn_adm" data-sizing="img2560x1600" data-numberimg="'.$row['id'].'">×</span></div>';
-                };
-            
-            
-              if(!empty($row['img1920x1080'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1920x1080" class="average_text"><span>|</span> 1920x1080 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1920x1080" data-numberimg="'.$row['id'].'">×</span></div>';
-                };
-            if(!empty($row['img1600x900'])){
-                 echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1600x900" class="average_text"><span>|</span> 1600x900 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1600x900" data-numberimg="'.$row['id'].'">×</span></div>'; 
-                  };
-             if(!empty($row['img1024x768'])){
-                 echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img1024x768" class="average_text"><span>|</span> 1024x768 <span>| </span></a><span class="remove_btn_adm" data-sizing="img1024x768" data-numberimg="'.$row['id'].'">×</span></div>'; 
-                  };
-             if(!empty($row['img960x800'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img960x800" class="average_text"><span>|</span> 960x800 <span>| </span></a><span class="remove_btn_adm" data-sizing="img960x800" data-numberimg="'.$row['id'].'">×</span></div>';
-             };
-              if(!empty($row['img600x800'])){
-                echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead=img600x800" class="average_text"><span>|</span> 600x800 <span>| </span></a><span class="remove_btn_adm" data-sizing="img600x800" data-numberimg="'.$row['id'].'">×</span></div>'; 
-              };
+                
+          $sql8 = "SELECT `img2560x1600`,`img1920x1080`,`img1600x900`,`img1024x768`,`img960x800`,`img600x800` FROM images_db WHERE id = '$imgad'";
+                $result8 = mysqli_query($myconnect, $sql8);
+            while($row2 = mysqli_fetch_assoc($result8)) {
+                 foreach ($row2 as $key => $value) {
+//                 echo $key.'=>'.$value.'<br />';
+                     if($value){
+                         echo '<div class="sizes col s3 m3 l12"><a href="'.BASEURLADM.$row['url'].'?imgad='.$row['id'].'&sizead='.$key.'" class="average_text"><span>|</span> '.$key.' <span>| </span></a><span class="remove_btn_adm" data-sizing="'.$key.'" data-numberimg="'.$row['id'].'">×</span></div>';
+                         
+                         
+                         
+                     } 
+                }
+            }
+
          echo '</div>';
        if($row[$sizead]){     
             echo '<div class="row col s12 m12 l12" id="oneImg">
@@ -203,7 +198,9 @@ function showPhoto($mas){
           </div>';
        }
       echo '</div>';    
-        }          
+        }
+            
+            
     } else{
                              
         $sql2 = "SELECT * FROM `images_db` WHERE url = '$name_of' LIMIT $start, $num";
