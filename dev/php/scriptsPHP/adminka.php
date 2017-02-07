@@ -250,7 +250,6 @@ function showPhoto($mas){
     echo '</b>'.$page1right.$page2right.$nextpage;      
     echo '</div>';    
               
-                
           
         } ; 
         echo '</div>'; 
@@ -299,7 +298,7 @@ function removeCat(){
     }
 }
 
-
+//удаление картинок
 function remOneImg(){
     $id = $_POST['id'];
     $sizing = $_POST['sizing'];
