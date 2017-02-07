@@ -13,9 +13,122 @@ function cleanDir($dir) {
         }
     }
 };
+//фильтр
+ function filter($src,$filter){
+         if(!list($w, $h) = getimagesize($src)) return "Unsupported picture type!";
+         $type = strtolower(substr(strrchr($src,"."),1));
+
+         if($type == 'jpeg') $type = 'jpg';
+      switch($type){
+        case 'bmp': $img = imagecreatefromwbmp($src); break;
+        case 'gif': $img = imagecreatefromgif($src); break;
+        case 'jpg': $img = imagecreatefromjpeg($src); break;
+        case 'png': $img = imagecreatefrompng($src); break;
+        default : return "Unsupported picture type!";
+      }
+if($filter == 'NEGATE'){
+      imagefilter($img, IMG_FILTER_NEGATE);
+        switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+} else if($filter == 'GRAYSCALE'){
+      imagefilter($img, IMG_FILTER_GRAYSCALE);
+        switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+}else if($filter == 'LSEPIYA'){
+      imagefilter($img, IMG_FILTER_GRAYSCALE);
+      imagefilter($img, IMG_FILTER_COLORIZE, 100, 70, 50);
+        switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+}else if($filter == 'EFPICT'){
+      imagefilter($img, IMG_FILTER_MEAN_REMOVAL);
+      imagefilter($img, IMG_FILTER_GAUSSIAN_BLUR);
+        switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+}else if($filter == 'EMBOSS'){
+      imagefilter($img, IMG_FILTER_EMBOSS);
+        switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+}else if($filter == 'MIRROR'){
+   $size = getimagesize($src);
+   $result_source = imagecreatetruecolor($size[0], $size[1]);
+   for ($x = 0; $x < $size[0]; $x++) {
+    for ($y = 0; $y < $size[1]; $y++) {
+    $color=imagecolorat($img, $x,$y);
+    imagesetpixel($result_source, $size[0]-1-$x, $y, $color);
+    }
+   }
+    switch($type){
+        case 'bmp': imagewbmp($result_source, $src); break;
+        case 'gif': imagegif($result_source, $src); break;
+        case 'jpg': imagejpeg($result_source, $src); break;
+        case 'png': imagepng($result_source, $src); break;
+      }
+}else if($filter == 'BLW'){
+   $size = getimagesize($src);
+   $result_source = imagecreatetruecolor($size[0], $size[1]);
+   for ($x = 0; $x < $size[0]; $x++) {
+    for ($y = 0; $y < $size[1]; $y++) {
+     $colors=imagecolorsforindex($img, imagecolorat($img, $x,$y));
+     $r=$colors['red'];
+     $g=$colors['green'];
+     $b=$colors['blue'];
+     $random = $r + $g + $b;
+     if ($random > (((255 + 20) / 2) * 3)) {
+      $r = 255;
+      $g = 255;
+      $b = 255; }
+     else {
+      $r = 0;
+      $g = 0;
+      $b = 0; }
+     $color = imagecolorallocate($result_source, $r,$g,$b);
+     imagesetpixel($result_source, $x, $y, $color);
+    }
+   }
+    switch($type){
+        case 'bmp': imagewbmp($result_source, $src); break;
+        case 'gif': imagegif($result_source, $src); break;
+        case 'jpg': imagejpeg($result_source, $src); break;
+        case 'png': imagepng($result_source, $src); break;
+      }
+}else if($filter == 'PIXELATE'){
+    imagefilter($img, IMG_FILTER_PIXELATE, 3, true);
+    switch($type){
+        case 'bmp': imagewbmp($img, $src); break;
+        case 'gif': imagegif($img, $src); break;
+        case 'jpg': imagejpeg($img, $src); break;
+        case 'png': imagepng($img, $src); break;
+      }
+}
+       
+
+       
+      return true;  
+
+    };
 
 
-
+//обрезка картинки
 function image_resize($src, $dst, $width, $height, $crop=0){
   
   if(!list($w, $h) = getimagesize($src)) return "Unsupported picture type!";
@@ -68,9 +181,9 @@ function image_resize($src, $dst, $width, $height, $crop=0){
 
 
 
-
 //print_r($_FILES);
 $catName = $_POST['catName'];
+$filter = $_POST['filter'];
 $aboutImg  = preg_replace ('/[^\p{L}0-9 ]/iu','',$_POST['aboutImg']);
 
 $dir = '../tmp/';
@@ -86,31 +199,28 @@ if($_FILES and $imgCount <= 10){
         $valType = strrchr($value['name'], '.');    
         //перемещение файлов в tmp
         move_uploaded_file($value['tmp_name'], $dir.'pic'.$i.strrchr($value['name'], '.'));
-        
         $picVal = getimagesize($dir.'pic'.$i.strrchr($value['name'], '.'));
         $pic = $dir.'pic'.$i.strrchr($value['name'], '.');
-        
+        if($filter != '' and $filter != 'on' ){
+            filter($pic,$filter);
+        };   
         $width = $picVal[0];
         $height = $picVal[1];
         $proportions = ($width/1.5) - $height;     
         if($width <= 1920 and $height <= 1080 and $proportions > 0){
-                    
-
         $sql = "SELECT * FROM categories_db WHERE `id_cat` = '$catName'";
              $result = mysqli_query($myconnect, $sql);    
               while($row = mysqli_fetch_assoc($result)) {
-                  $filename = uniqid();
-                  $filename2 = uniqid();
-                  $filename3 = uniqid();
+                  $filename = uniqid().uniqid();
                   $url = $row['categories'];
                   $dest = 'img/img/categories/'.$url.'/';
                   
-                 $img510x300 = $dest.$filename.$filename2.$filename3.'img510x300'.$valType;  
-                 $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType; 
-                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;
-                 $img1600x900 = $dest.$filename.$filename2.$filename3.'img1600x900'.$valType; 
-                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType;  
-                 $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
+                 $img510x300 = $dest.$filename.'img510x300'.$valType;  
+                 $img600x800 = $dest.$filename.'img600x800'.$valType; 
+                 $img960x800 = $dest.$filename.'img960x800'.$valType;
+                 $img1600x900 = $dest.$filename.'img1600x900'.$valType; 
+                 $img1024x768 = $dest.$filename.'img1024x768'.$valType;  
+                 $img1920x1080 = $dest.$filename.'img1920x1080'.$valType;
                   
                   image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);                
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
@@ -119,12 +229,12 @@ if($_FILES and $imgCount <= 10){
                   image_resize($pic, '../'.$img1600x900, 1600, 900, $crop=1);
                   image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
                   
-                 $img510x300Bd = $filename.$filename2.$filename3.'img510x300'.$valType;   
-                 $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;  
-                 $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;
-                 $img1600x900Bd = $filename.$filename2.$filename3.'img1600x900'.$valType; 
-                 $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
+                 $img510x300Bd = $filename.'img510x300'.$valType;   
+                 $img600x800Bd = $filename.'img600x800'.$valType;  
+                 $img960x800Bd = $filename.'img960x800'.$valType;       
+                 $img1024x768Bd = $filename.'img1024x768'.$valType;
+                 $img1600x900Bd = $filename.'img1600x900'.$valType; 
+                 $img1920x1080Bd = $filename.'img1920x1080'.$valType;
                   
                   $sql2 =  "INSERT INTO `images_db` 
                  (`id`, `url`, `img2560x1600`, `img1920x1080`, `img1600x900`, `img1024x768`, `img960x800`, `img600x800`, `img510x300`, `about`) VALUES 
@@ -138,20 +248,18 @@ if($_FILES and $imgCount <= 10){
         $sql = "SELECT * FROM categories_db WHERE `id_cat` = '$catName'";
              $result = mysqli_query($myconnect, $sql);    
               while($row = mysqli_fetch_assoc($result)) {
-                  $filename = uniqid();
-                  $filename2 = uniqid();
-                  $filename3 = uniqid();
+                  $filename = uniqid().uniqid();
                   $url = $row['categories'];
                  $dest = 'img/img/categories/'.$url.'/';
                   
                   
-                 $img510x300 = $dest.$filename.$filename2.$filename3.'img510x300'.$valType; 
-                 $img600x800 = $dest.$filename.$filename2.$filename3.'img600x800'.$valType; 
-                 $img960x800 = $dest.$filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768 = $dest.$filename.$filename2.$filename3.'img1024x768'.$valType; 
-                 $img1600x900 = $dest.$filename.$filename2.$filename3.'img1600x900'.$valType; 
-                 $img1920x1080 = $dest.$filename.$filename2.$filename3.'img1920x1080'.$valType;
-                 $img2560x1600 = $dest.$filename.$filename2.$filename3.'img2560x1600'.$valType;
+                 $img510x300 = $dest.$filename.'img510x300'.$valType; 
+                 $img600x800 = $dest.$filename.'img600x800'.$valType; 
+                 $img960x800 = $dest.$filename.'img960x800'.$valType;       
+                 $img1024x768 = $dest.$filename.'img1024x768'.$valType; 
+                 $img1600x900 = $dest.$filename.'img1600x900'.$valType; 
+                 $img1920x1080 = $dest.$filename.'img1920x1080'.$valType;
+                 $img2560x1600 = $dest.$filename.'img2560x1600'.$valType;
                   
                   image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);  
                   image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
@@ -161,13 +269,13 @@ if($_FILES and $imgCount <= 10){
                   image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
                   image_resize($pic, '../'.$img2560x1600, 2560, 1600, $crop=1);
                   
-                 $img510x300Bd = $filename.$filename2.$filename3.'img510x300'.$valType;  
-                 $img600x800Bd = $filename.$filename2.$filename3.'img600x800'.$valType;  
-                 $img960x800Bd = $filename.$filename2.$filename3.'img960x800'.$valType;       
-                 $img1024x768Bd = $filename.$filename2.$filename3.'img1024x768'.$valType;      
-                 $img1600x900Bd = $filename.$filename2.$filename3.'img1600x900'.$valType;      
-                 $img1920x1080Bd = $filename.$filename2.$filename3.'img1920x1080'.$valType;
-                 $img2560x1600Bd = $filename.$filename2.$filename3.'img2560x1600'.$valType;
+                 $img510x300Bd = $filename.'img510x300'.$valType;  
+                 $img600x800Bd = $filename.'img600x800'.$valType;  
+                 $img960x800Bd = $filename.'img960x800'.$valType;       
+                 $img1024x768Bd = $filename.'img1024x768'.$valType;      
+                 $img1600x900Bd = $filename.'img1600x900'.$valType;      
+                 $img1920x1080Bd = $filename.'img1920x1080'.$valType;
+                 $img2560x1600Bd = $filename.'img2560x1600'.$valType;
                   
                  $sql2 =  "INSERT INTO `images_db` 
                  (`id`, `url`, `img2560x1600`, `img1920x1080`, `img1600x900`, `img1024x768`, `img960x800`, `img600x800`, `img510x300`, `about`) VALUES 

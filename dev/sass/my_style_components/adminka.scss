@@ -338,7 +338,6 @@
                         }
                     .btn{
                                 padding: 0;
-                                height: 2.3vw; 
                                 line-height: 0;
                                      @media all and (orientation:landscape) {
                                                 height: 2.3vw; 
@@ -353,6 +352,62 @@
                                 }
                 
             }
+        
+        .filters{
+            margin: 0;
+            .checkbox{
+                label{
+                    color: #fff59d;
+                }
+            }
+            .example{
+                margin: 0;
+                padding: 0; 
+                border: none;
+                box-shadow: none;
+                li{
+                        .collapsible-header{
+                            padding: 0;
+                            min-height: 1px;
+                            background-color: transparent;
+                            line-height: normal;
+                            height: auto;
+                            border: none;
+                            box-shadow: none;
+                                &:hover{
+                                    background-color: rgba(48,90,196,0.5);
+                                    -webkit-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                    -moz-box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                    box-shadow: 0px 0px 9px 4px rgba(48,90,196,0.5);
+                                }
+                                i{
+                                    line-height: normal;
+                                    color: #fff59d;
+                                }
+                                span{
+                                    line-height: normal;
+                                    color: #fff59d;
+                                }
+                         }
+                }
+                .collapsible-body{
+                    height: auto;
+                    border: none;
+                    img{
+                        margin-top: 0.7vh;
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+    
+        
     }
     .remove_image{
         min-height: inherit;

@@ -181,6 +181,17 @@ function getAll($mas){
               <p class="average_text">Размеры:</p><ul>';
             
             $sql8 = "SELECT `img2560x1600`,`img1920x1080`,`img1600x900`,`img1024x768`,`img960x800`,`img600x800` FROM images_db WHERE id = '$img'";
+//            $sql8 = "SELECT CONCAT('SELECT ',
+//                    (SELECT GROUP_CONCAT(COLUMN_NAME)
+//                     FROM INFORMATION_SCHEMA.COLUMNS
+//                     WHERE 
+//                        TABLE_NAME='images_db' AND 
+//                        COLUMN_NAME NOT IN ('url','id','about')
+//                     ORDER BY ORDINAL_POSITION 
+//                    ), ' FROM images_db WHERE `id`=`$img`')";
+            
+            
+            
                 $result8 = mysqli_query($myconnect, $sql8);
             while($row2 = mysqli_fetch_assoc($result8)) {
                  foreach ($row2 as $key => $value) {

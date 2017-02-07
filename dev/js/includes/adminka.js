@@ -22,6 +22,7 @@ function adminka(){
     if($("#adminka").length > 0){
     //инициализация выпадающих списков
         $('#adminka select').material_select();  
+         
         
       $('#adminka .admin_login input').css({
         backgroundColor:  'transparent !important',
@@ -51,23 +52,13 @@ function adminka(){
                     }else if(data == "not_exists"){
                       $("#adminka #info").removeClass('error').addClass('okk').html("Каталог создан!");
                       $("#adminka .select-wrapper .list").html("");
-                        
-//                        $.post(
-//                            "../functions.php",{
-//                            "inp_add_cat_val": $("#adminka #add_cat").val(),
-//                            "action": "add", 
-//                            },
-//                            ifSuccess2
-//                        );
-//                        function ifSuccess2(data){
-//                            $("#adminka .select-wrapper .list").html(data);
-//                        };
 
                         
-                        location.reload(true);
+                        setTimeout(function(){
+                            location.reload();
+                        }, 1000);
                        
                     }
-//                    $('select').on('change', changeSelect);
                 }
         }   
 }
@@ -92,7 +83,9 @@ function adminka(){
              function ifSuccess(data){
                     if(data == "deleted_cat"){
                      $("#adminka #info").html("Каталог удален!");   
-                        location.reload();
+                        setTimeout(function(){
+                            location.reload();
+                        }, 1000);
                     }
                 }
             
@@ -108,6 +101,9 @@ function adminka(){
         event.preventDefault();
             $catName = $("#adminka .list_cat_bl ul .active").attr('data-idcat');
             $aboutImg = $("#adminka #add_about").val();
+            $filter = $("#adminka .filters input[name='filters']:checked").val();
+        
+        
             $dataaray = new FormData();
 var error = '';
         if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active").attr('data-idcat') == '' || $aboutImg == '') {               
@@ -131,6 +127,7 @@ var error = '';
     });
         $dataaray.append('catName', $catName);
           $dataaray.append('aboutImg', $aboutImg);
+          $dataaray.append('filter', $filter);
 if (error != '') {
             $('#info').html(error);
     } else {

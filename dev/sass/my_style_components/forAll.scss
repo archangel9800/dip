@@ -171,8 +171,10 @@ html {
             /*>1200*/   1vw
              );      
     }
-
-
+.inline {
+            display: inline-block;
+        }
+    
 
 //Центрирование внутреннего блока
 .out_bl {

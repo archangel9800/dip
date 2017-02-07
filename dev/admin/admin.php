@@ -41,7 +41,7 @@ $mas = getArticle($urlSegments);
               </div>
               <button id="rem_cat" class="col s4 m4 l4 btn waves-effect waves-light average_text" type="submit" name="action">Удалить раздел</button>
           <p class="average_text col s10 m12 l11 offset-s1  offset-l1">Удаление изображений и добавление изображений</p>
-              <form enctype="multipart/form-data" method="POST" class="row col s10 m12 l11 offset-s1  offset-l1 down_block">
+              <form enctype="multipart/form-data" method="POST" class="row col s10 m12 l11 offset-s1  offset-l1 down_block ">
                         <div class="file-field input-field">
                           <div class="btn">
                               <div class="out_bl"><span class="in_bl average_text">File</span></div>
@@ -54,7 +54,141 @@ $mas = getArticle($urlSegments);
                             <div class="input-field about-field col s6">
                               <input id="add_about" placeholder="О фотографии, например горы (обяз.)" type="text" class="validate average_text">
                             </div>
-                        <button id="btn_add_img" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text" type="submit" name="action">Добавить изоб.</button>
+                        <button id="btn_add_img" class="col s4 m4 l4 offset-s1 offset-m1 offset-l1 btn waves-effect waves-light average_text clear-fix" type="submit" name="action">Добавить изоб.</button>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="none">
+                          <label class="average_text" for="none">Без фильтра (По умолчанию)</label>
+                        </div>
+                    </div>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="negative" value="NEGATE">
+                          <label class="average_text" for="negative">Негатив</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/negative.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="grayscale" value="GRAYSCALE">
+                          <label class="average_text" for="grayscale">Градация серого</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/graysale.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="lsepiya" value="LSEPIYA">
+                          <label class="average_text" for="lsepiya">Легкая сепия</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/sepia.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                       <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="efpict" value="EFPICT">
+                          <label class="average_text" for="efpict">Эффект рисунка</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/drawing.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                       <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="emboss" value="EMBOSS">
+                          <label class="average_text" for="emboss">Рельефное фото</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/relief.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="mirror" value="MIRROR">
+                          <label class="average_text" for="mirror">Зеркальное отображение</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/mirror.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="blw" value="BLW">
+                          <label class="average_text" for="blw">Черное и белое</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/blackwhite.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div> 
+                    <div class="filters row col s12">
+                        <div class="left col s8 checkbox"> 
+                          <input class="average_text" name="filters" type="radio" id="pixelate" value="PIXELATE">
+                          <label class="average_text" for="pixelate">Пикселизация</label>
+                        </div>   
+                        <ul class="collapsible example left col s4" data-collapsible="accordion">
+                          <li>
+                            <div class="collapsible-header transition">
+                            <i class="material-icons average_text">&#xE5C5;</i>
+                            <span class="average_text">Пример</span></div>
+                            <div class="collapsible-body">
+                                <img src="<?php echo BASEURL;?>img/img/filters/pixelate.jpg" alt="negative">
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
               </form>
               <p class="row col s10 m12 l11 offset-s1 offset-l1" id="info"></p>
         </div>
