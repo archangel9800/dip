@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browserSync = require('browser-sync'),
     reload = browserSync.reload,
-    spritesmith = require('gulp.spritesmith');
+    spritesmith = require('gulp.spritesmith'),
+    cleanCSS = require('gulp-clean-css');
 var using = 'php';
 
 
