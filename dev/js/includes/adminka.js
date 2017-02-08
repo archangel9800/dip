@@ -128,6 +128,7 @@ var error = '';
         $dataaray.append('catName', $catName);
           $dataaray.append('aboutImg', $aboutImg);
           $dataaray.append('filter', $filter);
+          $dataaray.append('action', 'downimg');
 if (error != '') {
             $('#info').html(error);
     } else {

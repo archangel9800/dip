@@ -97,7 +97,7 @@ function dropdownCatalog($mas){
             if($mas['categories'] == '' or $mas['categories'] == 'main'){
             echo 'ВЫБЕРИТЕ РАЗДЕЛ';
         }else{
-            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['categories'].'</span>';
+            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['cat_name'].'</span>';
         }
 }
 //вывод списка каталогов

@@ -26,7 +26,7 @@ function dropdownGenres($mas){
         }else if($mas['categories'] == 'search'){
             echo 'РАЗДЕЛ: Результаты поиска <span class="yellow_text">'.$_GET['searchval'].'</span>';
         }else{
-            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['categories'].'</span>';
+            echo 'РАЗДЕЛ: <span class="yellow_text">'.$mas['cat_name'].'</span>';
         }
     
     

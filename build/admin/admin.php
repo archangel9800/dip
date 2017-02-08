@@ -1,6 +1,7 @@
 <?php
 require_once './../functions.php';
-require "auth.php";
+//require_once './../scriptsPHP/upload.php';
+require_once "auth.php";
 $url = $_GET['route'];
 $urlSegments = explode('/', $url);
 $mas = getArticle($urlSegments);

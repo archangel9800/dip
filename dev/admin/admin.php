@@ -1,6 +1,7 @@
 <?php
 require_once './../functions.php';
-require "auth.php";
+//require_once './../scriptsPHP/upload.php';
+require_once "auth.php";
 $url = $_GET['route'];
 $urlSegments = explode('/', $url);
 $mas = getArticle($urlSegments);
@@ -58,7 +59,7 @@ $mas = getArticle($urlSegments);
                     <div class="filters row col s12">
                         <div class="left col s8 checkbox"> 
                           <input class="average_text" name="filters" type="radio" id="none">
-                          <label class="average_text" for="none">Без фильтра (По умолчанию)</label>
+                          <label class="average_text" for="none">Без фильтра (по умолчанию)</label>
                         </div>
                     </div>
                     <div class="filters row col s12">
@@ -144,7 +145,7 @@ $mas = getArticle($urlSegments);
                     <div class="filters row col s12">
                         <div class="left col s8 checkbox"> 
                           <input class="average_text" name="filters" type="radio" id="mirror" value="MIRROR">
-                          <label class="average_text" for="mirror">Зеркальное отображение</label>
+                          <label class="average_text" for="mirror">Зеркальное отражение</label>
                         </div>   
                         <ul class="collapsible example left col s4" data-collapsible="accordion">
                           <li>

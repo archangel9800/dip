@@ -2,6 +2,14 @@
 require_once 'config/config.php';
 require_once 'connect.php';
 
+switch ( $_POST['action'] )
+{   
+    case 'downimg':
+        downimg();
+        break;
+}
+
+//очичтка директории
 function cleanDir($dir) {
     $files = glob($dir."/*");
     $c = count($files);
@@ -12,8 +20,10 @@ function cleanDir($dir) {
             }   
         }
     }
-};
-//фильтр
+};  
+
+
+//фильтры
  function filter($src,$filter){
          if(!list($w, $h) = getimagesize($src)) return "Unsupported picture type!";
          $type = strtolower(substr(strrchr($src,"."),1));
@@ -181,6 +191,9 @@ function image_resize($src, $dst, $width, $height, $crop=0){
 
 
 
+
+//основной скрипт для загрузки изображений
+function downimg(){
 //print_r($_FILES);
 $catName = $_POST['catName'];
 $filter = $_POST['filter'];
@@ -299,6 +312,6 @@ if($_FILES and $imgCount <= 10){
 } else{
   echo 'Файлов больше 10';  
 };
-
+};
     
 
