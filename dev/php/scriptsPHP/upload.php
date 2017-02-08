@@ -226,7 +226,7 @@ if($_FILES and $imgCount <= 10){
               while($row = mysqli_fetch_assoc($result)) {
                   $filename = uniqid().uniqid();
                   $url = $row['categories'];
-                  $dest = 'img/img/categories/'.$url.'/';
+                  $dest = '../img/img/categories/'.$url.'/';
                   
                  $img510x300 = $dest.$filename.'img510x300'.$valType;  
                  $img600x800 = $dest.$filename.'img600x800'.$valType; 
@@ -235,12 +235,12 @@ if($_FILES and $imgCount <= 10){
                  $img1024x768 = $dest.$filename.'img1024x768'.$valType;  
                  $img1920x1080 = $dest.$filename.'img1920x1080'.$valType;
                   
-                  image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);                
-                  image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
-                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
-                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
-                  image_resize($pic, '../'.$img1600x900, 1600, 900, $crop=1);
-                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
+                  image_resize($pic, $img510x300, 510, 300, $crop=0);                
+                  image_resize($pic, $img600x800, 600, 800, $crop=1);
+                  image_resize($pic, $img960x800, 960, 800, $crop=1);
+                  image_resize($pic, $img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, $img1600x900, 1600, 900, $crop=1);
+                  image_resize($pic, $img1920x1080, 1920, 1080, $crop=1);
                   
                  $img510x300Bd = $filename.'img510x300'.$valType;   
                  $img600x800Bd = $filename.'img600x800'.$valType;  
@@ -263,7 +263,7 @@ if($_FILES and $imgCount <= 10){
               while($row = mysqli_fetch_assoc($result)) {
                   $filename = uniqid().uniqid();
                   $url = $row['categories'];
-                 $dest = 'img/img/categories/'.$url.'/';
+                 $dest = '../img/img/categories/'.$url.'/';
                   
                   
                  $img510x300 = $dest.$filename.'img510x300'.$valType; 
@@ -274,13 +274,13 @@ if($_FILES and $imgCount <= 10){
                  $img1920x1080 = $dest.$filename.'img1920x1080'.$valType;
                  $img2560x1600 = $dest.$filename.'img2560x1600'.$valType;
                   
-                  image_resize($pic, '../'.$img510x300, 510, 300, $crop=0);  
-                  image_resize($pic, '../'.$img600x800, 600, 800, $crop=1);
-                  image_resize($pic, '../'.$img960x800, 960, 800, $crop=1);
-                  image_resize($pic, '../'.$img1024x768, 1024, 768, $crop=1);
-                  image_resize($pic, '../'.$img1600x900, 1600, 900, $crop=1);
-                  image_resize($pic, '../'.$img1920x1080, 1920, 1080, $crop=1);
-                  image_resize($pic, '../'.$img2560x1600, 2560, 1600, $crop=1);
+                  image_resize($pic, $img510x300, 510, 300, $crop=0);  
+                  image_resize($pic, $img600x800, 600, 800, $crop=1);
+                  image_resize($pic, $img960x800, 960, 800, $crop=1);
+                  image_resize($pic, $img1024x768, 1024, 768, $crop=1);
+                  image_resize($pic, $img1600x900, 1600, 900, $crop=1);
+                  image_resize($pic, $img1920x1080, 1920, 1080, $crop=1);
+                  image_resize($pic, $img2560x1600, 2560, 1600, $crop=1);
                   
                  $img510x300Bd = $filename.'img510x300'.$valType;  
                  $img600x800Bd = $filename.'img600x800'.$valType;  
