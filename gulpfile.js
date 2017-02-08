@@ -59,13 +59,7 @@ gulp.task('phpAdminInc', function(){
     console.log('PHP admin changed');
 });
 
-gulp.task('htaccess', function(){
-	gulp.src('dev/php/.htaccess')
-		.pipe(includer())
-		.pipe(gulp.dest('build/'))
-        .pipe(reload({stream:true}));
-    console.log('htaccess changed');
-});
+
 gulp.task('sass', function(){
 	gulp.src('dev/sass/*.scss')
 	.pipe(sourcemap.init())
@@ -83,7 +77,6 @@ gulp.task('move', function(){
     gulp.src('dev/img/img/**/*.*').pipe(gulp.dest('build/img/img/')).pipe(reload({stream:true}));
     gulp.src('dev/img/svg/**/*.*').pipe(gulp.dest('build/img/svg/')).pipe(reload({stream:true}));
     gulp.src('dev/video/**/*.*').pipe(gulp.dest('build/video/')).pipe(reload({stream:true}));
-    gulp.src('dev/**/*.htaccess').pipe(gulp.dest('build/')).pipe(reload({stream:true}));
 	console.log('Moved'); 
 });
 
@@ -98,14 +91,12 @@ gulp.task('watcher', function(){
     gulp.watch('dev/html/**/*.html', ['html']);
     gulp.watch('dev/php/**/*.php', ['phpinc']);
     gulp.watch('dev/admin/**/*.php', ['phpAdminInc']);
-    gulp.watch('dev/php/.htaccess', ['htaccess']);
     gulp.watch('dev/js/includes/*.js', ['scriptsConcat']);
     gulp.watch('dev/img/spriteIcons/*.png', ['sprite']);
     gulp.watch('dev/img/icons/*.png', ['move']);
     gulp.watch('dev/img/img/*.png', ['move']);
     gulp.watch('dev/img/svg/*.png', ['move']);
     gulp.watch('dev/video/**/*.*', ['move']);
-    gulp.watch('dev/**/*.htaccess', ['move']);
     
 });
     

@@ -102,11 +102,9 @@ function adminka(){
             $catName = $("#adminka .list_cat_bl ul .active").attr('data-idcat');
             $aboutImg = $("#adminka #add_about").val();
             $filter = $("#adminka .filters input[name='filters']:checked").val();
-        
-        
             $dataaray = new FormData();
 var error = '';
-        if($('#adminka #file').val() == '' || $("#adminka .list_cat_bl ul .active").attr('data-idcat') == '' || $aboutImg == '') {               
+        if(!$('#adminka #file').val() || !$catName || !$aboutImg ) {               
                error = error + 'Выберите изображение, каталог куда загружать и краткое описание'; 
                $('#info').html(error);
             } else{  
@@ -133,7 +131,7 @@ if (error != '') {
             $('#info').html(error);
     } else {
         $.ajax({
-            url: '../scriptsPHP/upload.php',
+            url: "../functions.php",
             contentType: false,
             processData: false, 
             type: 'POST',
